@@ -1,0 +1,180 @@
+//
+//  GameViewController.swift
+//  GameTracker
+//
+//
+
+import UIKit
+
+class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
+
+  let platforms = ["", "PS4", "Switch"]
+  // MARK: Properties
+
+  @IBOutlet weak var platformTextField: UITextField!
+  @IBOutlet weak var idgameLabel: UILabel!
+  @IBOutlet weak var nameTextField: UITextField!
+  @IBOutlet weak var photoImageView: UIImageView!
+  @IBOutlet weak var saveButton: UIBarButtonItem!
+  @IBOutlet weak var DiscOrDigital: UISegmentedControl!
+  @IBOutlet weak var doneSwitch: UISwitch!
+  @IBOutlet weak var publisherTextField: UITextField!
+    /*
+   This value is either passed by `GameTableViewController` in `prepareForSegue(_:sender:)`
+     @IBOutlet weak var idgameLabel: UILabel!
+     or constructed as part of adding a new game.
+   */
+  var game: Game?
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // Do any additional setup after loading the view, typically from a nib.
+
+    // Handle the text field’s user input through delegate callbacks.
+    nameTextField.delegate = self
+    
+    let pickerView = UIPickerView()
+    pickerView.delegate = self
+    platformTextField.inputView = pickerView
+
+    // Set up views if editing an existing Game.
+    if let game = game {
+      navigationItem.title = game.name
+      platformTextField.text = game.platform
+      nameTextField.text   = game.name
+      publisherTextField.text   = game.publisher
+      photoImageView.image = game.photo
+      DiscOrDigital.selectedSegmentIndex = game.dord
+      doneSwitch.isOn = game.done
+      idgameLabel.text = game.idgame
+    }
+
+    // Enable the Save button only if the text field has a valid Game name.
+    checkValidGameName()
+  }
+
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+
+  }
+
+  func checkValidGameName() {
+    // Disable the Save button if the text field is empty.
+    let text = nameTextField.text ?? ""
+    saveButton.isEnabled = !text.isEmpty
+  }
+    
+  func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    return 1
+  }
+
+  func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return platforms.count
+  }
+
+  // This function sets the text of the picker view to the content of the "salutations" array
+  func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return platforms[row]
+  }
+
+  // When user selects an option, this function will set the text of the text field to reflect
+  // the selected option.
+  func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    platformTextField.text = platforms[row]
+  }
+
+  // MARK: UITextFieldDelegate
+
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    // Hide the keyboard.
+    textField.resignFirstResponder()
+    return true
+  }
+
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    // Disable the Save button while editing.
+    saveButton.isEnabled = false
+  }
+
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    checkValidGameName()
+    navigationItem.title = textField.text
+  }
+
+  // MARK: UIImagePickerControllerDelegate
+
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    // Dismiss the picker if the user canceled.
+    dismiss(animated: true, completion: nil)
+  }
+
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    // The info dictionary contains multiple representations of the image, and this uses the original.
+    let selectedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+
+    // Set photoImageView to display the selected image.
+    photoImageView.image = selectedImage
+
+    // Dismiss the picker.
+    dismiss(animated: true, completion: nil)
+  }
+
+  // MARK: Navigation
+
+  @IBAction func cancel(_ sender: UIBarButtonItem) {
+    // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
+    let isPresentingInAddGameMode = presentingViewController is UINavigationController
+
+    if isPresentingInAddGameMode {
+      dismiss(animated: true, completion: nil)
+    }
+    else {
+      navigationController!.popViewController(animated: true)
+    }
+  }
+
+  // This method lets you configure a view controller before it's presented.
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let s = sender as? UIBarButtonItem { // M.Ban Swift 2 --> Swift 3
+      if saveButton === s {
+        let idgame = idgameLabel.text == "" ? UUID().uuidString : idgameLabel.text
+        let name = nameTextField.text ?? ""
+        let photo = photoImageView.image
+        let dord = DiscOrDigital.selectedSegmentIndex
+        let done = doneSwitch.isOn
+        let publisher = publisherTextField.text ?? ""
+        let platform = platformTextField.text ?? ""
+        //let rating = ratingControl.rating
+
+        // Set the game to be passed to GameTableViewController after the unwind segue.
+        game = Game(idgame: idgame!, name: name, photo: photo, dord: dord, platform: platform, done: done, publisher: publisher)
+      }
+    }
+  }
+
+  // MARK: Actions
+
+  @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
+    // Hide the keyboard (just in case).
+    nameTextField.resignFirstResponder()
+
+    // UIImagePickerController is a view controller that lets a user pick media from their photo library.
+    let imagePickerController = UIImagePickerController()
+
+    // Only allow photos to be picked, not taken.
+    imagePickerController.sourceType = .photoLibrary
+
+    // Make sure ViewController is notified when the user picks an image.
+    imagePickerController.delegate = self
+
+    present(imagePickerController, animated: true, completion: nil)
+  }
+
+  /*
+  @IBAction func setDefaultLabelText(sender: UIButton) {
+    gameNameLabel.text = "Default Text"
+  }
+  */
+
+}
