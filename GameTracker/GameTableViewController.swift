@@ -170,6 +170,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
       games.remove(at: gamesPath.row)
       saveGames()
       searchBar.selectedScopeButtonIndex = 0;
+      searchBar.text = ""
       currentGamesArray = games
       table.reloadData()
 
@@ -208,6 +209,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     }
     else if segue.identifier == "AddItem" {
         searchBar.selectedScopeButtonIndex = 0;
+        searchBar.text = ""
         currentGamesArray = games
         table.reloadData()
       print("Adding new game.")
@@ -234,6 +236,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         let gamesPath = IndexPath(row: j, section: 0)
         games[gamesPath.row] = game
         searchBar.selectedScopeButtonIndex = 0;
+        searchBar.text = ""
         currentGamesArray = games
         table.reloadData()
         
