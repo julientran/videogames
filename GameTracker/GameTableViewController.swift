@@ -140,10 +140,20 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     print("at: \(indexPath.row)") // Debug
     if editingStyle == .delete {
       // Delete the row from the data source
-      games.remove(at: indexPath.row)
-      currentGamesArray.remove(at: indexPath.row)
+      var j = 0
+        for i in 0..<games.count { // N'oubliez pas que l'indice d'un tableau débute à 0
+            if( games[i].idgame == currentGamesArray[indexPath.row].idgame ){
+                j = i
+            }
+      }
+      let gamesPath = IndexPath(row: j, section: 0)
+        
+      games.remove(at: gamesPath.row)
       saveGames()
-      tableView.deleteRows(at: [indexPath], with: .fade)
+      searchBar.selectedScopeButtonIndex = 0;
+      currentGamesArray = games
+      table.reloadData()
+
     } else if editingStyle == .insert {
       // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
