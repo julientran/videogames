@@ -13,6 +13,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     
   // MARK: Properties
 
+  var currentSearchText = ""
   var games = [Game]()
   var currentGamesArray = [Game]()
 
@@ -63,26 +64,44 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         guard !searchText.isEmpty else {
             currentGamesArray = games;
+            currentSearchText = ""
             table.reloadData()
             return
         }
-    
-        currentGamesArray = games.filter({ game -> Bool in
-            (game.name.lowercased().contains(searchText.lowercased()) || game.publisher.lowercased().contains(searchText.lowercased()))
-        })
+        currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: searchText)
+        currentSearchText = searchText
         table.reloadData()
+    }
+    
+    func filterGames(gamesForFilter: [Game], searchTextForFilter: String) -> [Game] {
+        searchBar.prompt = "0 game"
+        return gamesForFilter.filter({ game -> Bool in
+            (game.name.lowercased().contains(searchTextForFilter.lowercased()) || game.publisher.lowercased().contains(searchTextForFilter.lowercased()))
+        })
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){
         switch selectedScope {
         case 0:
-            currentGamesArray = games
+            if !currentSearchText.isEmpty {
+                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+            } else {
+                currentGamesArray = games
+            }
         case 1:
-            currentGamesArray = games
+            if !currentSearchText.isEmpty {
+                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+            } else {
+                currentGamesArray = games
+            }
             currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == "PS4"
             })
         case 2:
-            currentGamesArray = games
+            if !currentSearchText.isEmpty {
+                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+            } else {
+                currentGamesArray = games
+            }
             currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == "Switch"
             })
         default:
