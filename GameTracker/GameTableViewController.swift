@@ -64,11 +64,12 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         guard !searchText.isEmpty else {
             currentGamesArray = games;
+            searchBar.selectedScopeButtonIndex = 0;
             currentSearchText = ""
             table.reloadData()
             return
         }
-        currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: searchText)
+        currentGamesArray = filterGames(gamesForFilter: currentGamesArray, searchTextForFilter: searchText)
         currentSearchText = searchText
         table.reloadData()
     }
