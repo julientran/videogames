@@ -252,8 +252,7 @@ extension GameViewController: BarcodeScannerCodeDelegate {
                 let scanPublisher = itemListHTML.slices(from: "Distributeur du jeu : <strong>", to: "</strong>")
                 let url = URL(string: String(itemListHTML.slices(from: " src=\"", to: "\" style=\"width:100%;")[0]))
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                var scanPhoto: UIImage? = UIImage(data: data!)
-                
+                let scanPhoto: UIImage? = UIImage(data: data!)
                 self.scanValueName = String(result[0])
                 //scanValueName = String(String(result[0]).slices(from: "", to: "PS4")[0])
 
