@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -126,7 +127,7 @@
         <!--New Game-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="GameViewController" customModule="VideoGames" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameView" id="BYZ-38-t0r" customClass="GameViewController" customModule="VideoGames" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -267,11 +268,18 @@
                                 <action selector="cancel:" destination="BYZ-38-t0r" id="kEW-rG-1Sp"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="odw-z2-PlE">
-                            <connections>
-                                <segue destination="xbe-IQ-AvZ" kind="unwind" unwindAction="unwindToGameList:" id="OYV-vP-D1w"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="odw-z2-PlE">
+                                <connections>
+                                    <segue destination="xbe-IQ-AvZ" kind="unwind" unwindAction="unwindToGameList:" id="OYV-vP-D1w"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="Barecode" style="plain" id="EQ0-Ke-xUu">
+                                <connections>
+                                    <action selector="handleScannerPresent:forEvent:" destination="BYZ-38-t0r" id="GyE-mH-ZBd"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="DiscOrDigital" destination="Ff5-BF-JkP" id="HmQ-2c-dg3"/>
@@ -332,6 +340,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Barecode" width="30" height="27"/>
         <image name="Cover" width="233" height="290"/>
     </resources>
     <inferredMetricsTieBreakers>

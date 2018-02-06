@@ -5,6 +5,7 @@
 //
 
 import UIKit
+import BarcodeScanner
 
 class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
@@ -19,6 +20,36 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
   @IBOutlet weak var DiscOrDigital: UISegmentedControl!
   @IBOutlet weak var doneSwitch: UISwitch!
   @IBOutlet weak var publisherTextField: UITextField!
+    
+    var scanValueName : String!
+    var scanValuePlatform : String!
+    
+    
+    
+    //@IBOutlet weak var pushScannerButton: UIBarButtonItem!
+    //@IBOutlet var presentScannerButton: UIButton!
+    @IBOutlet var pushScannerButton: UIButton!
+    
+    @IBAction func handleScannerPresent(_ sender: Any, forEvent event: UIEvent) {
+        let viewController = makeBarcodeScannerViewController()
+        viewController.title = "Barcode Scanner"
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func handleScannerPush(_ sender: Any, forEvent event: UIEvent) {
+        let viewController = makeBarcodeScannerViewController()
+        viewController.title = "Barcode Scanner"
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    private func makeBarcodeScannerViewController() -> BarcodeScannerViewController {
+        let viewController = BarcodeScannerViewController()
+        viewController.codeDelegate = self
+        viewController.errorDelegate = self
+        viewController.dismissalDelegate = self
+        return viewController
+    }
+    
     /*
    This value is either passed by `GameTableViewController` in `prepareForSegue(_:sender:)`
      @IBOutlet weak var idgameLabel: UILabel!
@@ -39,7 +70,7 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
 
     // Set up views if editing an existing Game.
     if let game = game {
-      navigationItem.title = game.name
+navigationItem.title = game.name
       platformTextField.text = game.platform
       nameTextField.text   = game.name
       publisherTextField.text   = game.publisher
@@ -178,3 +209,88 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
   */
 
 }
+
+extension String {
+    func ranges(of string: String, options: CompareOptions = .literal) -> [Range<Index>] {
+        var result: [Range<Index>] = []
+        var start = startIndex
+        while let range = range(of: string, options: options, range: start..<endIndex) {
+            result.append(range)
+            start = range.lowerBound < range.upperBound ? range.upperBound : index(range.lowerBound, offsetBy: 1, limitedBy: endIndex) ?? endIndex
+        }
+        return result
+    }
+    func slices(from: String, to: String) -> [Substring] {
+        let pattern = "(?<=" + from + ").*?(?=" + to + ")"
+        return ranges(of: pattern, options: .regularExpression)
+            .map{ self[$0] }
+    }
+}
+
+// MARK: - BarcodeScannerCodeDelegate
+
+extension GameViewController: BarcodeScannerCodeDelegate {
+    func scanner(_ controller: BarcodeScannerViewController, didCaptureCode code: String, type: String) {
+        print("Barcode Data: \(code)")
+        print("Symbology Type: \(type)")
+        var bcode = code
+        if(bcode.count == 12){
+            bcode = "0" + bcode
+        }
+            let itemListURL = URL(string: "https://www.consollection.com/comparateur-jeu-video/\(bcode).php")!
+            let itemListHTML = try! String(contentsOf: itemListURL, encoding: .utf8)
+            let result = itemListHTML.slices(from: "<h1>", to: "</h1>")
+        
+        
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            if(result[0] == "Comparez les prix des jeux vid&eacute;o") {
+
+                controller.resetWithError()
+            
+            } else {
+                
+                let scanPublisher = itemListHTML.slices(from: "Distributeur du jeu : <strong>", to: "</strong>")
+                let url = URL(string: String(itemListHTML.slices(from: " src=\"", to: "\" style=\"width:100%;")[0]))
+                let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                var scanPhoto: UIImage? = UIImage(data: data!)
+                
+                self.scanValueName = String(result[0])
+                //scanValueName = String(String(result[0]).slices(from: "", to: "PS4")[0])
+
+                if(self.scanValueName.contains("PS4")){
+                    self.scanValuePlatform = "PS4"
+                    self.scanValueName = String(self.scanValueName.slices(from: "", to: "PS4")[0])
+                }
+                
+                if(self.scanValueName.contains("Nintendo Switch")){
+                    self.scanValuePlatform = "Switch"
+                    self.scanValueName = String(self.scanValueName.slices(from: "", to: "Nintendo Switch")[0])
+                }
+
+                controller.dismiss(animated: true, completion: { () in self.nameTextField.text = self.scanValueName;
+                    self.platformTextField.text = self.scanValuePlatform; self.publisherTextField.text = String(scanPublisher[0]);
+                    self.photoImageView.image = scanPhoto;
+                    self.checkValidGameName() })
+                
+        }
+        }
+                
+    }
+}
+
+// MARK: - BarcodeScannerErrorDelegate
+
+extension GameViewController: BarcodeScannerErrorDelegate {
+    func scanner(_ controller: BarcodeScannerViewController, didReceiveError error: Error) {
+        print(error)
+    }
+}
+
+// MARK: - BarcodeScannerDismissalDelegate
+
+extension GameViewController: BarcodeScannerDismissalDelegate {
+    func scannerDidDismiss(_ controller: BarcodeScannerViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
+
