@@ -88,8 +88,6 @@ class Game: NSObject, /* protocol */ NSCoding {
     aCoder.encode(dord, forKey: PropertyKey.dordKey)
     aCoder.encode(done, forKey: PropertyKey.doneKey)
     aCoder.encode(publisher, forKey: PropertyKey.publisherKey)
-    
-    //aCoder.encode(rating, forKey: PropertyKey.ratingKey)
   }
 
   required convenience init?(coder aDecoder: NSCoder) {
@@ -103,7 +101,6 @@ class Game: NSObject, /* protocol */ NSCoding {
     let dord = aDecoder.decodeInteger(forKey: PropertyKey.dordKey)
     let done = aDecoder.decodeBool(forKey: PropertyKey.doneKey)
     // Must call designated initializer.
-    //self.init(name: name, photo: photo, rating: rating)
     self.init(idgame:idgame, name: name, photo: photo, dord: dord, platform: platform, done: done, publisher: publisher)
   }
 
