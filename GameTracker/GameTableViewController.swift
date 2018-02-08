@@ -27,6 +27,9 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     self.navigationController?.navigationBar.barTintColor = UIColor(red:0.89, green:0.09, blue:0.14, alpha:1.0)
     self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
     self.navigationController?.navigationBar.shadowImage = UIImage()
+    
+    let image = UIImage(named: "Logo")
+    navigationItem.titleView = UIImageView(image: image)
 
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = false
@@ -48,6 +51,57 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
       loadSampleGames()
     }
   }
+    
+    func getJson() {
+        //Encode Games Struct as Data
+        let gamesData = try? JSONEncoder().encode(games)
+        
+        //Create JSON
+        var gamesJson: Any?
+        if let data = gamesData {
+            gamesJson = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
+        }
+        
+        //Print JSON Object
+        if let json = gamesJson {
+            print("\nGames JSON:\n" + String(describing: json) + "\n")
+            loadJson(gamesJson: json)
+        }
+        
+        
+    }
+    
+    func loadJson(gamesJson: Any?) {
+        var jsonData: Data?
+        //var decodedGame: Game?
+        
+        
+        //Convert JSON back to Data
+        if let json = gamesJson {
+            jsonData = try? JSONSerialization.data(withJSONObject: json)
+        }
+        
+        //Convert JSON Data back to Person Struct
+        var decodedGames: [Game]?
+        if let data = jsonData {
+            decodedGames = try? JSONDecoder().decode([Game].self, from: data)
+        }
+        
+        //Print Games Struct
+        print("\nDecoded Game Struct:")
+        if let decodedGames = decodedGames {
+            for game in decodedGames {
+                print("Game: " + game.name)
+                games += [game]
+            }
+        }
+        currentGamesArray = games
+        //table.reloadData()
+        //saveGames()
+        
+        
+        
+    }
 
     private func setUpSearchBar(){
         searchBar.delegate = self
@@ -63,9 +117,12 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
 
   func loadSampleGames() {
     let photo1 = UIImage(named: "Cover")!
-    let game1 = Game(idgame: "test", name: "Rayman", photo: photo1, dord: 1, platform: "PS4", done: false, publisher: "ubisoft")!
+    let game1 = Game(idgame: "test", name: "Rayman", photo: photo1, dord: 1, platform: "PS4", done: false, publisher: "ubisoft")
 
     games += [game1]
+    currentGamesArray = games
+    saveGames()
+    table.reloadData()
     printGames() // Debug
   }
     
@@ -278,17 +335,29 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
 
   // MARK: NSCoding
 
-  func saveGames() {
-    let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(currentGamesArray, toFile: Game.ArchiveURL.path)
-    if !isSuccessfulSave {
-      print("Failed to save games...")
+    func saveGames() {
+        do {
+            let data = try PropertyListEncoder().encode(currentGamesArray)
+            let success = NSKeyedArchiver.archiveRootObject(data, toFile: Game.ArchiveURL.path)
+            print(success ? "Successful save" : "Save Failed")
+            printGames() // Debug
+        } catch {
+            print("Save Failed")
+        }
     }
-    printGames() // Debug
-  }
-
-  func loadGames() -> [Game]? {
-    return NSKeyedUnarchiver.unarchiveObject(withFile: Game.ArchiveURL.path) as? [Game]
-  }
+    
+    
+    func loadGames() -> [Game]? {
+        guard let data = NSKeyedUnarchiver.unarchiveObject(withFile: Game.ArchiveURL.path) as? Data else { return nil }
+        do {
+            let games = try PropertyListDecoder().decode([Game].self, from: data)
+            return games
+        } catch {
+            print("Retrieve Failed")
+            return nil
+        }
+        
+    }
 
 }
 

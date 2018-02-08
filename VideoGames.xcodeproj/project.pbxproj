@@ -511,7 +511,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/GameTracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.julientran.VideoGames;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.julientran.Video-Games";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos11.0;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -529,7 +529,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/GameTracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.julientran.VideoGames;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.julientran.Video-Games";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos11.0;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
