@@ -16,11 +16,17 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
   var currentSearchText = ""
   var games = [Game]()
   var currentGamesArray = [Game]()
-
     
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpSearchBar()
+    // The next line is the crucial part
+    // The action is where Swift 3 varies from previous versions
+    self.navigationController?.navigationBar.isTranslucent = false
+    self.navigationController?.navigationBar.barStyle = .black
+    self.navigationController?.navigationBar.barTintColor = UIColor(red:0.89, green:0.09, blue:0.14, alpha:1.0)
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+    self.navigationController?.navigationBar.shadowImage = UIImage()
 
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = false
@@ -42,9 +48,11 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
       loadSampleGames()
     }
   }
-    
+
     private func setUpSearchBar(){
         searchBar.delegate = self
+        self.searchBar.isTranslucent = false
+        self.searchBar.backgroundImage = UIImage()
     }
 
   override func didReceiveMemoryWarning() {
@@ -68,6 +76,19 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             currentSearchText = ""
             table.reloadData()
             return
+        }
+        if(searchBar.selectedScopeButtonIndex == 0) {
+            currentGamesArray = games;
+        }
+        if(searchBar.selectedScopeButtonIndex == 1) {
+            currentGamesArray = games;
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == "PS4"
+            })
+        }
+        if(searchBar.selectedScopeButtonIndex == 2) {
+            currentGamesArray = games;
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == "Switch"
+            })
         }
         currentGamesArray = filterGames(gamesForFilter: currentGamesArray, searchTextForFilter: searchText)
         currentSearchText = searchText
@@ -169,10 +190,10 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
       let gamesPath = IndexPath(row: j, section: 0)
         
       games.remove(at: gamesPath.row)
-      saveGames()
       searchBar.selectedScopeButtonIndex = 0;
       searchBar.text = ""
       currentGamesArray = games
+      saveGames()
       table.reloadData()
 
     } else if editingStyle == .insert {
@@ -270,3 +291,5 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
   }
 
 }
+
+

@@ -60,7 +60,14 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-
+    self.navigationController?.navigationBar.isTranslucent = false
+    self.navigationController?.navigationBar.barStyle = .black
+    self.navigationController?.navigationBar.barTintColor = UIColor(red:0.89, green:0.09, blue:0.14, alpha:1.0)
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+    self.navigationController?.navigationBar.shadowImage = UIImage()
+    self.photoImageView.clipsToBounds = true
+    self.photoImageView.layer.cornerRadius = 50
+    
     // Handle the text field’s user input through delegate callbacks.
     nameTextField.delegate = self
     
@@ -292,4 +299,32 @@ extension GameViewController: BarcodeScannerDismissalDelegate {
         controller.dismiss(animated: true, completion: nil)
     }
 }
+
+private extension FloatingPoint {
+    var degreesToRadians: Self { return self * .pi / 180 }
+    var radiansToDegrees: Self { return self * 180 / .pi }
+}
+
+@IBDesignable class MaskView: UIView {
+    let startAngle: CGFloat = 180
+    let endAngle: CGFloat = 0
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // The multiplier determine how big the circle is
+        let multiplier: CGFloat = 3.0
+        let radius: CGFloat = frame.size.width * multiplier
+        let maskLayer = CAShapeLayer()
+        let arcCenter = CGPoint(x: frame.size.width / 2, y: radius)
+        maskLayer.path = UIBezierPath(arcCenter: arcCenter,
+                                      radius: radius,
+                                      startAngle: startAngle.degreesToRadians,
+                                      endAngle: endAngle.degreesToRadians,
+                                      clockwise: true).cgPath
+        layer.mask = maskLayer
+    }
+}
+
+
 
