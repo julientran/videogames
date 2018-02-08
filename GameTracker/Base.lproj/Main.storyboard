@@ -103,11 +103,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Your Games" id="T3g-uj-VM3">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="JgE-32-CaL">
-                            <connections>
-                                <segue destination="Cpr-FJ-6z1" kind="presentation" identifier="AddItem" id="pdd-Hm-wVE"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="JgE-32-CaL">
+                                <connections>
+                                    <segue destination="Cpr-FJ-6z1" kind="presentation" identifier="AddItem" id="pdd-Hm-wVE"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="Share" id="OQT-f0-cnT">
+                                <connections>
+                                    <action selector="shareAction:" destination="CjM-cw-VHu" id="PXT-8J-4ag"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="0po-K2-lLz" id="2kJ-qu-2WJ"/>
@@ -313,6 +320,7 @@
         <image name="Barecode" width="30" height="27"/>
         <image name="Cover" width="233" height="290"/>
         <image name="CoverSquare" width="212" height="212"/>
+        <image name="Share" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="3ke-Sz-fwh"/>
