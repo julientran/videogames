@@ -60,6 +60,9 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.nameTextField.delegate = self
+        self.platformTextField.delegate = self
+        self.publisherTextField.delegate = self
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barStyle = .black
         self.navigationController?.navigationBar.barTintColor = UIColor(red:0.89, green:0.09, blue:0.14, alpha:1.0)
@@ -91,6 +94,11 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
         checkValidGameName()
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -120,14 +128,15 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
     // the selected option.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         platformTextField.text = platforms[row]
+        //close pickerView after editing
+        self.view.endEditing(true)
     }
     
     // MARK: UITextFieldDelegate
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // Hide the keyboard.
-        textField.resignFirstResponder()
-        return true
+    func textFieldShouldReturn(nameTextField: UITextField!) -> Bool {
+        nameTextField.resignFirstResponder()
+        return true;
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -274,7 +283,8 @@ extension GameViewController: BarcodeScannerCodeDelegate {
                 }
                 
                 controller.dismiss(animated: true, completion: { () in self.nameTextField.text = self.scanValueName;
-                    self.platformTextField.text = self.scanValuePlatform; self.publisherTextField.text = String(scanPublisher[0]);
+                    self.platformTextField.text = self.scanValuePlatform;
+                    self.publisherTextField.text = String(scanPublisher[0]);
                     self.photoImageView.image = scanPhoto;
                     self.checkValidGameName() })
                 

@@ -20,24 +20,36 @@ struct FailableDecodable<Base : Decodable> : Decodable {
 
 class GameTableViewController: UITableViewController, UISearchBarDelegate{
     
-    
-    
+    @IBOutlet var loadStackView: UIStackView!
+    @IBOutlet weak var loadGamesTextView: UITextView!
+    @IBAction func loadGamesButton(_ sender: Any) {
+        print(loadGamesTextView.text)
+        if(!loadGamesTextView.text.isEmpty){
+            loadJson(text: loadGamesTextView.text)
+        }
+    }
     @IBAction func shareAction(_ sender: Any) {
         
-        // text to share
-        let gamesJson = getJson()
-        loadJson(text: gamesJson)
-        
-        // set up activity view controller
-        let textToShare = [ gamesJson ]
-        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-        
-        // exclude some activity types from the list (optional)
-        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
-        
-        // present the view controller
-        self.present(activityViewController, animated: true, completion: nil)
+        if(games.count == 0){
+            //table.isHidden = true
+            loadStackView.isHidden = false
+        } else {
+            loadStackView.isHidden = true
+            // text to share
+            let gamesJson = getJson()
+            //loadJson(text: gamesJson) //test
+            
+            // set up activity view controller
+            let textToShare = [ gamesJson ]
+            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+            
+            // exclude some activity types from the list (optional)
+            activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+            
+            // present the view controller
+            self.present(activityViewController, animated: true, completion: nil)
+        }
         
         
     }
@@ -63,6 +75,8 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         
         let image = UIImage(named: "Logo")
         navigationItem.titleView = UIImageView(image: image)
+        
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -130,6 +144,9 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         searchBar.delegate = self
         self.searchBar.isTranslucent = false
         self.searchBar.backgroundImage = UIImage()
+        
+        self.searchBar.tintColor = .white
+        UITextField.appearance(whenContainedInInstancesOf: [type(of: self.searchBar)]).tintColor = .darkGray
     }
     
     override func didReceiveMemoryWarning() {
@@ -364,6 +381,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             let success = NSKeyedArchiver.archiveRootObject(data, toFile: Game.ArchiveURL.path)
             print(success ? "Successful save" : "Save Failed")
             printGames() // Debug
+            loadStackView.isHidden = true
         } catch {
             print("Save Failed")
         }

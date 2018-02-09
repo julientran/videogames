@@ -18,9 +18,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.40784313725490196" green="0.40784313725490196" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" text="" prompt="x games" placeholder="                                                                                     " showsScopeBar="YES" id="0po-K2-lLz">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="barTintColor" red="0.89411764705882346" green="0.094117647058823528" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <textInputTraits key="textInputTraits"/>
                             <scopeButtonTitles>
@@ -29,6 +31,34 @@
                                 <string>Switch</string>
                             </scopeButtonTitles>
                         </searchBar>
+                        <stackView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" id="kV3-1w-FBW">
+                            <rect key="frame" x="0.0" y="478" width="375" height="200"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paste JSON save here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8l-VY-om2">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="14.5"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                    <color key="textColor" red="0.40784313725490196" green="0.40784313725490196" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iBn-f5-ckV">
+                                    <rect key="frame" x="0.0" y="14.5" width="375" height="90"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZ6-u6-ZOp">
+                                    <rect key="frame" x="0.0" y="104.5" width="375" height="95.5"/>
+                                    <color key="backgroundColor" red="0.89411764709999997" green="0.094117647060000004" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <state key="normal" title="Load Games Collection"/>
+                                    <connections>
+                                        <action selector="loadGamesButton:" destination="CjM-cw-VHu" eventType="touchUpInside" id="rik-Du-S0S"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GameTableViewCell" rowHeight="90" id="1Mn-2Y-Of0" userLabel="GameTableViewCell" customClass="GameTableViewCell" customModule="VideoGames" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="103" width="375" height="90"/>
@@ -117,15 +147,13 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="loadGamesTextView" destination="iBn-f5-ckV" id="bXA-ym-PWk"/>
+                        <outlet property="loadStackView" destination="kV3-1w-FBW" id="b1k-p3-mjr"/>
                         <outlet property="searchBar" destination="0po-K2-lLz" id="2kJ-qu-2WJ"/>
                         <outlet property="table" destination="pNW-Zi-qmH" id="J30-pM-H0d"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOQ-00-HCO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="Bxz-UQ-EKh">
-                    <rect key="frame" x="0.0" y="0.0" width="110" height="200"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </stackView>
             </objects>
             <point key="canvasLocation" x="789.60000000000002" y="628.33583208395805"/>
         </scene>
@@ -157,6 +185,7 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ts-gv-uvM">
                                                 <rect key="frame" x="0.0" y="29.5" width="300" height="30"/>
+                                                <color key="tintColor" red="0.40784313725490196" green="0.40784313725490196" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="300" id="6wf-VM-Ruz"/>
                                                 </constraints>
@@ -171,6 +200,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter platform" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RsM-FQ-eOS">
                                                 <rect key="frame" x="0.0" y="104" width="300" height="30"/>
+                                                <color key="tintColor" red="0.40784313725490196" green="0.40784313725490196" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -183,6 +213,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter publisher" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bNV-DL-qiI">
                                                 <rect key="frame" x="0.0" y="178.5" width="300" height="30"/>
+                                                <color key="tintColor" red="0.40784313725490196" green="0.40784313725490196" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
