@@ -35,7 +35,6 @@ class Game: Codable {
     var publisher: String
     var done: Bool
     var idgame: String
-    //var rating: Int
     
     // MARK: Archiving Paths
     
@@ -57,7 +56,6 @@ class Game: Codable {
     // MARK: Initialization
     
     init(idgame: String, name: String, photo: UIImage?, dord: Int, platform: String, done: Bool, publisher: String) {
-        //init?(name: String, photo: UIImage?, rating: Int) {
         // Initialize stored properties.
         self.idgame = idgame
         self.name = name
@@ -66,12 +64,11 @@ class Game: Codable {
         self.platform = platform
         self.publisher = publisher
         self.done = done
-        //self.rating = rating
         
         //super.init() // Call superclass initializer
         
-        // Initialization should fail if there is no name or if the rating is out of range.
-        //if name.isEmpty || rating < 0 || rating > 5 {
+        // Initialization should fail if there is no name
+        //if name.isEmpty  {
         //  return nil
         //}
     }
@@ -83,7 +80,6 @@ class Game: Codable {
         try container.encode(idgame, forKey: .idgame)
         try container.encode(name, forKey: .name)
         try container.encode(platform, forKey: .platform)
-        //try container.encode(photo, forKey: .photo)
         if let photo = photo, let photoData = UIImagePNGRepresentation(photo) {
             let photoDataBase64String = photoData.base64EncodedString()
             try container.encode(photoDataBase64String, forKey: .photo)
@@ -99,7 +95,6 @@ class Game: Codable {
         name = try container.decode(String.self, forKey: .name)
         platform = try container.decode(String.self, forKey: .platform)
         publisher = try container.decode(String.self, forKey: .publisher)
-        //photo = try container.decode(UIImage?.self, forKey: .photo)
         let photoDataBase64String = try container.decode(String.self, forKey: .photo)
         if let data = Data(base64Encoded: photoDataBase64String) {
             photo = UIImage(data: data)
@@ -115,7 +110,6 @@ class Game: Codable {
             let games = dictionary as? [[String]] else {
                 return
         }
-        
         var tempGames = [Game]()
         for gameElements in games {
             //base64 string to NSData
@@ -123,11 +117,9 @@ class Game: Codable {
             //NSData to UIImage
             let decodedIamge = UIImage(data: decodedData! as Data)
             let done : Bool = gameElements[6] ==  "true" ? true : false
-            
             let tempGame = Game(idgame: gameElements[0], name: gameElements[1], photo: decodedIamge, dord: (gameElements[6] as NSString).integerValue , platform: gameElements[4], done: done, publisher: gameElements[3])
             tempGames += [tempGame]
         }
-        
         do {
             let data = try PropertyListEncoder().encode(tempGames)
             let success = NSKeyedArchiver.archiveRootObject(data, toFile: Game.ArchiveURL.path)
@@ -136,6 +128,5 @@ class Game: Codable {
             print("Save Failed")
         }
     }
-    
 }
 

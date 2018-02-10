@@ -16,8 +16,6 @@ struct FailableDecodable<Base : Decodable> : Decodable {
     }
 }
 
-
-
 class GameTableViewController: UITableViewController, UISearchBarDelegate{
     
     @IBOutlet var loadStackView: UIStackView!
@@ -35,18 +33,14 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             
             let imageData:NSData = UIImagePNGRepresentation(game.photo!)! as NSData
             let strBase64 = imageData.base64EncodedString()
-            
             print(strBase64)
-            
             arrayOfGames.append([game.idgame, game.name, strBase64, game.publisher, game.platform, String(game.dord), String(game.done)])
         }
-        
         let path = FileManager.default
             .urls(for: .documentDirectory, in: .userDomainMask).first
         let name = "backup"
         let saveFileURL = path?.appendingPathComponent("/\(name).gtkr")
         (arrayOfGames as NSArray).write(to: saveFileURL!, atomically: true)
-        
         let activityViewController = UIActivityViewController(
             activityItems: ["Check out this games list.", saveFileURL],
             applicationActivities: nil)
@@ -54,9 +48,8 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             popoverPresentationController.barButtonItem = (sender as! UIBarButtonItem)
         }
         present(activityViewController, animated: true, completion: nil)
-        
-        
     }
+    
     @IBOutlet var table: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -116,12 +109,10 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     
     func loadJson(text: String) {
         let json = text.data(using: .utf8)! // our data in native (JSON) format
-        
         do {
             let gamesFromJson = try JSONDecoder()
                 .decode([FailableDecodable<Game>].self, from: json)
                 .flatMap { $0.base }
-            
             print(gamesFromJson)
             
             for game in gamesFromJson {
@@ -157,7 +148,6 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     func loadSampleGames() {
         let photo1 = UIImage(named: "Sample")!
         let game1 = Game(idgame: "idnil", name: "Rayman Legends", photo: photo1, dord: 1, platform: "PS4", done: false, publisher: "Ubisoft")
-        
         games += [game1]
         currentGamesArray = games
         saveGames()
@@ -332,7 +322,6 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             table.reloadData()
             print("Adding new game.")
         }
-        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
@@ -385,7 +374,6 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         }
     }
     
-    
     func loadGames() -> [Game]? {
         guard let data = NSKeyedUnarchiver.unarchiveObject(withFile: Game.ArchiveURL.path) as? Data else { return nil }
         do {
@@ -395,7 +383,5 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             print("Retrieve Failed")
             return nil
         }
-        
     }
-    
 }

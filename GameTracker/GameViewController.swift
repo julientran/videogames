@@ -24,10 +24,6 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
     var scanValueName : String!
     var scanValuePlatform : String!
     
-    
-    
-    //@IBOutlet weak var pushScannerButton: UIBarButtonItem!
-    //@IBOutlet var presentScannerButton: UIButton!
     @IBOutlet var pushScannerButton: UIButton!
     
     @IBAction func handleScannerPresent(_ sender: Any, forEvent event: UIEvent) {
@@ -217,13 +213,6 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
         
         present(imagePickerController, animated: true, completion: nil)
     }
-    
-    /*
-     @IBAction func setDefaultLabelText(sender: UIButton) {
-     gameNameLabel.text = "Default Text"
-     }
-     */
-    
 }
 
 extension String {
@@ -256,22 +245,16 @@ extension GameViewController: BarcodeScannerCodeDelegate {
         let itemListURL = URL(string: "https://www.consollection.com/comparateur-jeu-video/\(bcode).php")!
         let itemListHTML = try! String(contentsOf: itemListURL, encoding: .utf8)
         let result = itemListHTML.slices(from: "<h1>", to: "</h1>")
-        
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             if(result[0] == "Comparez les prix des jeux vid&eacute;o") {
-                
                 controller.resetWithError()
-                
             } else {
-                
                 let scanPublisher = itemListHTML.slices(from: "Distributeur du jeu : <strong>", to: "</strong>")
                 let url = URL(string: String(itemListHTML.slices(from: " src=\"", to: "\" style=\"width:100%;")[0]))
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 let scanPhoto: UIImage? = UIImage(data: data!)
                 self.scanValueName = String(result[0])
-                //scanValueName = String(String(result[0]).slices(from: "", to: "PS4")[0])
-                
+            
                 if(self.scanValueName.contains("PS4")){
                     self.scanValuePlatform = "PS4"
                     self.scanValueName = String(self.scanValueName.slices(from: "", to: "PS4")[0])
@@ -287,7 +270,6 @@ extension GameViewController: BarcodeScannerCodeDelegate {
                     self.publisherTextField.text = String(scanPublisher[0]);
                     self.photoImageView.image = scanPhoto;
                     self.checkValidGameName() })
-                
             }
         }
         
