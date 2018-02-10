@@ -15,10 +15,10 @@
 			</array>
 			<key>CFBundleTypeIconFiles</key>
 			<array>
-				<string>/Users/Shared/pad/pad_320.png</string>
-				<string>/Users/Shared/pad/pad_64.png</string>
-				<string>/Users/Shared/pad/pad_22.png</string>
-				<string>/Users/Shared/pad/pad_44.png</string>
+				<string>pad_320</string>
+				<string>pad_64</string>
+				<string>pad_44</string>
+				<string>pad_22</string>
 			</array>
 			<key>CFBundleTypeName</key>
 			<string>Game Tracker Document</string>
