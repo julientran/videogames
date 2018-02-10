@@ -13,7 +13,7 @@
         <!--Your Games-->
         <scene sceneID="aVm-2o-RtJ">
             <objects>
-                <tableViewController id="CjM-cw-VHu" customClass="GameTableViewController" customModule="VideoGames" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="CjM-cw-VHu" customClass="GameTableViewController" customModule="GameTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="pNW-Zi-qmH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,36 +31,8 @@
                                 <string>Switch</string>
                             </scopeButtonTitles>
                         </searchBar>
-                        <stackView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" id="kV3-1w-FBW">
-                            <rect key="frame" x="0.0" y="478" width="375" height="200"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paste JSON save here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8l-VY-om2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="14.5"/>
-                                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
-                                    <color key="textColor" red="0.40784313725490196" green="0.40784313725490196" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iBn-f5-ckV">
-                                    <rect key="frame" x="0.0" y="14.5" width="375" height="90"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                </textView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sZ6-u6-ZOp">
-                                    <rect key="frame" x="0.0" y="104.5" width="375" height="95.5"/>
-                                    <color key="backgroundColor" red="0.89411764709999997" green="0.094117647060000004" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <state key="normal" title="Load Games Collection"/>
-                                    <connections>
-                                        <action selector="loadGamesButton:" destination="CjM-cw-VHu" eventType="touchUpInside" id="rik-Du-S0S"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </stackView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GameTableViewCell" rowHeight="90" id="1Mn-2Y-Of0" userLabel="GameTableViewCell" customClass="GameTableViewCell" customModule="VideoGames" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GameTableViewCell" rowHeight="90" id="1Mn-2Y-Of0" userLabel="GameTableViewCell" customClass="GameTableViewCell" customModule="GameTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="103" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Mn-2Y-Of0" id="v8Y-0v-ZPL">
@@ -147,8 +119,6 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="loadGamesTextView" destination="iBn-f5-ckV" id="bXA-ym-PWk"/>
-                        <outlet property="loadStackView" destination="kV3-1w-FBW" id="b1k-p3-mjr"/>
                         <outlet property="searchBar" destination="0po-K2-lLz" id="2kJ-qu-2WJ"/>
                         <outlet property="table" destination="pNW-Zi-qmH" id="J30-pM-H0d"/>
                     </connections>
@@ -160,16 +130,16 @@
         <!--New Game-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="GameView" id="BYZ-38-t0r" customClass="GameViewController" customModule="VideoGames" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameView" id="BYZ-38-t0r" customClass="GameViewController" customModule="GameTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ" customClass="MaskView" customModule="VideoGames" customModuleProvider="target"/>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ" customClass="MaskView" customModule="GameTracker" customModuleProvider="target"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z9P-rF-2bm" customClass="MaskView" customModule="VideoGames" customModuleProvider="target">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z9P-rF-2bm" customClass="MaskView" customModule="GameTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="29" width="375" height="639"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>

@@ -6,6 +6,32 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>Video Games</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBunbleTypeExtensions</key>
+			<array>
+				<string></string>
+			</array>
+			<key>CFBundleTypeIconFiles</key>
+			<array>
+				<string>/Users/Shared/pad/pad_320.png</string>
+				<string>/Users/Shared/pad/pad_64.png</string>
+				<string>/Users/Shared/pad/pad_22.png</string>
+				<string>/Users/Shared/pad/pad_44.png</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Game Tracker Document</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.julientran.GameTracker.gtkr</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -46,6 +72,26 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Game Tracker Document</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.julientran.GameTracker.gtkr</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string>gtkr</string>
+				<key>public.mime-type</key>
+				<string>application/gametracker</string>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>

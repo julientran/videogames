@@ -30,26 +30,30 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     }
     @IBAction func shareAction(_ sender: Any) {
         
-        if(games.count == 0){
-            //table.isHidden = true
-            loadStackView.isHidden = false
-        } else {
-            loadStackView.isHidden = true
-            // text to share
-            let gamesJson = getJson()
-            //loadJson(text: gamesJson) //test
+        var arrayOfGames = [[String]]()
+        for game in games {
             
-            // set up activity view controller
-            let textToShare = [ gamesJson ]
-            let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+            let imageData:NSData = UIImagePNGRepresentation(game.photo!)! as NSData
+            let strBase64 = imageData.base64EncodedString()
             
-            // exclude some activity types from the list (optional)
-            activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+            print(strBase64)
             
-            // present the view controller
-            self.present(activityViewController, animated: true, completion: nil)
+            arrayOfGames.append([game.idgame, game.name, strBase64, game.publisher, game.platform, String(game.dord), String(game.done)])
         }
+        
+        let path = FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask).first
+        let name = "backup"
+        let saveFileURL = path?.appendingPathComponent("/\(name).gtkr")
+        (arrayOfGames as NSArray).write(to: saveFileURL!, atomically: true)
+        
+        let activityViewController = UIActivityViewController(
+            activityItems: ["Check out this games list.", saveFileURL],
+            applicationActivities: nil)
+        if let popoverPresentationController = activityViewController.popoverPresentationController {
+            popoverPresentationController.barButtonItem = (sender as! UIBarButtonItem)
+        }
+        present(activityViewController, animated: true, completion: nil)
         
         
     }
@@ -75,8 +79,6 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         
         let image = UIImage(named: "Logo")
         navigationItem.titleView = UIImageView(image: image)
-        
-        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -112,7 +114,6 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         }
     }
     
-    
     func loadJson(text: String) {
         let json = text.data(using: .utf8)! // our data in native (JSON) format
         
@@ -131,13 +132,11 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                 tableView.insertRows(at: [newIndexPath], with: .bottom)
                 // Save the games.
                 saveGames()
-                
             }
         } catch {
             //handle error
             print(error)
         }
-        
     }
     
     private func setUpSearchBar(){
@@ -156,8 +155,8 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     }
     
     func loadSampleGames() {
-        let photo1 = UIImage(named: "Cover")!
-        let game1 = Game(idgame: "test", name: "Rayman", photo: photo1, dord: 1, platform: "PS4", done: false, publisher: "ubisoft")
+        let photo1 = UIImage(named: "Sample")!
+        let game1 = Game(idgame: "idnil", name: "Rayman Legends", photo: photo1, dord: 1, platform: "PS4", done: false, publisher: "Ubisoft")
         
         games += [game1]
         currentGamesArray = games
@@ -381,7 +380,6 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             let success = NSKeyedArchiver.archiveRootObject(data, toFile: Game.ArchiveURL.path)
             print(success ? "Successful save" : "Save Failed")
             printGames() // Debug
-            loadStackView.isHidden = true
         } catch {
             print("Save Failed")
         }
@@ -401,5 +399,3 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     }
     
 }
-
-

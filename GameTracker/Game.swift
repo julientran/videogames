@@ -110,5 +110,32 @@ class Game: Codable {
         done = try container.decode(Bool.self, forKey: .done)
     }
     
+    static func importData(from url: URL) {
+        guard let dictionary = NSArray(contentsOf: url),
+            let games = dictionary as? [[String]] else {
+                return
+        }
+        
+        var tempGames = [Game]()
+        for gameElements in games {
+            //base64 string to NSData
+            let decodedData = NSData(base64Encoded: gameElements[2])
+            //NSData to UIImage
+            let decodedIamge = UIImage(data: decodedData! as Data)
+            let done : Bool = gameElements[6] ==  "true" ? true : false
+            
+            let tempGame = Game(idgame: gameElements[0], name: gameElements[1], photo: decodedIamge, dord: (gameElements[6] as NSString).integerValue , platform: gameElements[4], done: done, publisher: gameElements[3])
+            tempGames += [tempGame]
+        }
+        
+        do {
+            let data = try PropertyListEncoder().encode(tempGames)
+            let success = NSKeyedArchiver.archiveRootObject(data, toFile: Game.ArchiveURL.path)
+            print(success ? "Successful save" : "Save Failed")
+        } catch {
+            print("Save Failed")
+        }
+    }
+    
 }
 
