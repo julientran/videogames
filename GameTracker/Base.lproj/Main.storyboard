@@ -26,9 +26,8 @@
                             <color key="barTintColor" red="0.89411764705882346" green="0.094117647058823528" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <textInputTraits key="textInputTraits"/>
                             <scopeButtonTitles>
-                                <string>All</string>
-                                <string>PS4</string>
-                                <string>Switch</string>
+                                <string>Title</string>
+                                <string>Title</string>
                             </scopeButtonTitles>
                         </searchBar>
                         <prototypes>

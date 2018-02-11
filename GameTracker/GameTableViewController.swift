@@ -26,6 +26,9 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             loadJson(text: loadGamesTextView.text)
         }
     }
+    
+    var listFilters : [String] = ["All", "PS4", "Switch"]
+
     @IBAction func shareAction(_ sender: Any) {
         
         var arrayOfGames = [[String]]()
@@ -42,7 +45,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         let saveFileURL = path?.appendingPathComponent("/\(name).gtkr")
         (arrayOfGames as NSArray).write(to: saveFileURL!, atomically: true)
         let activityViewController = UIActivityViewController(
-            activityItems: ["Check out this games list.", saveFileURL],
+            activityItems: ["Check out this games list.", saveFileURL!],
             applicationActivities: nil)
         if let popoverPresentationController = activityViewController.popoverPresentationController {
             popoverPresentationController.barButtonItem = (sender as! UIBarButtonItem)
@@ -134,7 +137,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         searchBar.delegate = self
         self.searchBar.isTranslucent = false
         self.searchBar.backgroundImage = UIImage()
-        
+        self.searchBar.scopeButtonTitles = listFilters
         self.searchBar.tintColor = .white
         UITextField.appearance(whenContainedInInstancesOf: [type(of: self.searchBar)]).tintColor = .darkGray
     }
@@ -168,12 +171,27 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         }
         if(searchBar.selectedScopeButtonIndex == 1) {
             currentGamesArray = games;
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == "PS4"
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[1]
             })
         }
         if(searchBar.selectedScopeButtonIndex == 2) {
             currentGamesArray = games;
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == "Switch"
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[2]
+            })
+        }
+        if(searchBar.selectedScopeButtonIndex == 3) {
+            currentGamesArray = games;
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[3]
+            })
+        }
+        if(searchBar.selectedScopeButtonIndex == 4) {
+            currentGamesArray = games;
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[4]
+            })
+        }
+        if(searchBar.selectedScopeButtonIndex == 5) {
+            currentGamesArray = games;
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[5]
             })
         }
         currentGamesArray = filterGames(gamesForFilter: currentGamesArray, searchTextForFilter: searchText)
@@ -202,7 +220,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             } else {
                 currentGamesArray = games
             }
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == "PS4"
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[1]
             })
         case 2:
             if !currentSearchText.isEmpty {
@@ -210,7 +228,31 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             } else {
                 currentGamesArray = games
             }
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == "Switch"
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[2]
+            })
+        case 3:
+            if !currentSearchText.isEmpty {
+                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+            } else {
+                currentGamesArray = games
+            }
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[3]
+            })
+        case 4:
+            if !currentSearchText.isEmpty {
+                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+            } else {
+                currentGamesArray = games
+            }
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[4]
+            })
+        case 5:
+            if !currentSearchText.isEmpty {
+                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+            } else {
+                currentGamesArray = games
+            }
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[5]
             })
         default:
             break
@@ -307,7 +349,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetail" {
             let gameDetailViewController = segue.destination as! GameViewController // If the cast is unsuccessful, the app should crash at runtime.
-            
+            gameDetailViewController.listFilters = self.listFilters
             // Get the cell that generated this segue.
             if let selectedGameCell = sender as? GameTableViewCell {
                 let indexPath = tableView.indexPath(for: selectedGameCell)!
@@ -316,6 +358,11 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             }
         }
         else if segue.identifier == "AddItem" {
+
+            let navVC = segue.destination as? UINavigationController
+            let formVC = navVC?.viewControllers.first as! GameViewController
+            formVC.listFilters = self.listFilters
+            
             searchBar.selectedScopeButtonIndex = 0;
             searchBar.text = ""
             currentGamesArray = games

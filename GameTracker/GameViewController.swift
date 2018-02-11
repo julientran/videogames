@@ -9,7 +9,6 @@ import BarcodeScanner
 
 class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    let platforms = ["", "PS4", "Switch"]
     // MARK: Properties
     
     @IBOutlet weak var platformTextField: UITextField!
@@ -52,6 +51,7 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
      or constructed as part of adding a new game.
      */
     var game: Game?
+    var listFilters : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +104,7 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
     func checkValidGameName() {
         // Disable the Save button if the text field is empty.
         let text = nameTextField.text ?? ""
+        navigationItem.title = text
         saveButton.isEnabled = !text.isEmpty
     }
     
@@ -112,18 +113,19 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return platforms.count
+        return listFilters.count
     }
     
-    // This function sets the text of the picker view to the content of the "salutations" array
+    // This function sets the text of the picker view to the content of the "platform" array
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return platforms[row]
+        listFilters[0] = ""
+        return listFilters[row]
     }
     
     // When user selects an option, this function will set the text of the text field to reflect
     // the selected option.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        platformTextField.text = platforms[row]
+        platformTextField.text = listFilters[row]
         //close pickerView after editing
         self.view.endEditing(true)
     }
@@ -137,12 +139,11 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the Save button while editing.
-        saveButton.isEnabled = false
+        //saveButton.isEnabled = false
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         checkValidGameName()
-        navigationItem.title = textField.text
     }
     
     // MARK: UIImagePickerControllerDelegate
@@ -188,7 +189,6 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
                 let done = doneSwitch.isOn
                 let publisher = publisherTextField.text ?? ""
                 let platform = platformTextField.text ?? ""
-                //let rating = ratingControl.rating
                 
                 // Set the game to be passed to GameTableViewController after the unwind segue.
                 game = Game(idgame: idgame!, name: name, photo: photo, dord: dord, platform: platform, done: done, publisher: publisher)
