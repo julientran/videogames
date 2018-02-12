@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_VideoGamesVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_VideoGamesVersionString[];
+FOUNDATION_EXPORT double Pods_GameTrackerVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_GameTrackerVersionString[];
 

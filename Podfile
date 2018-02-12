@@ -1,14 +1,14 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'VideoGames' do
+target 'GameTracker' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for VideoGames
   pod 'BarcodeScanner'
 
-  target 'VideoGamesTests' do
+  target 'GameTrackerTests' do
     inherit! :search_paths
     # Pods for testing
   end
