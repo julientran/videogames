@@ -119,15 +119,25 @@ class GameViewController: UIViewController, /* protocols */ UITextFieldDelegate,
     // This function sets the text of the picker view to the content of the "platform" array
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         listFilters[0] = ""
+        if(!listFilters.contains("Other")) {
+                    listFilters.append("Other")
+        }
         return listFilters[row]
     }
     
     // When user selects an option, this function will set the text of the text field to reflect
     // the selected option.
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if(listFilters[row] == "Other"){
+            platformTextField.inputView = nil
+            platformTextField.text = ""
+            platformTextField.reloadInputViews()
+            platformTextField.becomeFirstResponder()
+        } else {
         platformTextField.text = listFilters[row]
         //close pickerView after editing
         self.view.endEditing(true)
+        }
     }
     
     // MARK: UITextFieldDelegate

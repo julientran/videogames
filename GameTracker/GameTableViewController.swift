@@ -27,31 +27,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         }
     }
     
-    var listFilters : [String] = ["All", "PS4", "Switch"]
-
-    @IBAction func shareAction(_ sender: Any) {
-        
-        var arrayOfGames = [[String]]()
-        for game in games {
-            
-            let imageData:NSData = UIImagePNGRepresentation(game.photo!)! as NSData
-            let strBase64 = imageData.base64EncodedString()
-            print(strBase64)
-            arrayOfGames.append([game.idgame, game.name, strBase64, game.publisher, game.platform, String(game.dord), String(game.done)])
-        }
-        let path = FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask).first
-        let name = "backup"
-        let saveFileURL = path?.appendingPathComponent("/\(name).gtkr")
-        (arrayOfGames as NSArray).write(to: saveFileURL!, atomically: true)
-        let activityViewController = UIActivityViewController(
-            activityItems: ["Check out this games list.", saveFileURL!],
-            applicationActivities: nil)
-        if let popoverPresentationController = activityViewController.popoverPresentationController {
-            popoverPresentationController.barButtonItem = (sender as! UIBarButtonItem)
-        }
-        present(activityViewController, animated: true, completion: nil)
-    }
+    var listFilters : [String] = []
     
     @IBOutlet var table: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -64,7 +40,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpSearchBar()
+        
         // The next line is the crucial part
         // The action is where Swift 3 varies from previous versions
         self.navigationController?.navigationBar.isTranslucent = false
@@ -95,6 +71,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             // Load the sample data.
             loadSampleGames()
         }
+        setUpSearchBar()
     }
     
     func getJson() -> String {
@@ -133,7 +110,41 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         }
     }
     
+    public func shareGames(_ sender: Any) {
+        var arrayOfGames = [[String]]()
+        for game in games {
+            
+            let imageData:NSData = UIImagePNGRepresentation(game.photo!)! as NSData
+            let strBase64 = imageData.base64EncodedString()
+            print(strBase64)
+            arrayOfGames.append([game.idgame, game.name, strBase64, game.publisher, game.platform, String(game.dord), String(game.done)])
+        }
+        let path = FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask).first
+        let name = "backup"
+        let saveFileURL = path?.appendingPathComponent("/\(name).gtkr")
+        (arrayOfGames as NSArray).write(to: saveFileURL!, atomically: true)
+        let activityViewController = UIActivityViewController(
+            activityItems: ["Check out this games list.", saveFileURL!],
+            applicationActivities: nil)
+        if let popoverPresentationController = activityViewController.popoverPresentationController {
+            popoverPresentationController.barButtonItem = (sender as! UIBarButtonItem)
+        }
+        present(activityViewController, animated: true, completion: nil)
+    }
+    
     private func setUpSearchBar(){
+        if(listFilters.isEmpty){
+            listFilters.append("All")
+        }
+        for game in games {
+            if (!listFilters.contains(game.platform) && game.platform != "" ) {
+                if(listFilters.count < 5) {
+                    listFilters.append(game.platform)
+                }
+            }
+        }
+        
         searchBar.delegate = self
         self.searchBar.isTranslucent = false
         self.searchBar.backgroundImage = UIImage()
@@ -318,6 +329,8 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             let gamesPath = IndexPath(row: j, section: 0)
             
             games.remove(at: gamesPath.row)
+            listFilters = []
+            setUpSearchBar()
             searchBar.selectedScopeButtonIndex = 0;
             searchBar.text = ""
             currentGamesArray = games
@@ -411,6 +424,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     // MARK: NSCoding
     
     func saveGames() {
+        setUpSearchBar()
         do {
             let data = try PropertyListEncoder().encode(currentGamesArray)
             let success = NSKeyedArchiver.archiveRootObject(data, toFile: Game.ArchiveURL.path)

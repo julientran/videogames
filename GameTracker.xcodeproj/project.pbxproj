@@ -12,6 +12,8 @@
 		832E58E3202EFB4C00AED554 /* pad_44.png in Resources */ = {isa = PBXBuildFile; fileRef = 832E58E2202EFB4C00AED554 /* pad_44.png */; };
 		832E58E5202EFB6700AED554 /* pad_22.png in Resources */ = {isa = PBXBuildFile; fileRef = 832E58E4202EFB6700AED554 /* pad_22.png */; };
 		83391430202F484F00A96ACC /* saveGames.json in Resources */ = {isa = PBXBuildFile; fileRef = 8339142F202F484F00A96ACC /* saveGames.json */; };
+		833914362030A05E00A96ACC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833914352030A05E00A96ACC /* TabBarController.swift */; };
+		833914382030BBF500A96ACC /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833914372030BBF500A96ACC /* ConfigViewController.swift */; };
 		893A29A0CC59C3D7D53AECA4 /* Pods_VideoGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13B8DC6C4A4026130234F1F1 /* Pods_VideoGames.framework */; };
 		A619A9968AFD390DFA36B3F8 /* Pods_VideoGamesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9661D61115C96DA17C162CD5 /* Pods_VideoGamesTests.framework */; };
 		AC746C571CC3E5AF00555E6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC746C561CC3E5AF00555E6D /* AppDelegate.swift */; };
@@ -45,6 +47,8 @@
 		832E58E2202EFB4C00AED554 /* pad_44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_44.png; sourceTree = "<group>"; };
 		832E58E4202EFB6700AED554 /* pad_22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_22.png; sourceTree = "<group>"; };
 		8339142F202F484F00A96ACC /* saveGames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = saveGames.json; sourceTree = "<group>"; };
+		833914352030A05E00A96ACC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		833914372030BBF500A96ACC /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		9661D61115C96DA17C162CD5 /* Pods_VideoGamesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoGamesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F38881392D45ECB0B67F830 /* Pods-VideoGamesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoGamesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VideoGamesTests/Pods-VideoGamesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC746C531CC3E5AD00555E6D /* GameTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +139,8 @@
 				AC746C581CC3E5AF00555E6D /* GameViewController.swift */,
 				AC9B9EF91CCD0276004DF7B5 /* Game.swift */,
 				AC746C5A1CC3E5B000555E6D /* Main.storyboard */,
+				833914372030BBF500A96ACC /* ConfigViewController.swift */,
+				833914352030A05E00A96ACC /* TabBarController.swift */,
 				AC9B9EFC1CCD20B4004DF7B5 /* GameTableViewCell.swift */,
 				AC9B9EFE1CCD2F09004DF7B5 /* GameTableViewController.swift */,
 				AC746C5D1CC3E5B000555E6D /* Assets.xcassets */,
@@ -373,6 +379,8 @@
 				AC9B9EFA1CCD0276004DF7B5 /* Game.swift in Sources */,
 				AC746C591CC3E5AF00555E6D /* GameViewController.swift in Sources */,
 				AC746C571CC3E5AF00555E6D /* AppDelegate.swift in Sources */,
+				833914362030A05E00A96ACC /* TabBarController.swift in Sources */,
+				833914382030BBF500A96ACC /* ConfigViewController.swift in Sources */,
 				AC9B9EFF1CCD2F09004DF7B5 /* GameTableViewController.swift in Sources */,
 				AC9B9EFD1CCD20B4004DF7B5 /* GameTableViewCell.swift in Sources */,
 			);
