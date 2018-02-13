@@ -9,15 +9,18 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-
+    @IBOutlet weak var AddWishButton: UIBarButtonItem!
+    
+    @IBOutlet weak var AddGameButton: UIBarButtonItem!
     @IBAction func shareTBAction(_ sender: Any) {
-          var gvc : GameTableViewController  = self.childViewControllers[0].childViewControllers[0] as! GameTableViewController
+        var gvc : GameTableViewController  = self.childViewControllers[0].childViewControllers[0] as! GameTableViewController
         gvc.shareGames(sender)
     }
     
+    var statut = "Collection"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barStyle = .black
@@ -28,18 +31,26 @@ class TabBarController: UITabBarController {
         let image = UIImage(named: "Logo")
         navigationItem.titleView = UIImageView(image: image)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    // UITabBarDelegate
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        statut = item.title!
+ }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
         if segue.identifier == "AddItem" {
+            print(statut)
+            
             
             var gvc : GameTableViewController  = self.childViewControllers[0].childViewControllers[0] as! GameTableViewController
-
+            
             let navVC = segue.destination as? UINavigationController
             let formVC = navVC?.viewControllers.first as! GameViewController
             formVC.listFilters = gvc.listFilters
@@ -52,19 +63,34 @@ class TabBarController: UITabBarController {
             print("Adding new game.")
             
         }
+        if segue.identifier == "AddItemWish" {
+            print(statut)
+            var wvc : WishTableViewController  = self.childViewControllers[1].childViewControllers[0] as! WishTableViewController
+            
+            let navVC = segue.destination as? UINavigationController
+            let formVC = navVC?.viewControllers.first as! WishViewController
+            formVC.listFilters = wvc.listFilters
+            
+            wvc.searchBarWish.selectedScopeButtonIndex = 0;
+            wvc.searchBarWish.text = ""
+            wvc.currentWishesArray = wvc.wishes
+            wvc.tableWish.reloadData()
+            
+            print("Adding new wish.")
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

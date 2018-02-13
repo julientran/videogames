@@ -18,15 +18,6 @@ struct FailableDecodable<Base : Decodable> : Decodable {
 
 class GameTableViewController: UITableViewController, UISearchBarDelegate{
     
-    @IBOutlet var loadStackView: UIStackView!
-    @IBOutlet weak var loadGamesTextView: UITextView!
-    @IBAction func loadGamesButton(_ sender: Any) {
-        print(loadGamesTextView.text)
-        if(!loadGamesTextView.text.isEmpty){
-            loadJson(text: loadGamesTextView.text)
-        }
-    }
-    
     var listFilters : [String] = []
     
     @IBOutlet var table: UITableView!
@@ -72,6 +63,17 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             loadSampleGames()
         }
         setUpSearchBar()
+    }
+    
+    func changeToBuy(wish : Wish){
+        
+        let game1 = Game(idgame: UUID().uuidString, name: wish.name, photo: wish.photo, dord: 1, platform: wish.platform, done: false, publisher: wish.publisher)
+        games += [game1]
+        currentGamesArray = games
+        saveGames()
+        table.reloadData()
+        printGames() // Debug
+        
     }
     
     func getJson() -> String {
@@ -134,9 +136,10 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     }
     
     private func setUpSearchBar(){
-        if(listFilters.isEmpty){
-            listFilters.append("All")
-        }
+
+        listFilters = []
+        listFilters.append("All")
+
         for game in games {
             if (!listFilters.contains(game.platform) && game.platform != "" ) {
                 if(listFilters.count < 5) {
@@ -319,6 +322,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         print("at: \(indexPath.row)") // Debug
         if editingStyle == .delete {
+            searchBar.prompt = "0 game"
             // Delete the row from the data source
             var j = 0
             for i in 0..<games.count { // N'oubliez pas que l'indice d'un tableau débute à 0

@@ -16,6 +16,10 @@
 		83391430202F484F00A96ACC /* saveGames.json in Resources */ = {isa = PBXBuildFile; fileRef = 8339142F202F484F00A96ACC /* saveGames.json */; };
 		833914362030A05E00A96ACC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833914352030A05E00A96ACC /* TabBarController.swift */; };
 		833914382030BBF500A96ACC /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833914372030BBF500A96ACC /* ConfigViewController.swift */; };
+		8360BD622031F434007423F3 /* Wish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360BD612031F434007423F3 /* Wish.swift */; };
+		8360BD64203214E3007423F3 /* WishTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360BD63203214E3007423F3 /* WishTableViewController.swift */; };
+		8360BD66203214F2007423F3 /* WishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360BD65203214F2007423F3 /* WishTableViewCell.swift */; };
+		8360BD6820321845007423F3 /* WishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360BD6720321845007423F3 /* WishViewController.swift */; };
 		893A29A0CC59C3D7D53AECA4 /* Pods_VideoGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13B8DC6C4A4026130234F1F1 /* Pods_VideoGames.framework */; };
 		A619A9968AFD390DFA36B3F8 /* Pods_VideoGamesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9661D61115C96DA17C162CD5 /* Pods_VideoGamesTests.framework */; };
 		AC746C571CC3E5AF00555E6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC746C561CC3E5AF00555E6D /* AppDelegate.swift */; };
@@ -57,6 +61,10 @@
 		8339142F202F484F00A96ACC /* saveGames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = saveGames.json; sourceTree = "<group>"; };
 		833914352030A05E00A96ACC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		833914372030BBF500A96ACC /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
+		8360BD612031F434007423F3 /* Wish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wish.swift; sourceTree = "<group>"; };
+		8360BD63203214E3007423F3 /* WishTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishTableViewController.swift; sourceTree = "<group>"; };
+		8360BD65203214F2007423F3 /* WishTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishTableViewCell.swift; sourceTree = "<group>"; };
+		8360BD6720321845007423F3 /* WishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishViewController.swift; sourceTree = "<group>"; };
 		9661D61115C96DA17C162CD5 /* Pods_VideoGamesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoGamesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F38881392D45ECB0B67F830 /* Pods-VideoGamesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoGamesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VideoGamesTests/Pods-VideoGamesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		AC746C531CC3E5AD00555E6D /* GameTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,12 +161,16 @@
 			children = (
 				AC746C561CC3E5AF00555E6D /* AppDelegate.swift */,
 				AC746C581CC3E5AF00555E6D /* GameViewController.swift */,
+				8360BD6720321845007423F3 /* WishViewController.swift */,
 				AC9B9EF91CCD0276004DF7B5 /* Game.swift */,
+				8360BD612031F434007423F3 /* Wish.swift */,
 				AC746C5A1CC3E5B000555E6D /* Main.storyboard */,
 				833914372030BBF500A96ACC /* ConfigViewController.swift */,
 				833914352030A05E00A96ACC /* TabBarController.swift */,
 				AC9B9EFC1CCD20B4004DF7B5 /* GameTableViewCell.swift */,
+				8360BD65203214F2007423F3 /* WishTableViewCell.swift */,
 				AC9B9EFE1CCD2F09004DF7B5 /* GameTableViewController.swift */,
+				8360BD63203214E3007423F3 /* WishTableViewController.swift */,
 				AC746C5D1CC3E5B000555E6D /* Assets.xcassets */,
 				AC746C5F1CC3E5B000555E6D /* LaunchScreen.storyboard */,
 				AC746C621CC3E5B000555E6D /* Info.plist */,
@@ -392,8 +404,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8360BD66203214F2007423F3 /* WishTableViewCell.swift in Sources */,
+				8360BD622031F434007423F3 /* Wish.swift in Sources */,
 				AC9B9EFA1CCD0276004DF7B5 /* Game.swift in Sources */,
 				AC746C591CC3E5AF00555E6D /* GameViewController.swift in Sources */,
+				8360BD64203214E3007423F3 /* WishTableViewController.swift in Sources */,
+				8360BD6820321845007423F3 /* WishViewController.swift in Sources */,
 				AC746C571CC3E5AF00555E6D /* AppDelegate.swift in Sources */,
 				833914362030A05E00A96ACC /* TabBarController.swift in Sources */,
 				833914382030BBF500A96ACC /* ConfigViewController.swift in Sources */,
