@@ -18,6 +18,9 @@ class TabBarController: UITabBarController {
     }
     
     var statut = "Collection"
+    //var rightNavItems: [UIBarButtonItem]
+    var addButton : UIBarButtonItem? = nil
+    var wishButton : UIBarButtonItem? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +33,18 @@ class TabBarController: UITabBarController {
         
         let image = UIImage(named: "Logo")
         navigationItem.titleView = UIImageView(image: image)
+        
+        addButton = AddGameButton
+        wishButton = AddWishButton
+        //rightNavItems.append(AddGameButton)
+        //rightNavItems.append(AddWishButton)
+        
+        navigationItem.setRightBarButtonItems(nil, animated: true)
+        navigationItem.setRightBarButtonItems([addButton!], animated: true)
+        
+        
+       
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,6 +55,18 @@ class TabBarController: UITabBarController {
     // UITabBarDelegate
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         statut = item.title!
+        if(item.title == "Collection") {
+            navigationItem.setRightBarButtonItems([addButton!], animated: true)
+        } else {
+            if(item.title == "Wishlist") {
+                var rightNavItems: [UIBarButtonItem]! = []
+                rightNavItems.append(AddWishButton)
+                navigationItem.setRightBarButtonItems([wishButton!], animated: true)
+            }
+        }
+        
+      
+
  }
     
     
