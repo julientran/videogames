@@ -14,7 +14,7 @@ class WishTableViewCell: UITableViewCell {
     @IBOutlet weak var buyLabel: UILabel!
     @IBOutlet weak var publisherLabel: UILabel!
     @IBOutlet weak var platformLabel: UILabel!
-    //@IBOutlet weak var dordLabel: UILabel!
+    @IBOutlet weak var releasedateLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var idwishLabel: UILabel!

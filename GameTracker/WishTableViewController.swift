@@ -85,8 +85,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
     
     func loadSampleWishes() {
         let photo1 = UIImage(named: "Sample")!
-        //TODO
-        let wish1 = Wish(idwish: "idnil", name: "Rayman Legends", photo: photo1, platform: "PS4", buy: false, publisher: "Ubisoft")
+        let wish1 = Wish(idwish: "idnil", name: "Rayman Legends", photo: photo1, platform: "PS4", buy: false, publisher: "Ubisoft", releasedate: "")
         wishes += [wish1]
         currentWishesArray = wishes
         saveWishes()
@@ -223,9 +222,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         let wish = currentWishesArray[indexPath.row]
         cell.nameLabel.text = wish.name
         cell.photoImageView.image = wish.photo
-        //TODO
-        //cell.doneLabel.text = wish.done == true ? "🏁" : ""
-        //cell.dordLabel.text = wish.dord < 1 ? "Disc" : "Digital"
+        cell.releasedateLabel.text = wish.releasedate
         cell.platformLabel.text = wish.platform
         cell.publisherLabel.text = wish.publisher
         cell.idwishLabel.text = wish.idwish

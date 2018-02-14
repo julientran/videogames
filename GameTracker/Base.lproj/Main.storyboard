@@ -472,6 +472,13 @@
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXF-QX-lWT">
+                                            <rect key="frame" x="87" y="34" width="133" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.40784313729999999" green="0.40784313729999999" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -480,6 +487,7 @@
                                     <outlet property="photoImageView" destination="KmC-a8-0TG" id="PVv-wL-SFB"/>
                                     <outlet property="platformLabel" destination="6sj-7h-X39" id="xye-00-s3f"/>
                                     <outlet property="publisherLabel" destination="HXi-5G-AdY" id="wdo-rh-MWZ"/>
+                                    <outlet property="releasedateLabel" destination="YXF-QX-lWT" id="sD8-je-Y9U"/>
                                     <segue destination="b1P-Hz-jGx" kind="show" identifier="ShowDetailWish" id="HEb-43-T1x">
                                         <nil key="action"/>
                                     </segue>
@@ -508,7 +516,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VH2-5P-xBF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3113" y="192"/>
+            <point key="canvasLocation" x="3112.8000000000002" y="191.6041979010495"/>
         </scene>
         <!--New Wish-->
         <scene sceneID="yJh-tg-wdY">
@@ -647,8 +655,8 @@
                         <outlet property="photoImageView" destination="8gd-DC-mTE" id="3IS-pU-0Ng"/>
                         <outlet property="platformTextField" destination="7PT-5E-ffB" id="P5N-3e-NEl"/>
                         <outlet property="publisherTextField" destination="4a6-Pp-G3u" id="WaB-xy-xWC"/>
+                        <outlet property="releaseDateTextField" destination="SQJ-YX-LQ3" id="YCO-uy-qcG"/>
                         <outlet property="saveWishButton" destination="S28-aO-lGC" id="u9b-kI-8EY"/>
-                        <outlet property="textField" destination="SQJ-YX-LQ3" id="xXC-yH-jeZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J7d-ac-ol4" sceneMemberID="firstResponder"/>
@@ -690,7 +698,7 @@
         <image name="Wishlist" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zNv-DM-sNd"/>
+        <segue reference="cDw-sn-Qlu"/>
         <segue reference="HEb-43-T1x"/>
         <segue reference="urB-LJ-jCU"/>
         <segue reference="3ke-Sz-fwh"/>

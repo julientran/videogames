@@ -13,10 +13,9 @@ class Wish: Codable {
     
     var name: String
     var photo: UIImage?
-    //var dord: Int
     var platform: String
     var publisher: String
-    //TODO
+    var releasedate: String
     var buy: Bool
     var idwish: String
     
@@ -32,24 +31,21 @@ class Wish: Codable {
         case name
         case photo
         case platform
-        //TODO
-        //case dord
+        case releasedate
         case buy
         case publisher
     }
     
     // MARK: Initialization
     
-    //TODO
-    init(idwish: String, name: String, photo: UIImage?, platform: String, buy: Bool, publisher: String) {
+    init(idwish: String, name: String, photo: UIImage?, platform: String, buy: Bool, publisher: String, releasedate: String) {
         // Initialize stored properties.
         self.idwish = idwish
         self.name = name
         self.photo = photo?.resizeImage(targetSize: CGSize(width: 241, height: 300))
-        //self.dord = dord
         self.platform = platform
         self.publisher = publisher
-        //TODO
+        self.releasedate = releasedate
         self.buy = buy
         
         //super.init() // Call superclass initializer
@@ -71,8 +67,7 @@ class Wish: Codable {
             let photoDataBase64String = photoData.base64EncodedString()
             try container.encode(photoDataBase64String, forKey: .photo)
         }
-        //TODO
-        //try container.encode(dord, forKey: .dord)
+        try container.encode(releasedate, forKey: .releasedate)
         try container.encode(buy, forKey: .buy)
         try container.encode(publisher, forKey: .publisher)
     }
@@ -89,8 +84,7 @@ class Wish: Codable {
         } else {
             photo = nil
         }
-        //TODO
-        //dord = try container.decode(Int.self, forKey: .dord)
+        releasedate = try container.decode(String.self, forKey: .releasedate)
         buy = try container.decode(Bool.self, forKey: .buy)
     }
 }

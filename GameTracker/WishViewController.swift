@@ -11,7 +11,7 @@ class WishViewController: UIViewController, /* protocols */ UITextFieldDelegate,
     
     // MARK: Properties
     
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var releaseDateTextField: UITextField!
     @IBOutlet weak var platformTextField: UITextField!
     @IBOutlet weak var idwishLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -20,8 +20,6 @@ class WishViewController: UIViewController, /* protocols */ UITextFieldDelegate,
     @IBOutlet weak var saveWishButton: UIBarButtonItem!
 
     @IBOutlet weak var buySwitch: UISwitch!
-    //TODO
-    //@IBOutlet weak var doneSwitch: UISwitch!
     @IBOutlet weak var publisherTextField: UITextField!
     
     var scanValueName : String!
@@ -93,9 +91,7 @@ class WishViewController: UIViewController, /* protocols */ UITextFieldDelegate,
             nameTextField.text   = wish.name
             publisherTextField.text   = wish.publisher
             photoImageView.image = wish.photo
-            //TODO
-            //DiscOrDigital.selectedSegmentIndex = wish.dord
-            //doneSwitch.isOn = wish.done
+            releaseDateTextField.text = wish.releasedate
             idwishLabel.text = wish.idwish
             buySwitch.isEnabled = true
         }
@@ -104,17 +100,8 @@ class WishViewController: UIViewController, /* protocols */ UITextFieldDelegate,
         checkValidWishName()
     }
     func addTextField() {
-        //view.addSubview.(textField)
-        //textField.translatesAutoresizingMaskIntoConstraints = false
-        //textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40.0).isActive = true
-        //textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40.0).isActive = true
-        //textField.topAnchor.constraint(equalTo: view.topAnchor, constant: 40.0).isActive = true
-        //textField.placeholder = "Select date"
-        //textField.borderStyle = .roundedRect
-        
-        textField.inputView = datePicker
-        
-        textField.inputAccessoryView = toolBar
+        releaseDateTextField.inputView = datePicker
+        releaseDateTextField.inputAccessoryView = toolBar
     }
     
     func createDatePicker() {
@@ -143,13 +130,13 @@ class WishViewController: UIViewController, /* protocols */ UITextFieldDelegate,
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         
-        textField.text = dateFormatter.string(from: Date())
+        releaseDateTextField.text = dateFormatter.string(from: Date())
         
-        textField.resignFirstResponder()
+        releaseDateTextField.resignFirstResponder()
     }
     
     @objc func doneButtonPressed(sender: UIBarButtonItem) {
-        textField.resignFirstResponder()
+        releaseDateTextField.resignFirstResponder()
     }
     
     @objc func datePickerValueChanged(datePicker: UIDatePicker) {
@@ -157,7 +144,7 @@ class WishViewController: UIViewController, /* protocols */ UITextFieldDelegate,
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         
-        textField.text = dateFormatter.string(from: datePicker.date)
+        releaseDateTextField.text = dateFormatter.string(from: datePicker.date)
         
     }
     
@@ -270,15 +257,13 @@ class WishViewController: UIViewController, /* protocols */ UITextFieldDelegate,
                 let idwish = idwishLabel.text == "" ? UUID().uuidString : idwishLabel.text
                 let name = nameTextField.text ?? ""
                 let photo = photoImageView.image
-                //let dord = DiscOrDigital.selectedSegmentIndex
-                //TODO
+                let releasedate = releaseDateTextField.text ?? ""
                 let buy = buySwitch.isOn
                 let publisher = publisherTextField.text ?? ""
                 let platform = platformTextField.text ?? ""
                 
-                //TODO
                 // Set the wish to be passed to WishTableViewController after the unwind segue.
-                wish = Wish(idwish: idwish!, name: name, photo: photo,platform: platform, buy: buy, publisher: publisher)
+                wish = Wish(idwish: idwish!, name: name, photo: photo,platform: platform, buy: buy, publisher: publisher, releasedate: releasedate)
             }
         }
     }
