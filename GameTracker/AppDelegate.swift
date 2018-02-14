@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         guard url.pathExtension == "gtkr" else { return false }
         Game.importData(from: url)
+        //let tbc = self.window?.rootViewController?.childViewControllers[0] as! TabBarController
+        //let gvc : GameTableViewController  = tbc.childViewControllers[0].childViewControllers[0] as! GameTableViewController
+        //gvc.viewDidLoad()
         return true
     }
     

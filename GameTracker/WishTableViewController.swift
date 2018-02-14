@@ -322,14 +322,13 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         if((sender.source as? WishViewController)?.wish?.buy)!{
             
             let wish : Wish = ((sender.source as? WishViewController)?.wish)!
-            //let vc = GameTableViewController(nibName: "GameTableViewController", bundle: nil)
-            //vc.changeToBuy(wish: wish)
 
             let tbc = self.parent?.parent as! TabBarController
             print(tbc.statut)
             
             let gvc : GameTableViewController  = tbc.childViewControllers[0].childViewControllers[0] as! GameTableViewController
-            print (gvc.changeToBuy(wish: wish))
+            
+            gvc.changeToBuy(wish: wish)
             
             //Delete
             deleteWish(wish: wish)

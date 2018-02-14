@@ -107,10 +107,14 @@ class Game: Codable {
     
     static func importData(from url: URL) {
         guard let dictionary = NSArray(contentsOf: url),
-            let games = dictionary as? [[String]] else {
+            let gamesAndwishes = dictionary as? [[[String]]] else {
                 return
         }
+        let games = gamesAndwishes[0]
+        let wishes = gamesAndwishes[1]
+        
         var tempGames = [Game]()
+        
         for gameElements in games {
             //base64 string to NSData
             let decodedData = NSData(base64Encoded: gameElements[2])
@@ -127,6 +131,27 @@ class Game: Codable {
         } catch {
             print("Save Failed")
         }
+        
+        var tempWishes = [Wish]()
+        
+        for wishElements in wishes {
+            //base64 string to NSData
+            let decodedData = NSData(base64Encoded: wishElements[2])
+            //NSData to UIImage
+            let decodedIamge = UIImage(data: decodedData! as Data)
+            let buy : Bool = wishElements[6] ==  "true" ? true : false
+            let tempWish = Wish(idwish: wishElements[0], name: wishElements[1], photo: decodedIamge, platform: wishElements[4], buy: buy, publisher: wishElements[3], releasedate: wishElements[5])
+            tempWishes += [tempWish]
+        }
+        do {
+            let data = try PropertyListEncoder().encode(tempWishes)
+            let success = NSKeyedArchiver.archiveRootObject(data, toFile: Wish.ArchiveURL.path)
+            print(success ? "Successful save" : "Save Failed")
+        } catch {
+            print("Save Failed")
+        }
+        //Force reset by crash //TODO fix that
+        UIApplication.shared.keyWindow?.rootViewController = TabBarController()
     }
 }
 

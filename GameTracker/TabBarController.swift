@@ -36,15 +36,9 @@ class TabBarController: UITabBarController {
         
         addButton = AddGameButton
         wishButton = AddWishButton
-        //rightNavItems.append(AddGameButton)
-        //rightNavItems.append(AddWishButton)
         
         navigationItem.setRightBarButtonItems(nil, animated: true)
         navigationItem.setRightBarButtonItems([addButton!], animated: true)
-        
-        
-       
-
     }
     
     override func didReceiveMemoryWarning() {

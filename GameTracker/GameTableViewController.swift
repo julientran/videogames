@@ -115,17 +115,51 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     public func shareGames(_ sender: Any) {
         var arrayOfGames = [[String]]()
         for game in games {
-            
             let imageData:NSData = UIImagePNGRepresentation(game.photo!)! as NSData
             let strBase64 = imageData.base64EncodedString()
-            print(strBase64)
             arrayOfGames.append([game.idgame, game.name, strBase64, game.publisher, game.platform, String(game.dord), String(game.done)])
         }
+        
+        //Retrieve Wishes
+        
+        var arrayOfWhises = [[String]]()
+        let tbc = self.parent?.parent as! TabBarController
+        print(tbc.statut)
+        
+        //load WishTableViewController with simulate click on tab
+        tbc.selectedIndex = 1
+        tbc.selectedIndex = 0
+        
+        let wvc : WishTableViewController  = tbc.childViewControllers[1].childViewControllers[0] as! WishTableViewController
+        
+        for wish in wvc.wishes {
+            let imageData:NSData = UIImagePNGRepresentation(wish.photo!)! as NSData
+            let strBase64 = imageData.base64EncodedString()
+            arrayOfWhises.append([wish.idwish, wish.name, strBase64, wish.publisher, wish.platform, wish.releasedate, String(wish.buy)])
+        }
+        
+        var backupArray = [[[String]]]()
+        backupArray.append(arrayOfGames)
+        backupArray.append(arrayOfWhises)
+        
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let myString = formatter.string(from: Date())
+        // convert your string to date
+        let yourDate = formatter.date(from: myString)
+        //then again set the date format whhich type of output you need
+        formatter.dateFormat = "dd-MMM-yyyy"
+        // again convert your date to string
+        let myStringafd = formatter.string(from: yourDate!)
+        
+        
         let path = FileManager.default
             .urls(for: .documentDirectory, in: .userDomainMask).first
-        let name = "backup"
+        let name = "backup-" + myStringafd
         let saveFileURL = path?.appendingPathComponent("/\(name).gtkr")
-        (arrayOfGames as NSArray).write(to: saveFileURL!, atomically: true)
+        (backupArray as NSArray).write(to: saveFileURL!, atomically: true)
         let activityViewController = UIActivityViewController(
             activityItems: ["Check out this games list.", saveFileURL!],
             applicationActivities: nil)
