@@ -50,6 +50,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
             wishes += savedWishes
             currentWishesArray = wishes
             printWishes() // Debug
+            tableWish.reloadData()
         }
         else {
             // Load the sample data.
@@ -151,7 +152,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         })
     }
     
-    func searchBarWish(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){
         switch selectedScope {
         case 0:
             if !currentSearchText.isEmpty {
@@ -202,6 +203,18 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         default:
             break
         }
+        tableWish.reloadData()
+    }
+    
+    func deleteAllWishes() {
+        // Delete the row from the data source
+        wishes = [Wish]()
+        listFilters = []
+        setUpSearchBar()
+        searchBarWish.selectedScopeButtonIndex = 0;
+        searchBarWish.text = ""
+        currentWishesArray = wishes
+        saveWishes()
         tableWish.reloadData()
     }
     
@@ -305,8 +318,6 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    
-    
     
     func deleteWish(wish :Wish) {
         var j = 0

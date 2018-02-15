@@ -152,8 +152,6 @@ class Game: Codable {
         } catch {
             print("Save Failed")
         }
-        //Force reset by crash //TODO fix that
-        UIApplication.shared.keyWindow?.rootViewController = TabBarController()
     }
 }
 

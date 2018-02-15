@@ -22,10 +22,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         guard url.pathExtension == "gtkr" else { return false }
+        
+        let tbc = self.window?.rootViewController?.childViewControllers[0] as! TabBarController
+        let gvc : GameTableViewController  = tbc.childViewControllers[0].childViewControllers[0] as! GameTableViewController
+        
+        tbc.selectedIndex = 1
+        tbc.selectedIndex = 0
+        
+        let wvc : WishTableViewController  = tbc.childViewControllers[1].childViewControllers[0] as! WishTableViewController
+        
+        
+        gvc.deleteAll()
+        wvc.deleteAllWishes()
         Game.importData(from: url)
-        //let tbc = self.window?.rootViewController?.childViewControllers[0] as! TabBarController
-        //let gvc : GameTableViewController  = tbc.childViewControllers[0].childViewControllers[0] as! GameTableViewController
-        //gvc.viewDidLoad()
+        gvc.viewDidLoad()
+        wvc.viewDidLoad()
         return true
     }
     

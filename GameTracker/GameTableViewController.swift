@@ -59,6 +59,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             games += savedGames
             currentGamesArray = games
             printGames() // Debug
+            table.reloadData()
         }
         else {
             // Load the sample data.
@@ -128,7 +129,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         let tbc = self.parent?.parent as! TabBarController
         print(tbc.statut)
         
-        //load WishTableViewController with simulate click on tab
+        //HACK load WishTableViewController with simulate click on tab
         tbc.selectedIndex = 1
         tbc.selectedIndex = 0
         
@@ -315,6 +316,18 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         default:
             break
         }
+        table.reloadData()
+    }
+    
+    func deleteAll() {
+        // Delete the row from the data source
+        games = [Game]()
+        listFilters = []
+        setUpSearchBar()
+        searchBar.selectedScopeButtonIndex = 0;
+        searchBar.text = ""
+        currentGamesArray = games
+        saveGames()
         table.reloadData()
     }
     
