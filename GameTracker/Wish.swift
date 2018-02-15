@@ -2,6 +2,8 @@
 //  Wish
 //  WishTracker
 //
+//  Created by Tran Julien on 11/02/2018.
+//  Copyright © 2018 Julien Tran. All rights reserved.
 //
 
 //import Foundation

@@ -2,6 +2,8 @@
 //  WishTableViewController.swift
 //  WishTracker
 //
+//  Created by Tran Julien on 11/02/2018.
+//  Copyright © 2018 Julien Tran. All rights reserved.
 //
 
 import UIKit
@@ -57,16 +59,24 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
     }
     
     private func setUpSearchBar(){
-
+        
         listFilters = []
         listFilters.append("All")
-
+        
         for wish in wishes {
             if (!listFilters.contains(wish.platform) && wish.platform != "" ) {
                 if(listFilters.count < 5) {
                     listFilters.append(wish.platform)
                 }
             }
+        }
+        
+        if listFilters.count == 1 {
+            self.searchBarWish.isHidden = true
+            self.searchBarWish.showsScopeBar = false
+        } else {
+            self.searchBarWish.isHidden = false
+            self.searchBarWish.showsScopeBar = true
         }
         
         searchBarWish.delegate = self
@@ -281,7 +291,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
             }
         }
         else if segue.identifier == "AddWish" {
-
+            
             let navVC = segue.destination as? UINavigationController
             let formVC = navVC?.viewControllers.first as! WishViewController
             formVC.listFilters = self.listFilters
@@ -322,7 +332,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         if((sender.source as? WishViewController)?.wish?.buy)!{
             
             let wish : Wish = ((sender.source as? WishViewController)?.wish)!
-
+            
             let tbc = self.parent?.parent as! TabBarController
             print(tbc.statut)
             
@@ -332,7 +342,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
             
             //Delete
             deleteWish(wish: wish)
-    
+            
             
         } else {
             var j = 0
@@ -351,7 +361,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                     searchBarWish.text = ""
                     currentWishesArray = wishes
                     tableWish.reloadData()
-
+                    
                     tableView.reloadRows(at: [wishesPath], with: .none)
                 }
                 else {

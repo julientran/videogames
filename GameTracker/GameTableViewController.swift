@@ -2,6 +2,8 @@
 //  GameTableViewController.swift
 //  GameTracker
 //
+//  Created by Tran Julien on 11/02/2018.
+//  Copyright © 2018 Julien Tran. All rights reserved.
 //
 
 import UIKit
@@ -170,16 +172,24 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     }
     
     private func setUpSearchBar(){
-
+        
         listFilters = []
         listFilters.append("All")
-
+        
         for game in games {
             if (!listFilters.contains(game.platform) && game.platform != "" ) {
                 if(listFilters.count < 5) {
                     listFilters.append(game.platform)
                 }
             }
+        }
+        
+        if listFilters.count == 1 {
+            self.searchBar.isHidden = true
+            self.searchBar.showsScopeBar = false
+        } else {
+            self.searchBar.isHidden = false
+            self.searchBar.showsScopeBar = true
         }
         
         searchBar.delegate = self
@@ -409,7 +419,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             }
         }
         else if segue.identifier == "AddItem" {
-
+            
             let navVC = segue.destination as? UINavigationController
             let formVC = navVC?.viewControllers.first as! GameViewController
             formVC.listFilters = self.listFilters

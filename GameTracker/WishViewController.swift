@@ -2,6 +2,8 @@
 //  WishViewController.swift
 //  WishTracker
 //
+//  Created by Tran Julien on 11/02/2018.
+//  Copyright © 2018 Julien Tran. All rights reserved.
 //
 
 import UIKit
@@ -16,9 +18,9 @@ class WishViewController: UIViewController, /* protocols */ UITextFieldDelegate,
     @IBOutlet weak var idwishLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
-
+    
     @IBOutlet weak var saveWishButton: UIBarButtonItem!
-
+    
     @IBOutlet weak var buySwitch: UISwitch!
     @IBOutlet weak var publisherTextField: UITextField!
     
@@ -182,7 +184,7 @@ class WishViewController: UIViewController, /* protocols */ UITextFieldDelegate,
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         listFilters[0] = ""
         if(!listFilters.contains("Other")) {
-                    listFilters.append("Other")
+            listFilters.append("Other")
         }
         return listFilters[row]
     }
@@ -196,9 +198,9 @@ class WishViewController: UIViewController, /* protocols */ UITextFieldDelegate,
             platformTextField.reloadInputViews()
             platformTextField.becomeFirstResponder()
         } else {
-        platformTextField.text = listFilters[row]
-        //close pickerView after editing
-        self.view.endEditing(true)
+            platformTextField.text = listFilters[row]
+            //close pickerView after editing
+            self.view.endEditing(true)
         }
     }
     
@@ -309,7 +311,7 @@ extension WishViewController: BarcodeScannerCodeDelegate {
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 let scanPhoto: UIImage? = UIImage(data: data!)
                 self.scanValueName = String(result[0])
-            
+                
                 if(self.scanValueName.contains("PS4")){
                     self.scanValuePlatform = "PS4"
                     self.scanValueName = String(self.scanValueName.slices(from: "", to: "PS4")[0])

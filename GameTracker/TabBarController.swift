@@ -3,7 +3,7 @@
 //  GameTracker
 //
 //  Created by Tran Julien on 11/02/2018.
-//  Copyright © 2018 Mario Ban. All rights reserved.
+//  Copyright © 2018 Julien Tran. All rights reserved.
 //
 
 import UIKit
@@ -58,10 +58,7 @@ class TabBarController: UITabBarController {
                 navigationItem.setRightBarButtonItems([wishButton!], animated: true)
             }
         }
-        
-      
-
- }
+    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

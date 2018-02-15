@@ -2,8 +2,9 @@
 //  AppDelegate.swift
 //  GameTracker
 //
+//  Created by Tran Julien on 11/02/2018.
+//  Copyright © 2018 Julien Tran. All rights reserved.
 //
-
 // TODO
 //  - views optimized for iPhone 6 portrait --> make them scalable for different sizes iPad, iPhone 5, ... portrait and landscape
 
