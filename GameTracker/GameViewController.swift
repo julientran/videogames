@@ -257,14 +257,19 @@ extension GameViewController: BarcodeScannerCodeDelegate {
         let itemListURL = URL(string: "https://www.consollection.com/comparateur-jeu-video/\(bcode).php")!
         let itemListHTML = try! String(contentsOf: itemListURL, encoding: .utf8)
         let result = itemListHTML.slices(from: "<h1>", to: "</h1>")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            print(result[0])
+            
             if(result[0] == "Comparez les prix des jeux vid&eacute;o") {
                 controller.resetWithError()
             } else {
                 let scanPublisher = itemListHTML.slices(from: "Distributeur du jeu : <strong>", to: "</strong>")
                 let url = URL(string: String(itemListHTML.slices(from: " src=\"", to: "\" style=\"width:100%;")[0]))
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                let scanPhoto: UIImage? = UIImage(data: data!)
+                var scanPhoto: UIImage? = UIImage(named: "Cover")!
+                if (data != nil) {
+                    scanPhoto = UIImage(data: data!)
+                }
                 self.scanValueName = String(result[0])
                 
                 if(self.scanValueName.contains("PS4")){
@@ -275,6 +280,26 @@ extension GameViewController: BarcodeScannerCodeDelegate {
                 if(self.scanValueName.contains("Nintendo Switch")){
                     self.scanValuePlatform = "Switch"
                     self.scanValueName = String(self.scanValueName.slices(from: "", to: "Nintendo Switch")[0])
+                }
+                
+                if(self.scanValueName.contains("3DS")){
+                    self.scanValuePlatform = "3DS"
+                    self.scanValueName = String(self.scanValueName.slices(from: "", to: "3DS")[0])
+                }
+                
+                if(self.scanValueName.contains("PS Vita")){
+                    self.scanValuePlatform = "PS Vita"
+                    self.scanValueName = String(self.scanValueName.slices(from: "", to: "PS Vita")[0])
+                }
+                
+                if(self.scanValueName.contains(" - Nintendo Wii")){
+                    self.scanValuePlatform = "Wii"
+                    self.scanValueName = String(self.scanValueName.slices(from: "", to: " - Nintendo Wii")[0])
+                }
+                
+                if(self.scanValueName.contains("Nintendo Wii")){
+                    self.scanValuePlatform = "Wii"
+                    self.scanValueName = String(self.scanValueName.slices(from: "", to: "Nintendo Wii")[0])
                 }
                 
                 controller.dismiss(animated: true, completion: { () in self.nameTextField.text = self.scanValueName;
