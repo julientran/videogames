@@ -264,6 +264,8 @@ extension GameViewController: BarcodeScannerCodeDelegate {
                 controller.resetWithError()
             } else {
                 let scanPublisher = itemListHTML.slices(from: "Distributeur du jeu : <strong>", to: "</strong>")
+                var scanMachine = itemListHTML.slices(from: "Machine : <strong>", to: "</strong>")
+                scanMachine = String(scanMachine[0]).slices(from: "\">", to: "</a>")
                 let url = URL(string: String(itemListHTML.slices(from: " src=\"", to: "\" style=\"width:100%;")[0]))
                 let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
                 var scanPhoto: UIImage? = UIImage(named: "Cover")!
@@ -274,22 +276,22 @@ extension GameViewController: BarcodeScannerCodeDelegate {
                 
                 if(self.scanValueName.contains("PS4")){
                     self.scanValuePlatform = "PS4"
-                    self.scanValueName = String(self.scanValueName.slices(from: "", to: "PS4")[0])
+                    self.scanValueName = String(self.scanValueName.slices(from: "", to: " PS4")[0])
                 }
                 
                 if(self.scanValueName.contains("Nintendo Switch")){
                     self.scanValuePlatform = "Switch"
-                    self.scanValueName = String(self.scanValueName.slices(from: "", to: "Nintendo Switch")[0])
+                    self.scanValueName = String(self.scanValueName.slices(from: "", to: " Nintendo Switch")[0])
                 }
                 
                 if(self.scanValueName.contains("3DS")){
                     self.scanValuePlatform = "3DS"
-                    self.scanValueName = String(self.scanValueName.slices(from: "", to: "3DS")[0])
+                    self.scanValueName = String(self.scanValueName.slices(from: "", to: " 3DS")[0])
                 }
                 
                 if(self.scanValueName.contains("PS Vita")){
                     self.scanValuePlatform = "PS Vita"
-                    self.scanValueName = String(self.scanValueName.slices(from: "", to: "PS Vita")[0])
+                    self.scanValueName = String(self.scanValueName.slices(from: "", to: " PS Vita")[0])
                 }
                 
                 if(self.scanValueName.contains(" - Nintendo Wii")){
@@ -299,7 +301,14 @@ extension GameViewController: BarcodeScannerCodeDelegate {
                 
                 if(self.scanValueName.contains("Nintendo Wii")){
                     self.scanValuePlatform = "Wii"
-                    self.scanValueName = String(self.scanValueName.slices(from: "", to: "Nintendo Wii")[0])
+                    self.scanValueName = String(self.scanValueName.slices(from: "", to: " Nintendo Wii")[0])
+                }
+                
+                if (self.scanValuePlatform == nil) {
+                    self.scanValuePlatform  = String(scanMachine[0])
+                    if(self.scanValueName.contains( self.scanValuePlatform)){
+                        self.scanValueName = String(self.scanValueName.slices(from: "", to:  " " + self.scanValuePlatform)[0])
+                    }
                 }
                 
                 controller.dismiss(animated: true, completion: { () in self.nameTextField.text = self.scanValueName;
