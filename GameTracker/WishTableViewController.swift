@@ -66,9 +66,9 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         
         for wish in wishes {
             if (!listFilters.contains(wish.platform) && wish.platform != "" ) {
-                if(listFilters.count < 5) {
+                //if(listFilters.count < 5) {
                     listFilters.append(wish.platform)
-                }
+                //}
             }
         }
         
@@ -83,7 +83,14 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         searchBarWish.delegate = self
         self.searchBarWish.isTranslucent = false
         self.searchBarWish.backgroundImage = UIImage()
-        self.searchBarWish.scopeButtonTitles = listFilters
+        
+        var listFilters2 : [String] = []
+        for filter in listFilters {
+            if(listFilters2.count < 5) {
+                listFilters2.append(filter)
+            }
+        }
+        self.searchBarWish.scopeButtonTitles = listFilters2
         self.searchBarWish.tintColor = .white
         UITextField.appearance(whenContainedInInstancesOf: [type(of: self.searchBarWish)]).tintColor = .darkGray
     }

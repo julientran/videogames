@@ -179,9 +179,9 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         
         for game in games {
             if (!listFilters.contains(game.platform) && game.platform != "" ) {
-                if(listFilters.count < 5) {
+                //if(listFilters.count < 5) {
                     listFilters.append(game.platform)
-                }
+                //}
             }
         }
         
@@ -196,7 +196,14 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         searchBar.delegate = self
         self.searchBar.isTranslucent = false
         self.searchBar.backgroundImage = UIImage()
-        self.searchBar.scopeButtonTitles = listFilters
+        
+        var listFilters2 : [String] = []
+        for filter in listFilters {
+            if(listFilters2.count < 5) {
+                listFilters2.append(filter)
+            }
+        }
+        self.searchBar.scopeButtonTitles = listFilters2
         self.searchBar.tintColor = .white
         UITextField.appearance(whenContainedInInstancesOf: [type(of: self.searchBar)]).tintColor = .darkGray
     }
