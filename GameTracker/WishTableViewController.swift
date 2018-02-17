@@ -71,7 +71,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         
         for wish in wishes {
             if (!listFilters.contains(wish.platform) && wish.platform != "" ) {
-                    listFilters.append(wish.platform)
+                listFilters.append(wish.platform)
             }
         }
         

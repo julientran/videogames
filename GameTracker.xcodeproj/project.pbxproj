@@ -15,7 +15,6 @@
 		832E58E5202EFB6700AED554 /* pad_22.png in Resources */ = {isa = PBXBuildFile; fileRef = 832E58E4202EFB6700AED554 /* pad_22.png */; };
 		83391430202F484F00A96ACC /* saveGames.json in Resources */ = {isa = PBXBuildFile; fileRef = 8339142F202F484F00A96ACC /* saveGames.json */; };
 		833914362030A05E00A96ACC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833914352030A05E00A96ACC /* TabBarController.swift */; };
-		833914382030BBF500A96ACC /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833914372030BBF500A96ACC /* ConfigViewController.swift */; };
 		8360BD622031F434007423F3 /* Wish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360BD612031F434007423F3 /* Wish.swift */; };
 		8360BD64203214E3007423F3 /* WishTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360BD63203214E3007423F3 /* WishTableViewController.swift */; };
 		8360BD66203214F2007423F3 /* WishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360BD65203214F2007423F3 /* WishTableViewCell.swift */; };
@@ -55,7 +54,6 @@
 		832E58E4202EFB6700AED554 /* pad_22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_22.png; sourceTree = "<group>"; };
 		8339142F202F484F00A96ACC /* saveGames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = saveGames.json; sourceTree = "<group>"; };
 		833914352030A05E00A96ACC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		833914372030BBF500A96ACC /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		8360BD612031F434007423F3 /* Wish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wish.swift; sourceTree = "<group>"; };
 		8360BD63203214E3007423F3 /* WishTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishTableViewController.swift; sourceTree = "<group>"; };
 		8360BD65203214F2007423F3 /* WishTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishTableViewCell.swift; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 				AC9B9EF91CCD0276004DF7B5 /* Game.swift */,
 				8360BD612031F434007423F3 /* Wish.swift */,
 				AC746C5A1CC3E5B000555E6D /* Main.storyboard */,
-				833914372030BBF500A96ACC /* ConfigViewController.swift */,
 				833914352030A05E00A96ACC /* TabBarController.swift */,
 				AC9B9EFC1CCD20B4004DF7B5 /* GameTableViewCell.swift */,
 				8360BD65203214F2007423F3 /* WishTableViewCell.swift */,
@@ -396,7 +393,6 @@
 				8360BD6820321845007423F3 /* WishViewController.swift in Sources */,
 				AC746C571CC3E5AF00555E6D /* AppDelegate.swift in Sources */,
 				833914362030A05E00A96ACC /* TabBarController.swift in Sources */,
-				833914382030BBF500A96ACC /* ConfigViewController.swift in Sources */,
 				AC9B9EFF1CCD2F09004DF7B5 /* GameTableViewController.swift in Sources */,
 				AC9B9EFD1CCD20B4004DF7B5 /* GameTableViewCell.swift in Sources */,
 			);

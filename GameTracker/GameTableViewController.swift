@@ -222,7 +222,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                 listFilters2.remove(at: listFilters2.count - 2)
             }
         }
-
+        
         loadFirstScope()
         self.searchBar.tintColor = .white
         UITextField.appearance(whenContainedInInstancesOf: [type(of: self.searchBar)]).tintColor = .darkGray
@@ -283,25 +283,25 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                 currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[selectedIndex] })
             }
         } else {
-                if(searchBar.selectedScopeButtonIndex == 4) {
-                    //>
-                    var selectedIndex : Int = selectedScopeVar
-                    while selectedIndex >= 5 {
-                        selectedIndex = selectedIndex / 5
-                    }
-                    
-                    selectedScopeVar += 5
-                    
-                    selectedIndex = (selectedIndex * 3) + 1
-                    currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[selectedIndex] })
-                    
-                } else {
-                    var selectedIndex : Int = selectedScopeVar
-                    while selectedIndex >= 5 {
-                        selectedIndex = selectedIndex / 5
-                    }
-                    selectedIndex = (selectedIndex * 3) + searchBar.selectedScopeButtonIndex
-                    currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[selectedIndex] })
+            if(searchBar.selectedScopeButtonIndex == 4) {
+                //>
+                var selectedIndex : Int = selectedScopeVar
+                while selectedIndex >= 5 {
+                    selectedIndex = selectedIndex / 5
+                }
+                
+                selectedScopeVar += 5
+                
+                selectedIndex = (selectedIndex * 3) + 1
+                currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[selectedIndex] })
+                
+            } else {
+                var selectedIndex : Int = selectedScopeVar
+                while selectedIndex >= 5 {
+                    selectedIndex = selectedIndex / 5
+                }
+                selectedIndex = (selectedIndex * 3) + searchBar.selectedScopeButtonIndex
+                currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[selectedIndex] })
             }
         }
         
@@ -357,8 +357,9 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                 })
             }
         } else {
-            if selectedScope == 4 {
+            if (selectedScope == 4  && listFilters3[4] == ">"){
                 //>
+                
                 listFilters3 = []
                 selectedScopeVar += 5
                 
@@ -389,7 +390,6 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                 }
                 currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[selectedIndex]
                 })
-                
                 
             } else {
                 if !currentSearchText.isEmpty {
