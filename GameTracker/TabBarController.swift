@@ -73,7 +73,9 @@ class TabBarController: UITabBarController {
             let formVC = navVC?.viewControllers.first as! GameViewController
             formVC.listFilters = gvc.listFilters
             
-            gvc.searchBar.selectedScopeButtonIndex = 0;
+            gvc.loadFirstScope()
+            gvc.searchBar.selectedScopeButtonIndex = 0
+            gvc.selectedScopeVar = 0
             gvc.searchBar.text = ""
             gvc.currentGamesArray = gvc.games
             gvc.table.reloadData()
@@ -90,6 +92,7 @@ class TabBarController: UITabBarController {
             formVC.listFilters = wvc.listFilters
             
             wvc.searchBarWish.selectedScopeButtonIndex = 0;
+            wvc.selectedScopeVar = 0
             wvc.searchBarWish.text = ""
             wvc.currentWishesArray = wvc.wishes
             wvc.tableWish.reloadData()

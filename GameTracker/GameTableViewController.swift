@@ -21,6 +21,8 @@ struct FailableDecodable<Base : Decodable> : Decodable {
 class GameTableViewController: UITableViewController, UISearchBarDelegate{
     
     var listFilters : [String] = []
+    var listFilters2 : [String] = []
+    var listFilters3 : [String] = []
     
     @IBOutlet var table: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -30,6 +32,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     var currentSearchText = ""
     var games = [Game]()
     var currentGamesArray = [Game]()
+    var selectedScopeVar = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,17 +176,17 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     }
     
     private func setUpSearchBar(){
-        
         listFilters = []
+        listFilters2 = []
+        listFilters3 = []
         listFilters.append("All")
         
         for game in games {
             if (!listFilters.contains(game.platform) && game.platform != "" ) {
-                //if(listFilters.count < 5) {
-                    listFilters.append(game.platform)
-                //}
+                listFilters.append(game.platform)
             }
         }
+        
         
         if listFilters.count == 1 {
             self.searchBar.isHidden = true
@@ -197,13 +200,30 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         self.searchBar.isTranslucent = false
         self.searchBar.backgroundImage = UIImage()
         
-        var listFilters2 : [String] = []
+        var count = 0
         for filter in listFilters {
-            if(listFilters2.count < 5) {
+            if(count == 4){
+                listFilters2.append(">")
+                listFilters2.append("<")
                 listFilters2.append(filter)
+                count = 2
+            } else {
+                listFilters2.append(filter)
+                count += 1
             }
         }
-        self.searchBar.scopeButtonTitles = listFilters2
+        
+        if (listFilters2[listFilters2.count - 1] == "<") {
+            listFilters2.remove(at: listFilters2.count - 1 )
+            listFilters2.remove(at: listFilters2.count - 1)
+        } else {
+            if (listFilters2[listFilters2.count - 2] == "<") {
+                listFilters2.remove(at: listFilters2.count - 2 )
+                listFilters2.remove(at: listFilters2.count - 2)
+            }
+        }
+
+        loadFirstScope()
         self.searchBar.tintColor = .white
         UITextField.appearance(whenContainedInInstancesOf: [type(of: self.searchBar)]).tintColor = .darkGray
     }
@@ -212,6 +232,21 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
+    }
+    
+    func loadFirstScope() {
+        listFilters3 = []
+        var i = 0
+        var j = i + 5
+        if (j >  listFilters2.count) {
+            j = listFilters2.count
+        }
+        while i < j {
+            listFilters3.append(listFilters2[i])
+            i = i + 1
+        }
+        
+        self.searchBar.scopeButtonTitles = listFilters3
     }
     
     func loadSampleGames() {
@@ -227,39 +262,49 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         guard !searchText.isEmpty else {
             currentGamesArray = games;
-            searchBar.selectedScopeButtonIndex = 0;
+            loadFirstScope()
+            searchBar.selectedScopeButtonIndex = 0
+            selectedScopeVar = 0
             currentSearchText = ""
             table.reloadData()
             return
         }
+        currentGamesArray = games;
         if(searchBar.selectedScopeButtonIndex == 0) {
-            currentGamesArray = games;
+            if (selectedScopeVar != 0) {
+                //<
+                selectedScopeVar -= 5
+                var selectedIndex : Int = selectedScopeVar
+                while selectedIndex >= 5 {
+                    selectedIndex = selectedIndex / 5
+                }
+                
+                selectedIndex = (selectedIndex * 3)
+                currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[selectedIndex] })
+            }
+        } else {
+                if(searchBar.selectedScopeButtonIndex == 4) {
+                    //>
+                    var selectedIndex : Int = selectedScopeVar
+                    while selectedIndex >= 5 {
+                        selectedIndex = selectedIndex / 5
+                    }
+                    
+                    selectedScopeVar += 5
+                    
+                    selectedIndex = (selectedIndex * 3) + 1
+                    currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[selectedIndex] })
+                    
+                } else {
+                    var selectedIndex : Int = selectedScopeVar
+                    while selectedIndex >= 5 {
+                        selectedIndex = selectedIndex / 5
+                    }
+                    selectedIndex = (selectedIndex * 3) + searchBar.selectedScopeButtonIndex
+                    currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[selectedIndex] })
+            }
         }
-        if(searchBar.selectedScopeButtonIndex == 1) {
-            currentGamesArray = games;
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[1]
-            })
-        }
-        if(searchBar.selectedScopeButtonIndex == 2) {
-            currentGamesArray = games;
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[2]
-            })
-        }
-        if(searchBar.selectedScopeButtonIndex == 3) {
-            currentGamesArray = games;
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[3]
-            })
-        }
-        if(searchBar.selectedScopeButtonIndex == 4) {
-            currentGamesArray = games;
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[4]
-            })
-        }
-        if(searchBar.selectedScopeButtonIndex == 5) {
-            currentGamesArray = games;
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[5]
-            })
-        }
+        
         currentGamesArray = filterGames(gamesForFilter: currentGamesArray, searchTextForFilter: searchText)
         currentSearchText = searchText
         table.reloadData()
@@ -273,55 +318,97 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){
-        switch selectedScope {
-        case 0:
-            if !currentSearchText.isEmpty {
-                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+        if selectedScope == 0 {
+            if(selectedScopeVar == 0) {
+                //All
+                if !currentSearchText.isEmpty {
+                    currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+                } else {
+                    currentGamesArray = games
+                }
             } else {
-                currentGamesArray = games
+                //<
+                listFilters3 = []
+                
+                var selectedIndex : Int = selectedScopeVar
+                while selectedIndex >= 5 {
+                    selectedIndex = selectedIndex / 5
+                }
+                
+                selectedIndex = selectedIndex * 3
+                
+                selectedScopeVar -= 5
+                var i = selectedScopeVar
+                let j = i + 5
+                while i < j {
+                    listFilters3.append(listFilters2[i])
+                    i = i + 1
+                }
+                
+                self.searchBar.scopeButtonTitles = listFilters3
+                searchBar.selectedScopeButtonIndex = 3;
+                
+                if !currentSearchText.isEmpty {
+                    currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+                } else {
+                    currentGamesArray = games
+                }
+                currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[selectedIndex]
+                })
             }
-        case 1:
-            if !currentSearchText.isEmpty {
-                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+        } else {
+            if selectedScope == 4 {
+                //>
+                listFilters3 = []
+                selectedScopeVar += 5
+                
+                var selectedIndex : Int = selectedScopeVar
+                while selectedIndex >= 5 {
+                    selectedIndex = selectedIndex / 5
+                }
+                
+                selectedIndex = (selectedIndex * 3) + 1
+                
+                var i = selectedScopeVar
+                var j = i + 5
+                if (j > listFilters2.count) {
+                    j = listFilters2.count
+                }
+                while i < j {
+                    listFilters3.append(listFilters2[i])
+                    i = i + 1
+                }
+                
+                self.searchBar.scopeButtonTitles = listFilters3
+                searchBar.selectedScopeButtonIndex = 1;
+                
+                if !currentSearchText.isEmpty {
+                    currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+                } else {
+                    currentGamesArray = games
+                }
+                currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[selectedIndex]
+                })
+                
+                
             } else {
-                currentGamesArray = games
+                if !currentSearchText.isEmpty {
+                    currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+                } else {
+                    currentGamesArray = games
+                }
+                
+                var selectedIndex : Int = selectedScopeVar
+                while selectedIndex >= 5 {
+                    selectedIndex = selectedIndex / 5
+                }
+                
+                selectedIndex = (selectedIndex * 3) + selectedScope
+                
+                currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[selectedIndex]
+                })
             }
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[1]
-            })
-        case 2:
-            if !currentSearchText.isEmpty {
-                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
-            } else {
-                currentGamesArray = games
-            }
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[2]
-            })
-        case 3:
-            if !currentSearchText.isEmpty {
-                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
-            } else {
-                currentGamesArray = games
-            }
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[3]
-            })
-        case 4:
-            if !currentSearchText.isEmpty {
-                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
-            } else {
-                currentGamesArray = games
-            }
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[4]
-            })
-        case 5:
-            if !currentSearchText.isEmpty {
-                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
-            } else {
-                currentGamesArray = games
-            }
-            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == listFilters[5]
-            })
-        default:
-            break
+            
         }
         table.reloadData()
     }
@@ -331,7 +418,10 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         games = [Game]()
         listFilters = []
         setUpSearchBar()
-        searchBar.selectedScopeButtonIndex = 0;
+        loadFirstScope()
+        searchBar.selectedScopeButtonIndex = 0
+        selectedScopeVar = 0
+        
         searchBar.text = ""
         currentGamesArray = games
         saveGames()
@@ -399,7 +489,9 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             games.remove(at: gamesPath.row)
             listFilters = []
             setUpSearchBar()
-            searchBar.selectedScopeButtonIndex = 0;
+            loadFirstScope()
+            searchBar.selectedScopeButtonIndex = 0
+            selectedScopeVar = 0
             searchBar.text = ""
             currentGamesArray = games
             saveGames()
@@ -443,8 +535,9 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             let navVC = segue.destination as? UINavigationController
             let formVC = navVC?.viewControllers.first as! GameViewController
             formVC.listFilters = self.listFilters
-            
-            searchBar.selectedScopeButtonIndex = 0;
+            loadFirstScope()
+            searchBar.selectedScopeButtonIndex = 0
+            selectedScopeVar = 0
             searchBar.text = ""
             currentGamesArray = games
             table.reloadData()
@@ -470,7 +563,9 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                 }
                 let gamesPath = IndexPath(row: j, section: 0)
                 games[gamesPath.row] = game
-                searchBar.selectedScopeButtonIndex = 0;
+                loadFirstScope()
+                searchBar.selectedScopeButtonIndex = 0
+                selectedScopeVar = 0
                 searchBar.text = ""
                 currentGamesArray = games
                 table.reloadData()

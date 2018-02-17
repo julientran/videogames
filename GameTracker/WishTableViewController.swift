@@ -11,6 +11,8 @@ import UIKit
 class WishTableViewController: UITableViewController, UISearchBarDelegate{
     
     var listFilters : [String] = []
+    var listFilters2 : [String] = []
+    var listFilters3 : [String] = []
     
     @IBOutlet var tableWish: UITableView!
     @IBOutlet weak var searchBarWish: UISearchBar!
@@ -21,6 +23,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
     var currentSearchText = ""
     var wishes = [Wish]()
     var currentWishesArray = [Wish]()
+    var selectedScopeVar = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,13 +65,13 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
     private func setUpSearchBar(){
         
         listFilters = []
+        listFilters2 = []
+        listFilters3 = []
         listFilters.append("All")
         
         for wish in wishes {
             if (!listFilters.contains(wish.platform) && wish.platform != "" ) {
-                //if(listFilters.count < 5) {
                     listFilters.append(wish.platform)
-                //}
             }
         }
         
@@ -84,13 +87,30 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         self.searchBarWish.isTranslucent = false
         self.searchBarWish.backgroundImage = UIImage()
         
-        var listFilters2 : [String] = []
+        var count = 0
         for filter in listFilters {
-            if(listFilters2.count < 5) {
+            if(count == 4){
+                listFilters2.append(">")
+                listFilters2.append("<")
                 listFilters2.append(filter)
+                count = 2
+            } else {
+                listFilters2.append(filter)
+                count += 1
             }
         }
-        self.searchBarWish.scopeButtonTitles = listFilters2
+        
+        if (listFilters2[listFilters2.count - 1] == "<") {
+            listFilters2.remove(at: listFilters2.count - 1 )
+            listFilters2.remove(at: listFilters2.count - 1)
+        } else {
+            if (listFilters2[listFilters2.count - 2] == "<") {
+                listFilters2.remove(at: listFilters2.count - 2 )
+                listFilters2.remove(at: listFilters2.count - 2)
+            }
+        }
+        
+        loadFirstScope()
         self.searchBarWish.tintColor = .white
         UITextField.appearance(whenContainedInInstancesOf: [type(of: self.searchBarWish)]).tintColor = .darkGray
     }
@@ -99,6 +119,21 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
+    }
+    
+    func loadFirstScope() {
+        listFilters3 = []
+        var i = 0
+        var j = i + 5
+        if (j >  listFilters2.count) {
+            j = listFilters2.count
+        }
+        while i < j {
+            listFilters3.append(listFilters2[i])
+            i = i + 1
+        }
+        
+        self.searchBarWish.scopeButtonTitles = listFilters3
     }
     
     func loadSampleWishes() {
@@ -114,39 +149,49 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         guard !searchText.isEmpty else {
             currentWishesArray = wishes;
-            searchBarWish.selectedScopeButtonIndex = 0;
+            loadFirstScope()
+            searchBarWish.selectedScopeButtonIndex = 0
+            selectedScopeVar = 0
             currentSearchText = ""
             tableWish.reloadData()
             return
         }
+        currentWishesArray = wishes;
         if(searchBarWish.selectedScopeButtonIndex == 0) {
-            currentWishesArray = wishes;
+            if (selectedScopeVar != 0) {
+                //<
+                selectedScopeVar -= 5
+                var selectedIndex : Int = selectedScopeVar
+                while selectedIndex >= 5 {
+                    selectedIndex = selectedIndex / 5
+                }
+                
+                selectedIndex = (selectedIndex * 3)
+                currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[selectedIndex] })
+            }
+        } else {
+            if(searchBarWish.selectedScopeButtonIndex == 4) {
+                //>
+                var selectedIndex : Int = selectedScopeVar
+                while selectedIndex >= 5 {
+                    selectedIndex = selectedIndex / 5
+                }
+                
+                selectedScopeVar += 5
+                
+                selectedIndex = (selectedIndex * 3) + 1
+                currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[selectedIndex] })
+                
+            } else {
+                var selectedIndex : Int = selectedScopeVar
+                while selectedIndex >= 5 {
+                    selectedIndex = selectedIndex / 5
+                }
+                selectedIndex = (selectedIndex * 3) + searchBarWish.selectedScopeButtonIndex
+                currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[selectedIndex] })
+            }
         }
-        if(searchBarWish.selectedScopeButtonIndex == 1) {
-            currentWishesArray = wishes;
-            currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[1]
-            })
-        }
-        if(searchBarWish.selectedScopeButtonIndex == 2) {
-            currentWishesArray = wishes;
-            currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[2]
-            })
-        }
-        if(searchBarWish.selectedScopeButtonIndex == 3) {
-            currentWishesArray = wishes;
-            currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[3]
-            })
-        }
-        if(searchBarWish.selectedScopeButtonIndex == 4) {
-            currentWishesArray = wishes;
-            currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[4]
-            })
-        }
-        if(searchBarWish.selectedScopeButtonIndex == 5) {
-            currentWishesArray = wishes;
-            currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[5]
-            })
-        }
+        
         currentWishesArray = filterWishes(wishesForFilter: currentWishesArray, searchTextForFilter: searchText)
         currentSearchText = searchText
         tableWish.reloadData()
@@ -160,55 +205,97 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
     }
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int){
-        switch selectedScope {
-        case 0:
-            if !currentSearchText.isEmpty {
-                currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
+        if selectedScope == 0 {
+            if(selectedScopeVar == 0) {
+                //All
+                if !currentSearchText.isEmpty {
+                    currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
+                } else {
+                    currentWishesArray = wishes
+                }
             } else {
-                currentWishesArray = wishes
+                //<
+                listFilters3 = []
+                
+                var selectedIndex : Int = selectedScopeVar
+                while selectedIndex >= 5 {
+                    selectedIndex = selectedIndex / 5
+                }
+                
+                selectedIndex = selectedIndex * 3
+                
+                selectedScopeVar -= 5
+                var i = selectedScopeVar
+                let j = i + 5
+                while i < j {
+                    listFilters3.append(listFilters2[i])
+                    i = i + 1
+                }
+                
+                self.searchBarWish.scopeButtonTitles = listFilters3
+                searchBarWish.selectedScopeButtonIndex = 3;
+                
+                if !currentSearchText.isEmpty {
+                    currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
+                } else {
+                    currentWishesArray = wishes
+                }
+                currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[selectedIndex]
+                })
             }
-        case 1:
-            if !currentSearchText.isEmpty {
-                currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
+        } else {
+            if selectedScope == 4 {
+                //>
+                listFilters3 = []
+                selectedScopeVar += 5
+                
+                var selectedIndex : Int = selectedScopeVar
+                while selectedIndex >= 5 {
+                    selectedIndex = selectedIndex / 5
+                }
+                
+                selectedIndex = (selectedIndex * 3) + 1
+                
+                var i = selectedScopeVar
+                var j = i + 5
+                if (j > listFilters2.count) {
+                    j = listFilters2.count
+                }
+                while i < j {
+                    listFilters3.append(listFilters2[i])
+                    i = i + 1
+                }
+                
+                self.searchBarWish.scopeButtonTitles = listFilters3
+                searchBarWish.selectedScopeButtonIndex = 1;
+                
+                if !currentSearchText.isEmpty {
+                    currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
+                } else {
+                    currentWishesArray = wishes
+                }
+                currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[selectedIndex]
+                })
+                
+                
             } else {
-                currentWishesArray = wishes
+                if !currentSearchText.isEmpty {
+                    currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
+                } else {
+                    currentWishesArray = wishes
+                }
+                
+                var selectedIndex : Int = selectedScopeVar
+                while selectedIndex >= 5 {
+                    selectedIndex = selectedIndex / 5
+                }
+                
+                selectedIndex = (selectedIndex * 3) + selectedScope
+                
+                currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[selectedIndex]
+                })
             }
-            currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[1]
-            })
-        case 2:
-            if !currentSearchText.isEmpty {
-                currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
-            } else {
-                currentWishesArray = wishes
-            }
-            currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[2]
-            })
-        case 3:
-            if !currentSearchText.isEmpty {
-                currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
-            } else {
-                currentWishesArray = wishes
-            }
-            currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[3]
-            })
-        case 4:
-            if !currentSearchText.isEmpty {
-                currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
-            } else {
-                currentWishesArray = wishes
-            }
-            currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[4]
-            })
-        case 5:
-            if !currentSearchText.isEmpty {
-                currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
-            } else {
-                currentWishesArray = wishes
-            }
-            currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[5]
-            })
-        default:
-            break
+            
         }
         tableWish.reloadData()
     }
@@ -218,7 +305,9 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         wishes = [Wish]()
         listFilters = []
         setUpSearchBar()
+        loadFirstScope()
         searchBarWish.selectedScopeButtonIndex = 0;
+        selectedScopeVar = 0
         searchBarWish.text = ""
         currentWishesArray = wishes
         saveWishes()
@@ -316,7 +405,9 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
             let formVC = navVC?.viewControllers.first as! WishViewController
             formVC.listFilters = self.listFilters
             
+            loadFirstScope()
             searchBarWish.selectedScopeButtonIndex = 0;
+            selectedScopeVar = 0
             searchBarWish.text = ""
             currentWishesArray = wishes
             tableWish.reloadData()
@@ -338,7 +429,9 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         wishes.remove(at: wishesPath.row)
         listFilters = []
         setUpSearchBar()
+        loadFirstScope()
         searchBarWish.selectedScopeButtonIndex = 0;
+        selectedScopeVar = 0
         searchBarWish.text = ""
         currentWishesArray = wishes
         saveWishes()
@@ -375,7 +468,9 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                     }
                     let wishesPath = IndexPath(row: j, section: 0)
                     wishes[wishesPath.row] = wish
+                    loadFirstScope()
                     searchBarWish.selectedScopeButtonIndex = 0;
+                    selectedScopeVar = 0
                     searchBarWish.text = ""
                     currentWishesArray = wishes
                     tableWish.reloadData()
