@@ -581,6 +581,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                 games.append(game)
                 currentGamesArray = games.sorted()
                 tableView.insertRows(at: [newIndexPath], with: .bottom)
+                table.reloadData()
             }
             // Save the games.
             saveGames()

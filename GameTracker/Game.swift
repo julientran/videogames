@@ -26,6 +26,26 @@ extension UIImage {
     }
 }
 
+extension String {
+    subscript(value: PartialRangeUpTo<Int>) -> Substring {
+        get {
+            return self[..<index(startIndex, offsetBy: value.upperBound)]
+        }
+    }
+    
+    subscript(value: PartialRangeThrough<Int>) -> Substring {
+        get {
+            return self[...index(startIndex, offsetBy: value.upperBound)]
+        }
+    }
+    
+    subscript(value: PartialRangeFrom<Int>) -> Substring {
+        get {
+            return self[index(startIndex, offsetBy: value.lowerBound)...]
+        }
+    }
+}
+
 class Game: Codable, Comparable, CustomStringConvertible {
     var description: String { return name }
     
@@ -160,10 +180,40 @@ class Game: Codable, Comparable, CustomStringConvertible {
     }
     
     static func <(lhs: Game, rhs: Game) -> Bool {
-        print(lhs.name)
-        print (rhs.name)
-        print ( lhs.name < rhs.name)
-        return lhs.name < rhs.name
+        
+        /*
+        var templhs = lhs.name.lowercased()
+        var temprhs = rhs.name.lowercased()
+        
+        
+        //Exclude the le la l' in sort alphabetic result
+        //the
+        if ( lhs.name.lowercased().hasPrefix("the ") ) {
+           templhs =  String(lhs.name[4...])
+        }
+        if ( rhs.name.lowercased().hasPrefix("the ") ) {
+            temprhs =  String(rhs.name[4...])
+        }
+        
+        //le la
+        if ( lhs.name.lowercased().hasPrefix("le ") || lhs.name.lowercased().hasPrefix("la ") ) {
+            templhs =  String(lhs.name[3...])
+        }
+        if ( rhs.name.lowercased().hasPrefix("le ") || rhs.name.lowercased().hasPrefix("la ") ) {
+            temprhs =  String(rhs.name[3...])
+        }
+        
+        //l'
+        if ( lhs.name.lowercased().hasPrefix("l'") ) {
+            templhs =  String(lhs.name[2...])
+        }
+        if ( rhs.name.lowercased().hasPrefix("l'") ) {
+            temprhs =  String(rhs.name[2...])
+        }
+         
+        return templhs < temprhs
+        */
+        return lhs.name.lowercased() < rhs.name.lowercased()
     }
 }
 

@@ -100,9 +100,22 @@ class Wish: Codable, Comparable, CustomStringConvertible {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
-    
-        let datelhs = dateFormatter.date(from: lhs.releasedate)!
-        let daterhs = dateFormatter.date(from: rhs.releasedate)!
+        
+        var component      = DateComponents()
+        component.calendar = Calendar.current
+        component.year     = 2050
+        component.month    = 1
+        component.day      = 1
+        
+        var datelhs : Date = component.date!
+        var daterhs : Date = component.date!
+
+        if lhs.releasedate != "" {
+            datelhs = dateFormatter.date(from: lhs.releasedate)!
+        }
+        if rhs.releasedate != ""{
+            daterhs = dateFormatter.date(from: rhs.releasedate)!
+        }
         
         return datelhs < daterhs
     }
