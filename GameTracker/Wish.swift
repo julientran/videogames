@@ -9,7 +9,9 @@
 //import Foundation
 import UIKit
 
-class Wish: Codable {
+class Wish: Codable, Comparable, CustomStringConvertible {
+    var description: String { return name }
+    
     
     // MARK: Properties
     
@@ -88,6 +90,21 @@ class Wish: Codable {
         }
         releasedate = try container.decode(String.self, forKey: .releasedate)
         buy = try container.decode(Bool.self, forKey: .buy)
+    }
+    
+    static func ==(lhs: Wish, rhs: Wish) -> Bool {
+        return lhs.name == rhs.name
+    }
+    
+    static func <(lhs: Wish, rhs: Wish) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+    
+        let datelhs = dateFormatter.date(from: lhs.releasedate)!
+        let daterhs = dateFormatter.date(from: rhs.releasedate)!
+        
+        return datelhs < daterhs
     }
 }
 

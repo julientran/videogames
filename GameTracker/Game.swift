@@ -26,7 +26,8 @@ extension UIImage {
     }
 }
 
-class Game: Codable {
+class Game: Codable, Comparable, CustomStringConvertible {
+    var description: String { return name }
     
     // MARK: Properties
     
@@ -152,6 +153,17 @@ class Game: Codable {
         } catch {
             print("Save Failed")
         }
+    }
+    
+    static func ==(lhs: Game, rhs: Game) -> Bool {
+        return lhs.name == rhs.name
+    }
+    
+    static func <(lhs: Game, rhs: Game) -> Bool {
+        print(lhs.name)
+        print (rhs.name)
+        print ( lhs.name < rhs.name)
+        return lhs.name < rhs.name
     }
 }
 

@@ -51,7 +51,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         // Load any saved wishes, otherwise load sample data.
         if let savedWishes = loadWishes() {
             wishes += savedWishes
-            currentWishesArray = wishes
+            currentWishesArray = wishes.sorted()
             printWishes() // Debug
             tableWish.reloadData()
         }
@@ -82,6 +82,8 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
             self.searchBarWish.isHidden = false
             self.searchBarWish.showsScopeBar = true
         }
+        
+        searchBarWish.setScopeBarButtonTitleTextAttributes([NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!], for: .normal)
         
         searchBarWish.delegate = self
         self.searchBarWish.isTranslucent = false
@@ -140,7 +142,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         let photo1 = UIImage(named: "Sample")!
         let wish1 = Wish(idwish: "idnil", name: "Rayman Legends", photo: photo1, platform: "PS4", buy: false, publisher: "Ubisoft", releasedate: "")
         wishes += [wish1]
-        currentWishesArray = wishes
+        currentWishesArray = wishes.sorted()
         saveWishes()
         tableWish.reloadData()
         printWishes() // Debug
@@ -148,7 +150,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         guard !searchText.isEmpty else {
-            currentWishesArray = wishes;
+            currentWishesArray = wishes.sorted()
             loadFirstScope()
             searchBarWish.selectedScopeButtonIndex = 0
             selectedScopeVar = 0
@@ -156,7 +158,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
             tableWish.reloadData()
             return
         }
-        currentWishesArray = wishes;
+        currentWishesArray = wishes.sorted()
         if(searchBarWish.selectedScopeButtonIndex == 0) {
             if (selectedScopeVar != 0) {
                 //<
@@ -211,7 +213,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                 if !currentSearchText.isEmpty {
                     currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
                 } else {
-                    currentWishesArray = wishes
+                    currentWishesArray = wishes.sorted()
                 }
             } else {
                 //<
@@ -238,7 +240,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                 if !currentSearchText.isEmpty {
                     currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
                 } else {
-                    currentWishesArray = wishes
+                    currentWishesArray = wishes.sorted()
                 }
                 currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[selectedIndex]
                 })
@@ -272,7 +274,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                 if !currentSearchText.isEmpty {
                     currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
                 } else {
-                    currentWishesArray = wishes
+                    currentWishesArray = wishes.sorted()
                 }
                 currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == listFilters[selectedIndex]
                 })
@@ -282,7 +284,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                 if !currentSearchText.isEmpty {
                     currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
                 } else {
-                    currentWishesArray = wishes
+                    currentWishesArray = wishes.sorted()
                 }
                 
                 var selectedIndex : Int = selectedScopeVar
@@ -309,7 +311,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         searchBarWish.selectedScopeButtonIndex = 0;
         selectedScopeVar = 0
         searchBarWish.text = ""
-        currentWishesArray = wishes
+        currentWishesArray = wishes.sorted()
         saveWishes()
         tableWish.reloadData()
     }
@@ -409,7 +411,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
             searchBarWish.selectedScopeButtonIndex = 0;
             selectedScopeVar = 0
             searchBarWish.text = ""
-            currentWishesArray = wishes
+            currentWishesArray = wishes.sorted()
             tableWish.reloadData()
             print("Adding new wish.")
         }
@@ -433,7 +435,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         searchBarWish.selectedScopeButtonIndex = 0;
         selectedScopeVar = 0
         searchBarWish.text = ""
-        currentWishesArray = wishes
+        currentWishesArray = wishes.sorted()
         saveWishes()
         tableWish.reloadData()
     }
@@ -472,7 +474,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                     searchBarWish.selectedScopeButtonIndex = 0;
                     selectedScopeVar = 0
                     searchBarWish.text = ""
-                    currentWishesArray = wishes
+                    currentWishesArray = wishes.sorted()
                     tableWish.reloadData()
                     
                     tableView.reloadRows(at: [wishesPath], with: .none)
@@ -481,7 +483,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                     // Add a new wish.
                     let newIndexPath = IndexPath(row: wishes.count, section: 0)
                     wishes.append(wish)
-                    currentWishesArray = wishes
+                    currentWishesArray = wishes.sorted()
                     tableView.insertRows(at: [newIndexPath], with: .bottom)
                 }
                 // Save the wishes.
