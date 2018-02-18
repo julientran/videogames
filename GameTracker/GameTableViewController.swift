@@ -180,7 +180,6 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         listFilters = []
         listFilters2 = []
         listFilters3 = []
-        listFilters.append("All")
         
         for game in games {
             if (!listFilters.contains(game.platform) && game.platform != "" ) {
@@ -188,6 +187,8 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             }
         }
         
+        listFilters = listFilters.sorted()
+        listFilters.insert("All", at: 0)
         
         if listFilters.count == 1 {
             self.searchBar.isHidden = true
