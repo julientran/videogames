@@ -67,13 +67,15 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         listFilters = []
         listFilters2 = []
         listFilters3 = []
-        listFilters.append("All")
         
         for wish in wishes {
             if (!listFilters.contains(wish.platform) && wish.platform != "" ) {
                 listFilters.append(wish.platform)
             }
         }
+        
+        listFilters = listFilters.sorted()
+        listFilters.insert("All", at: 0)
         
         if listFilters.count == 1 {
             self.searchBarWish.isHidden = true
