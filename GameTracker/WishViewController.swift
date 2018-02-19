@@ -337,6 +337,11 @@ extension WishViewController: BarcodeScannerCodeDelegate {
                     self.scanValueName = String(self.scanValueName.slices(from: "", to: " PS Vita")[0])
                 }
                 
+                if(self.scanValueName.contains(" - PSP")){
+                    self.scanValuePlatform = "PSP"
+                    self.scanValueName = String(self.scanValueName.slices(from: "", to: " - PSP")[0])
+                }
+                
                 if(self.scanValueName.contains(" - Nintendo Wii")){
                     self.scanValuePlatform = "Wii"
                     self.scanValueName = String(self.scanValueName.slices(from: "", to: " - Nintendo Wii")[0])
