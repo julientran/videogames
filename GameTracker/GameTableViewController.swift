@@ -62,7 +62,6 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             games += savedGames
             currentGamesArray = games.sorted()
             printGames() // Debug
-
             table.reloadData()
         }
         else {
