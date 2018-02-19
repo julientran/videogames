@@ -220,9 +220,11 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             listFilters2.remove(at: listFilters2.count - 1 )
             listFilters2.remove(at: listFilters2.count - 1)
         } else {
-            if (listFilters2[listFilters2.count - 2] == "<") {
-                listFilters2.remove(at: listFilters2.count - 2 )
-                listFilters2.remove(at: listFilters2.count - 2)
+            if(listFilters2.count > 1) {
+                if (listFilters2[listFilters2.count - 2] == "<") {
+                    listFilters2.remove(at: listFilters2.count - 2 )
+                    listFilters2.remove(at: listFilters2.count - 2)
+                }
             }
         }
         
