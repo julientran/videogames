@@ -427,6 +427,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         selectedScopeVar = 0
         
         searchBar.text = ""
+        currentSearchText = ""
         currentGamesArray = games.sorted()
         saveGames()
         table.reloadData()
@@ -497,6 +498,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             searchBar.selectedScopeButtonIndex = 0
             selectedScopeVar = 0
             searchBar.text = ""
+            currentSearchText = ""
             currentGamesArray = games.sorted()
             saveGames()
             table.reloadData()
@@ -543,6 +545,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             searchBar.selectedScopeButtonIndex = 0
             selectedScopeVar = 0
             searchBar.text = ""
+            currentSearchText = ""
             currentGamesArray = games.sorted()
             table.reloadData()
             print("Adding new game.")
@@ -571,6 +574,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                 searchBar.selectedScopeButtonIndex = 0
                 selectedScopeVar = 0
                 searchBar.text = ""
+                currentSearchText = ""
                 currentGamesArray = games.sorted()
                 table.reloadData()
                 
@@ -582,6 +586,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                 games.append(game)
                 currentGamesArray = games.sorted()
                 tableView.insertRows(at: [newIndexPath], with: .bottom)
+                currentSearchText = ""
                 table.reloadData()
             }
             // Save the games.

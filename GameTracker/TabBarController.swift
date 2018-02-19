@@ -77,6 +77,7 @@ class TabBarController: UITabBarController {
             gvc.searchBar.selectedScopeButtonIndex = 0
             gvc.selectedScopeVar = 0
             gvc.searchBar.text = ""
+            gvc.currentSearchText = ""
             gvc.currentGamesArray = gvc.games
             gvc.table.reloadData()
             
@@ -94,6 +95,7 @@ class TabBarController: UITabBarController {
             wvc.searchBarWish.selectedScopeButtonIndex = 0;
             wvc.selectedScopeVar = 0
             wvc.searchBarWish.text = ""
+            wvc.currentSearchText = ""
             wvc.currentWishesArray = wvc.wishes
             wvc.tableWish.reloadData()
             

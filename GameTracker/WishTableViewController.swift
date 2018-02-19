@@ -313,6 +313,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         searchBarWish.selectedScopeButtonIndex = 0;
         selectedScopeVar = 0
         searchBarWish.text = ""
+        currentSearchText = ""
         currentWishesArray = wishes.sorted()
         saveWishes()
         tableWish.reloadData()
@@ -413,6 +414,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
             searchBarWish.selectedScopeButtonIndex = 0;
             selectedScopeVar = 0
             searchBarWish.text = ""
+            currentSearchText = ""
             currentWishesArray = wishes.sorted()
             tableWish.reloadData()
             print("Adding new wish.")
@@ -437,6 +439,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         searchBarWish.selectedScopeButtonIndex = 0;
         selectedScopeVar = 0
         searchBarWish.text = ""
+        currentSearchText = ""
         currentWishesArray = wishes.sorted()
         saveWishes()
         tableWish.reloadData()
@@ -476,6 +479,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                     searchBarWish.selectedScopeButtonIndex = 0;
                     selectedScopeVar = 0
                     searchBarWish.text = ""
+                    currentSearchText = ""
                     currentWishesArray = wishes.sorted()
                     tableWish.reloadData()
                     
