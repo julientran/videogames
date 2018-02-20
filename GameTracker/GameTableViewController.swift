@@ -21,8 +21,8 @@ struct FailableDecodable<Base : Decodable> : Decodable {
 class GameTableViewController: UITableViewController, UISearchBarDelegate{
     
     var listFilters : [String] = []
-    var listFilters2 : [String] = []
-    var listFilters3 : [String] = []
+    var listFiltersFullElementsWithNavigation : [String] = []
+    var listFiltersSliceElementsWithNavigation : [String] = []
     
     @IBOutlet var table: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -177,8 +177,8 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     
     private func setUpSearchBar(){
         listFilters = []
-        listFilters2 = []
-        listFilters3 = []
+        listFiltersFullElementsWithNavigation = []
+        listFiltersSliceElementsWithNavigation = []
         
         for game in games {
             if (!listFilters.contains(game.platform) && game.platform != "" ) {
@@ -206,24 +206,24 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         var count = 0
         for filter in listFilters {
             if(count == 4){
-                listFilters2.append(">")
-                listFilters2.append("<")
-                listFilters2.append(filter)
+                listFiltersFullElementsWithNavigation.append(">")
+                listFiltersFullElementsWithNavigation.append("<")
+                listFiltersFullElementsWithNavigation.append(filter)
                 count = 2
             } else {
-                listFilters2.append(filter)
+                listFiltersFullElementsWithNavigation.append(filter)
                 count += 1
             }
         }
         
-        if (listFilters2[listFilters2.count - 1] == "<") {
-            listFilters2.remove(at: listFilters2.count - 1 )
-            listFilters2.remove(at: listFilters2.count - 1)
+        if (listFiltersFullElementsWithNavigation[listFiltersFullElementsWithNavigation.count - 1] == "<") {
+            listFiltersFullElementsWithNavigation.remove(at: listFiltersFullElementsWithNavigation.count - 1 )
+            listFiltersFullElementsWithNavigation.remove(at: listFiltersFullElementsWithNavigation.count - 1)
         } else {
-            if(listFilters2.count > 1) {
-                if (listFilters2[listFilters2.count - 2] == "<") {
-                    listFilters2.remove(at: listFilters2.count - 2 )
-                    listFilters2.remove(at: listFilters2.count - 2)
+            if(listFiltersFullElementsWithNavigation.count > 1) {
+                if (listFiltersFullElementsWithNavigation[listFiltersFullElementsWithNavigation.count - 2] == "<") {
+                    listFiltersFullElementsWithNavigation.remove(at: listFiltersFullElementsWithNavigation.count - 2 )
+                    listFiltersFullElementsWithNavigation.remove(at: listFiltersFullElementsWithNavigation.count - 2)
                 }
             }
         }
@@ -240,18 +240,18 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     }
     
     func loadFirstScope() {
-        listFilters3 = []
+        listFiltersSliceElementsWithNavigation = []
         var i = 0
         var j = i + 5
-        if (j >  listFilters2.count) {
-            j = listFilters2.count
+        if (j >  listFiltersFullElementsWithNavigation.count) {
+            j = listFiltersFullElementsWithNavigation.count
         }
         while i < j {
-            listFilters3.append(listFilters2[i])
+            listFiltersSliceElementsWithNavigation.append(listFiltersFullElementsWithNavigation[i])
             i = i + 1
         }
         
-        self.searchBar.scopeButtonTitles = listFilters3
+        self.searchBar.scopeButtonTitles = listFiltersSliceElementsWithNavigation
     }
     
     func loadSampleGames() {
@@ -333,7 +333,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                 }
             } else {
                 //<
-                listFilters3 = []
+                listFiltersSliceElementsWithNavigation = []
                 
                 var selectedIndex : Int = selectedScopeVar
                 while selectedIndex >= 5 {
@@ -346,11 +346,11 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                 var i = selectedScopeVar
                 let j = i + 5
                 while i < j {
-                    listFilters3.append(listFilters2[i])
+                    listFiltersSliceElementsWithNavigation.append(listFiltersFullElementsWithNavigation[i])
                     i = i + 1
                 }
                 
-                self.searchBar.scopeButtonTitles = listFilters3
+                self.searchBar.scopeButtonTitles = listFiltersSliceElementsWithNavigation
                 searchBar.selectedScopeButtonIndex = 3;
                 
                 if !currentSearchText.isEmpty {
@@ -362,10 +362,10 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                 })
             }
         } else {
-            if (selectedScope == 4  && listFilters3[4] == ">"){
+            if (selectedScope == 4  && listFiltersSliceElementsWithNavigation[4] == ">"){
                 //>
                 
-                listFilters3 = []
+                listFiltersSliceElementsWithNavigation = []
                 selectedScopeVar += 5
                 
                 var selectedIndex : Int = selectedScopeVar
@@ -377,15 +377,15 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                 
                 var i = selectedScopeVar
                 var j = i + 5
-                if (j > listFilters2.count) {
-                    j = listFilters2.count
+                if (j > listFiltersFullElementsWithNavigation.count) {
+                    j = listFiltersFullElementsWithNavigation.count
                 }
                 while i < j {
-                    listFilters3.append(listFilters2[i])
+                    listFiltersSliceElementsWithNavigation.append(listFiltersFullElementsWithNavigation[i])
                     i = i + 1
                 }
                 
-                self.searchBar.scopeButtonTitles = listFilters3
+                self.searchBar.scopeButtonTitles = listFiltersSliceElementsWithNavigation
                 searchBar.selectedScopeButtonIndex = 1;
                 
                 if !currentSearchText.isEmpty {
@@ -596,31 +596,46 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             // Save the games.
             saveGames()
             loadContextAfterAdd()
+            
+            //Position scroll on add
+            let tbc = self.parent?.parent as! TabBarController
+            if(tbc.selectedScopeButtonName == game.platform || tbc.selectedScopeButtonName == "All" ){
+                for i in 0..<currentGamesArray.count { // N'oubliez pas que l'indice d'un tableau débute à 0
+                    if( currentGamesArray[i].idgame == game.idgame ){
+                        j = i
+                    }
+                }
+                let gamesPath = IndexPath(row: j, section: 0)
+                
+                DispatchQueue.main.async {
+                    self.tableView.scrollToRow(at: gamesPath,at: .middle, animated: true) //here .middle is the scroll position can change it as per your need
+                }
+            }
         }
     }
     
     // MARK: NSCoding
     
     func loadContextAfterDelete(selectedScopeButtonName : String) {
-        if(listFilters2.index(of: selectedScopeButtonName) != nil && selectedScopeButtonName != "All") {
-            let index : Int = listFilters2.index(of: selectedScopeButtonName)!
+        if(listFiltersFullElementsWithNavigation.index(of: selectedScopeButtonName) != nil && selectedScopeButtonName != "All") {
+            let index : Int = listFiltersFullElementsWithNavigation.index(of: selectedScopeButtonName)!
             
             selectedScopeVar = (index/5)*5
             searchBar.selectedScopeButtonIndex = index - (index/5)*5
             
-            listFilters3 = []
+            listFiltersSliceElementsWithNavigation = []
             var i = selectedScopeVar
             var j = i + 5
-            if (j > listFilters2.count) {
-                j = listFilters2.count
+            if (j > listFiltersFullElementsWithNavigation.count) {
+                j = listFiltersFullElementsWithNavigation.count
             }
             while i < j {
-                listFilters3.append(listFilters2[i])
+                listFiltersSliceElementsWithNavigation.append(listFiltersFullElementsWithNavigation[i])
                 i = i + 1
             }
             
             
-            self.searchBar.scopeButtonTitles = listFilters3
+            self.searchBar.scopeButtonTitles = listFiltersSliceElementsWithNavigation
             
             if !currentSearchText.isEmpty {
                 currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
@@ -636,28 +651,28 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     }
     
     func loadContextAfterAdd() {
-        
+
         let tbc = self.parent?.parent as! TabBarController
         if(tbc.selectedScopeButtonName != "All"){
             
-            let index : Int = listFilters2.index(of: tbc.selectedScopeButtonName)!
+            let index : Int = listFiltersFullElementsWithNavigation.index(of: tbc.selectedScopeButtonName)!
             
             selectedScopeVar = (index/5)*5
             searchBar.selectedScopeButtonIndex = index - (index/5)*5
             
-            listFilters3 = []
+            listFiltersSliceElementsWithNavigation = []
             var i = selectedScopeVar
             var j = i + 5
-            if (j > listFilters2.count) {
-                j = listFilters2.count
+            if (j > listFiltersFullElementsWithNavigation.count) {
+                j = listFiltersFullElementsWithNavigation.count
             }
             while i < j {
-                listFilters3.append(listFilters2[i])
+                listFiltersSliceElementsWithNavigation.append(listFiltersFullElementsWithNavigation[i])
                 i = i + 1
             }
             
             
-            self.searchBar.scopeButtonTitles = listFilters3
+            self.searchBar.scopeButtonTitles = listFiltersSliceElementsWithNavigation
             
             if !currentSearchText.isEmpty {
                 currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)

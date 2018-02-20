@@ -11,8 +11,8 @@ import UIKit
 class WishTableViewController: UITableViewController, UISearchBarDelegate{
     
     var listFilters : [String] = []
-    var listFilters2 : [String] = []
-    var listFilters3 : [String] = []
+    var listFiltersFullElementsWithNavigation : [String] = []
+    var listFiltersSliceElementsWithNavigation : [String] = []
     
     @IBOutlet var tableWish: UITableView!
     @IBOutlet weak var searchBarWish: UISearchBar!
@@ -65,8 +65,8 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
     private func setUpSearchBar(){
         
         listFilters = []
-        listFilters2 = []
-        listFilters3 = []
+        listFiltersFullElementsWithNavigation = []
+        listFiltersSliceElementsWithNavigation = []
         
         for wish in wishes {
             if (!listFilters.contains(wish.platform) && wish.platform != "" ) {
@@ -94,24 +94,24 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         var count = 0
         for filter in listFilters {
             if(count == 4){
-                listFilters2.append(">")
-                listFilters2.append("<")
-                listFilters2.append(filter)
+                listFiltersFullElementsWithNavigation.append(">")
+                listFiltersFullElementsWithNavigation.append("<")
+                listFiltersFullElementsWithNavigation.append(filter)
                 count = 2
             } else {
-                listFilters2.append(filter)
+                listFiltersFullElementsWithNavigation.append(filter)
                 count += 1
             }
         }
         
-        if (listFilters2[listFilters2.count - 1] == "<") {
-            listFilters2.remove(at: listFilters2.count - 1 )
-            listFilters2.remove(at: listFilters2.count - 1)
+        if (listFiltersFullElementsWithNavigation[listFiltersFullElementsWithNavigation.count - 1] == "<") {
+            listFiltersFullElementsWithNavigation.remove(at: listFiltersFullElementsWithNavigation.count - 1 )
+            listFiltersFullElementsWithNavigation.remove(at: listFiltersFullElementsWithNavigation.count - 1)
         } else {
-            if(listFilters2.count > 1) {
-                if (listFilters2[listFilters2.count - 2] == "<") {
-                    listFilters2.remove(at: listFilters2.count - 2 )
-                    listFilters2.remove(at: listFilters2.count - 2)
+            if(listFiltersFullElementsWithNavigation.count > 1) {
+                if (listFiltersFullElementsWithNavigation[listFiltersFullElementsWithNavigation.count - 2] == "<") {
+                    listFiltersFullElementsWithNavigation.remove(at: listFiltersFullElementsWithNavigation.count - 2 )
+                    listFiltersFullElementsWithNavigation.remove(at: listFiltersFullElementsWithNavigation.count - 2)
                 }
             }
         }
@@ -128,18 +128,18 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
     }
     
     func loadFirstScope() {
-        listFilters3 = []
+        listFiltersSliceElementsWithNavigation = []
         var i = 0
         var j = i + 5
-        if (j >  listFilters2.count) {
-            j = listFilters2.count
+        if (j >  listFiltersFullElementsWithNavigation.count) {
+            j = listFiltersFullElementsWithNavigation.count
         }
         while i < j {
-            listFilters3.append(listFilters2[i])
+            listFiltersSliceElementsWithNavigation.append(listFiltersFullElementsWithNavigation[i])
             i = i + 1
         }
         
-        self.searchBarWish.scopeButtonTitles = listFilters3
+        self.searchBarWish.scopeButtonTitles = listFiltersSliceElementsWithNavigation
     }
     
     func loadSampleWishes() {
@@ -221,7 +221,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                 }
             } else {
                 //<
-                listFilters3 = []
+                listFiltersSliceElementsWithNavigation = []
                 
                 var selectedIndex : Int = selectedScopeVar
                 while selectedIndex >= 5 {
@@ -234,11 +234,11 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                 var i = selectedScopeVar
                 let j = i + 5
                 while i < j {
-                    listFilters3.append(listFilters2[i])
+                    listFiltersSliceElementsWithNavigation.append(listFiltersFullElementsWithNavigation[i])
                     i = i + 1
                 }
                 
-                self.searchBarWish.scopeButtonTitles = listFilters3
+                self.searchBarWish.scopeButtonTitles = listFiltersSliceElementsWithNavigation
                 searchBarWish.selectedScopeButtonIndex = 3;
                 
                 if !currentSearchText.isEmpty {
@@ -252,7 +252,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         } else {
             if selectedScope == 4 {
                 //>
-                listFilters3 = []
+                listFiltersSliceElementsWithNavigation = []
                 selectedScopeVar += 5
                 
                 var selectedIndex : Int = selectedScopeVar
@@ -264,15 +264,15 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                 
                 var i = selectedScopeVar
                 var j = i + 5
-                if (j > listFilters2.count) {
-                    j = listFilters2.count
+                if (j > listFiltersFullElementsWithNavigation.count) {
+                    j = listFiltersFullElementsWithNavigation.count
                 }
                 while i < j {
-                    listFilters3.append(listFilters2[i])
+                    listFiltersSliceElementsWithNavigation.append(listFiltersFullElementsWithNavigation[i])
                     i = i + 1
                 }
                 
-                self.searchBarWish.scopeButtonTitles = listFilters3
+                self.searchBarWish.scopeButtonTitles = listFiltersSliceElementsWithNavigation
                 searchBarWish.selectedScopeButtonIndex = 1;
                 
                 if !currentSearchText.isEmpty {
@@ -500,6 +500,21 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                 // Save the wishes.
                 saveWishes()
                 loadContextAfterAdd()
+                
+                //Position scroll on add
+                let tbc = self.parent?.parent as! TabBarController
+                if(tbc.selectedScopeButtonName == wish.platform || tbc.selectedScopeButtonName == "All" ){
+                    for i in 0..<currentWishesArray.count { // N'oubliez pas que l'indice d'un tableau débute à 0
+                        if( currentWishesArray[i].idwish == wish.idwish ){
+                            j = i
+                        }
+                    }
+                    let wishesPath = IndexPath(row: j, section: 0)
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.scrollToRow(at: wishesPath,at: .middle, animated: true) //here .middle is the scroll position can change it as per your need
+                    }
+                }
             }
         }
     }
@@ -507,25 +522,25 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
     // MARK: NSCoding
     
     func loadContextAfterDelete(selectedScopeButtonName : String) {
-        if(listFilters2.index(of: selectedScopeButtonName) != nil && selectedScopeButtonName != "All") {
-            let index : Int = listFilters2.index(of: selectedScopeButtonName)!
+        if(listFiltersFullElementsWithNavigation.index(of: selectedScopeButtonName) != nil && selectedScopeButtonName != "All") {
+            let index : Int = listFiltersFullElementsWithNavigation.index(of: selectedScopeButtonName)!
             
             selectedScopeVar = (index/5)*5
             searchBarWish.selectedScopeButtonIndex = index - (index/5)*5
             
-            listFilters3 = []
+            listFiltersSliceElementsWithNavigation = []
             var i = selectedScopeVar
             var j = i + 5
-            if (j > listFilters2.count) {
-                j = listFilters2.count
+            if (j > listFiltersFullElementsWithNavigation.count) {
+                j = listFiltersFullElementsWithNavigation.count
             }
             while i < j {
-                listFilters3.append(listFilters2[i])
+                listFiltersSliceElementsWithNavigation.append(listFiltersFullElementsWithNavigation[i])
                 i = i + 1
             }
             
             
-            self.searchBarWish.scopeButtonTitles = listFilters3
+            self.searchBarWish.scopeButtonTitles = listFiltersSliceElementsWithNavigation
             
             if !currentSearchText.isEmpty {
                 currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
@@ -544,24 +559,24 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         
         let tbc = self.parent?.parent as! TabBarController
                 if(tbc.selectedScopeButtonName != "All"){
-        let index : Int = listFilters2.index(of: tbc.selectedScopeButtonName)!
+        let index : Int = listFiltersFullElementsWithNavigation.index(of: tbc.selectedScopeButtonName)!
         
         selectedScopeVar = (index/5)*5
         searchBarWish.selectedScopeButtonIndex = index - (index/5)*5
         
-        listFilters3 = []
+        listFiltersSliceElementsWithNavigation = []
         var i = selectedScopeVar
         var j = i + 5
-        if (j > listFilters2.count) {
-            j = listFilters2.count
+        if (j > listFiltersFullElementsWithNavigation.count) {
+            j = listFiltersFullElementsWithNavigation.count
         }
         while i < j {
-            listFilters3.append(listFilters2[i])
+            listFiltersSliceElementsWithNavigation.append(listFiltersFullElementsWithNavigation[i])
             i = i + 1
         }
         
         
-        self.searchBarWish.scopeButtonTitles = listFilters3
+        self.searchBarWish.scopeButtonTitles = listFiltersSliceElementsWithNavigation
         
         if !currentSearchText.isEmpty {
             currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
