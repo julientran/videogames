@@ -16,7 +16,7 @@ class TabBarController: UITabBarController {
         var gvc : GameTableViewController  = self.childViewControllers[0].childViewControllers[0] as! GameTableViewController
         gvc.shareGames(sender)
     }
-    
+    var selectedScopeButtonName = ""
     var statut = "Collection"
     //var rightNavItems: [UIBarButtonItem]
     var addButton : UIBarButtonItem? = nil
@@ -73,6 +73,8 @@ class TabBarController: UITabBarController {
             let formVC = navVC?.viewControllers.first as! GameViewController
             formVC.listFilters = gvc.listFilters
             
+            selectedScopeButtonName = gvc.listFilters[((gvc.selectedScopeVar / 5) * 3 ) + gvc.searchBar.selectedScopeButtonIndex]
+            
             gvc.loadFirstScope()
             gvc.searchBar.selectedScopeButtonIndex = 0
             gvc.selectedScopeVar = 0
@@ -92,6 +94,9 @@ class TabBarController: UITabBarController {
             let formVC = navVC?.viewControllers.first as! WishViewController
             formVC.listFilters = wvc.listFilters
             
+            selectedScopeButtonName = wvc.listFilters[((wvc.selectedScopeVar / 5) * 3 ) + wvc.searchBarWish.selectedScopeButtonIndex]
+            
+            wvc.loadFirstScope()
             wvc.searchBarWish.selectedScopeButtonIndex = 0;
             wvc.selectedScopeVar = 0
             wvc.searchBarWish.text = ""

@@ -74,7 +74,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
             }
         }
         
-        listFilters = listFilters.sorted()
+        listFilters = listFilters.sorted{$0.localizedCompare($1) == .orderedAscending}
         listFilters.insert("All", at: 0)
         
         if listFilters.count == 1 {
@@ -434,6 +434,8 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         }
         let wishesPath = IndexPath(row: j, section: 0)
         
+        let selectedScopeButtonName = listFilters[((selectedScopeVar / 5) * 3 ) + searchBarWish.selectedScopeButtonIndex]
+        
         wishes.remove(at: wishesPath.row)
         listFilters = []
         setUpSearchBar()
@@ -444,6 +446,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
         currentSearchText = ""
         currentWishesArray = wishes.sorted()
         saveWishes()
+        loadContextAfterDelete(selectedScopeButtonName: selectedScopeButtonName)
         tableWish.reloadData()
     }
     
@@ -496,11 +499,82 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                 }
                 // Save the wishes.
                 saveWishes()
+                loadContextAfterAdd()
             }
         }
     }
     
     // MARK: NSCoding
+    
+    func loadContextAfterDelete(selectedScopeButtonName : String) {
+        if(listFilters2.index(of: selectedScopeButtonName) != nil && selectedScopeButtonName != "All") {
+            let index : Int = listFilters2.index(of: selectedScopeButtonName)!
+            
+            selectedScopeVar = (index/5)*5
+            searchBarWish.selectedScopeButtonIndex = index - (index/5)*5
+            
+            listFilters3 = []
+            var i = selectedScopeVar
+            var j = i + 5
+            if (j > listFilters2.count) {
+                j = listFilters2.count
+            }
+            while i < j {
+                listFilters3.append(listFilters2[i])
+                i = i + 1
+            }
+            
+            
+            self.searchBarWish.scopeButtonTitles = listFilters3
+            
+            if !currentSearchText.isEmpty {
+                currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
+            } else {
+                currentWishesArray = wishes.sorted()
+            }
+            currentWishesArray = currentWishesArray.filter({ game -> Bool in game.platform == selectedScopeButtonName
+            })
+            
+            tableWish.reloadData()
+        }
+        
+    }
+    
+    func loadContextAfterAdd() {
+        
+        let tbc = self.parent?.parent as! TabBarController
+                if(tbc.selectedScopeButtonName != "All"){
+        let index : Int = listFilters2.index(of: tbc.selectedScopeButtonName)!
+        
+        selectedScopeVar = (index/5)*5
+        searchBarWish.selectedScopeButtonIndex = index - (index/5)*5
+        
+        listFilters3 = []
+        var i = selectedScopeVar
+        var j = i + 5
+        if (j > listFilters2.count) {
+            j = listFilters2.count
+        }
+        while i < j {
+            listFilters3.append(listFilters2[i])
+            i = i + 1
+        }
+        
+        
+        self.searchBarWish.scopeButtonTitles = listFilters3
+        
+        if !currentSearchText.isEmpty {
+            currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
+        } else {
+            currentWishesArray = wishes.sorted()
+        }
+        currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == tbc.selectedScopeButtonName
+        })
+        
+        tableWish.reloadData()
+        }
+        
+    }
     
     func saveWishes() {
         setUpSearchBar()

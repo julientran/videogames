@@ -186,7 +186,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             }
         }
         
-        listFilters = listFilters.sorted()
+        listFilters = listFilters.sorted{$0.localizedCompare($1) == .orderedAscending}
         listFilters.insert("All", at: 0)
         
         if listFilters.count == 1 {
@@ -198,7 +198,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         }
         
         searchBar.setScopeBarButtonTitleTextAttributes([NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-Medium", size: 10.0)!], for: .normal)
-
+        
         searchBar.delegate = self
         self.searchBar.isTranslucent = false
         self.searchBar.backgroundImage = UIImage()
@@ -492,6 +492,8 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             }
             let gamesPath = IndexPath(row: j, section: 0)
             
+            let selectedScopeButtonName = listFilters[((selectedScopeVar / 5) * 3 ) + searchBar.selectedScopeButtonIndex]
+            
             games.remove(at: gamesPath.row)
             listFilters = []
             setUpSearchBar()
@@ -502,6 +504,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             currentSearchText = ""
             currentGamesArray = games.sorted()
             saveGames()
+            loadContextAfterDelete(selectedScopeButtonName: selectedScopeButtonName)
             table.reloadData()
             
         } else if editingStyle == .insert {
@@ -592,10 +595,82 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             }
             // Save the games.
             saveGames()
+            loadContextAfterAdd()
         }
     }
     
     // MARK: NSCoding
+    
+    func loadContextAfterDelete(selectedScopeButtonName : String) {
+        if(listFilters2.index(of: selectedScopeButtonName) != nil && selectedScopeButtonName != "All") {
+            let index : Int = listFilters2.index(of: selectedScopeButtonName)!
+            
+            selectedScopeVar = (index/5)*5
+            searchBar.selectedScopeButtonIndex = index - (index/5)*5
+            
+            listFilters3 = []
+            var i = selectedScopeVar
+            var j = i + 5
+            if (j > listFilters2.count) {
+                j = listFilters2.count
+            }
+            while i < j {
+                listFilters3.append(listFilters2[i])
+                i = i + 1
+            }
+            
+            
+            self.searchBar.scopeButtonTitles = listFilters3
+            
+            if !currentSearchText.isEmpty {
+                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+            } else {
+                currentGamesArray = games.sorted()
+            }
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == selectedScopeButtonName
+            })
+            
+            table.reloadData()
+        }
+        
+    }
+    
+    func loadContextAfterAdd() {
+        
+        let tbc = self.parent?.parent as! TabBarController
+        if(tbc.selectedScopeButtonName != "All"){
+            
+            let index : Int = listFilters2.index(of: tbc.selectedScopeButtonName)!
+            
+            selectedScopeVar = (index/5)*5
+            searchBar.selectedScopeButtonIndex = index - (index/5)*5
+            
+            listFilters3 = []
+            var i = selectedScopeVar
+            var j = i + 5
+            if (j > listFilters2.count) {
+                j = listFilters2.count
+            }
+            while i < j {
+                listFilters3.append(listFilters2[i])
+                i = i + 1
+            }
+            
+            
+            self.searchBar.scopeButtonTitles = listFilters3
+            
+            if !currentSearchText.isEmpty {
+                currentGamesArray = filterGames(gamesForFilter: games, searchTextForFilter: currentSearchText)
+            } else {
+                currentGamesArray = games.sorted()
+            }
+            currentGamesArray = currentGamesArray.filter({ game -> Bool in game.platform == tbc.selectedScopeButtonName
+            })
+            
+            table.reloadData()
+        }
+        
+    }
     
     func saveGames() {
         setUpSearchBar()
