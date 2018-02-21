@@ -19,6 +19,9 @@
 		8360BD64203214E3007423F3 /* WishTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360BD63203214E3007423F3 /* WishTableViewController.swift */; };
 		8360BD66203214F2007423F3 /* WishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360BD65203214F2007423F3 /* WishTableViewCell.swift */; };
 		8360BD6820321845007423F3 /* WishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360BD6720321845007423F3 /* WishViewController.swift */; };
+		83800AEA203CCAEA00D3A713 /* MembershipTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83800AE9203CCAEA00D3A713 /* MembershipTableViewController.swift */; };
+		83800AEC203CD95200D3A713 /* GameMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83800AEB203CD95200D3A713 /* GameMember.swift */; };
+		83800AEE203CDAEA00D3A713 /* GameMemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83800AED203CDAEA00D3A713 /* GameMemberTableViewCell.swift */; };
 		AC746C571CC3E5AF00555E6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC746C561CC3E5AF00555E6D /* AppDelegate.swift */; };
 		AC746C591CC3E5AF00555E6D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC746C581CC3E5AF00555E6D /* GameViewController.swift */; };
 		AC746C5C1CC3E5B000555E6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC746C5A1CC3E5B000555E6D /* Main.storyboard */; };
@@ -58,6 +61,9 @@
 		8360BD63203214E3007423F3 /* WishTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishTableViewController.swift; sourceTree = "<group>"; };
 		8360BD65203214F2007423F3 /* WishTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishTableViewCell.swift; sourceTree = "<group>"; };
 		8360BD6720321845007423F3 /* WishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishViewController.swift; sourceTree = "<group>"; };
+		83800AE9203CCAEA00D3A713 /* MembershipTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipTableViewController.swift; sourceTree = "<group>"; };
+		83800AEB203CD95200D3A713 /* GameMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMember.swift; sourceTree = "<group>"; };
+		83800AED203CDAEA00D3A713 /* GameMemberTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMemberTableViewCell.swift; sourceTree = "<group>"; };
 		AC746C531CC3E5AD00555E6D /* GameTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC746C561CC3E5AF00555E6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC746C581CC3E5AF00555E6D /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -146,10 +152,13 @@
 				8360BD6720321845007423F3 /* WishViewController.swift */,
 				AC9B9EF91CCD0276004DF7B5 /* Game.swift */,
 				8360BD612031F434007423F3 /* Wish.swift */,
+				83800AEB203CD95200D3A713 /* GameMember.swift */,
 				AC746C5A1CC3E5B000555E6D /* Main.storyboard */,
+				83800AE9203CCAEA00D3A713 /* MembershipTableViewController.swift */,
 				833914352030A05E00A96ACC /* TabBarController.swift */,
 				AC9B9EFC1CCD20B4004DF7B5 /* GameTableViewCell.swift */,
 				8360BD65203214F2007423F3 /* WishTableViewCell.swift */,
+				83800AED203CDAEA00D3A713 /* GameMemberTableViewCell.swift */,
 				AC9B9EFE1CCD2F09004DF7B5 /* GameTableViewController.swift */,
 				8360BD63203214E3007423F3 /* WishTableViewController.swift */,
 				AC746C5D1CC3E5B000555E6D /* Assets.xcassets */,
@@ -389,10 +398,13 @@
 				8360BD622031F434007423F3 /* Wish.swift in Sources */,
 				AC9B9EFA1CCD0276004DF7B5 /* Game.swift in Sources */,
 				AC746C591CC3E5AF00555E6D /* GameViewController.swift in Sources */,
+				83800AEA203CCAEA00D3A713 /* MembershipTableViewController.swift in Sources */,
 				8360BD64203214E3007423F3 /* WishTableViewController.swift in Sources */,
 				8360BD6820321845007423F3 /* WishViewController.swift in Sources */,
 				AC746C571CC3E5AF00555E6D /* AppDelegate.swift in Sources */,
+				83800AEE203CDAEA00D3A713 /* GameMemberTableViewCell.swift in Sources */,
 				833914362030A05E00A96ACC /* TabBarController.swift in Sources */,
+				83800AEC203CD95200D3A713 /* GameMember.swift in Sources */,
 				AC9B9EFF1CCD2F09004DF7B5 /* GameTableViewController.swift in Sources */,
 				AC9B9EFD1CCD20B4004DF7B5 /* GameTableViewCell.swift in Sources */,
 			);

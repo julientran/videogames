@@ -358,6 +358,11 @@
                                     <segue destination="NgH-WA-yM6" kind="presentation" identifier="AddItemWish" id="zNv-DM-sNd"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem title="Item" image="reload" style="plain" id="v5A-Zt-FuG" userLabel="Check Update Button">
+                                <connections>
+                                    <action selector="refresh:" destination="k5M-RS-imZ" id="tNH-JJ-dbi"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cgK-JC-sU9">
@@ -369,8 +374,10 @@
                     <connections>
                         <outlet property="AddGameButton" destination="Q51-9b-aDU" id="aYi-5f-PeG"/>
                         <outlet property="AddWishButton" destination="KLs-JI-HQR" id="M07-ug-xMK"/>
+                        <outlet property="CheckUpdateButton" destination="v5A-Zt-FuG" id="c6n-BI-yyk"/>
                         <segue destination="KcL-nM-L3F" kind="relationship" relationship="viewControllers" id="8X8-H2-Hfx"/>
                         <segue destination="WHh-VW-XnZ" kind="relationship" relationship="viewControllers" id="3DR-gx-w3L"/>
+                        <segue destination="fuS-4S-m4H" kind="relationship" relationship="viewControllers" id="V8D-rS-YKw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSl-tY-USP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -689,6 +696,104 @@
             </objects>
             <point key="canvasLocation" x="1748" y="1232"/>
         </scene>
+        <!--Your Membership-->
+        <scene sceneID="BzV-IY-CmN">
+            <objects>
+                <tableViewController id="fuS-4S-m4H" userLabel="Your Membership" customClass="MembershipTableViewController" customModule="GameTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="faf-CG-bOW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.40784313729999999" green="0.40784313729999999" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="                                                                                     " showsScopeBar="YES" id="vE1-EV-mt0">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.89411764709999997" green="0.094117647060000004" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="barTintColor" red="0.89411764709999997" green="0.094117647060000004" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GameMemberTableViewCell" rowHeight="90" id="EZN-Hk-7Ob" userLabel="GameMemberTableViewCell" customClass="GameMemberTableViewCell" customModule="GameTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="84" width="375" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EZN-Hk-7Ob" id="xHU-jJ-ZFE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7x-8W-SP4">
+                                            <rect key="frame" x="87" y="8" width="280" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Cover" translatesAutoresizingMaskIntoConstraints="NO" id="ZXL-U3-xjf">
+                                            <rect key="frame" x="0.0" y="0.0" width="71" height="89"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVb-ZR-jeJ">
+                                            <rect key="frame" x="87" y="47" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.40784313729999999" green="0.40784313729999999" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zld-l2-Ucp">
+                                            <rect key="frame" x="130" y="47" width="237" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.40784313729999999" green="0.40784313729999999" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdb-UX-Mic" userLabel="Idgamemember Label">
+                                            <rect key="frame" x="87" y="60" width="161" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="5"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qis-7n-Wqq">
+                                            <rect key="frame" x="87" y="34" width="133" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.40784313729999999" green="0.40784313729999999" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="idgamememberLabel" destination="cdb-UX-Mic" id="lIt-LP-2lg"/>
+                                    <outlet property="nameLabel" destination="j7x-8W-SP4" id="9fr-ee-RbJ"/>
+                                    <outlet property="photoImageView" destination="ZXL-U3-xjf" id="MNu-8F-f5u"/>
+                                    <outlet property="platformLabel" destination="MVb-ZR-jeJ" id="jzt-cr-thI"/>
+                                    <outlet property="publisherLabel" destination="Zld-l2-Ucp" id="011-qt-dKA"/>
+                                    <outlet property="releasedateLabel" destination="qis-7n-Wqq" id="xib-ld-Z4l"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Membership" image="psplus" id="zW2-aa-Zqr"/>
+                    <navigationItem key="navigationItem" title="Your Games" id="6Fq-vC-rpj">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="nly-hr-8Y7"/>
+                            <barButtonItem image="Share" id="ZR5-Qk-mtu"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBarMembership" destination="vE1-EV-mt0" id="lzX-uX-Cbg"/>
+                        <outlet property="tableMembership" destination="faf-CG-bOW" id="4LD-fn-UYV"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xI8-sZ-MzU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="114" y="-1"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Barecode" width="30" height="27"/>
@@ -698,11 +803,13 @@
         <image name="Present" width="24" height="24"/>
         <image name="Share" width="24" height="24"/>
         <image name="Wishlist" width="32" height="32"/>
+        <image name="psplus" width="32" height="32"/>
+        <image name="reload" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cDw-sn-Qlu"/>
         <segue reference="HEb-43-T1x"/>
-        <segue reference="pdd-Hm-wVE"/>
+        <segue reference="urB-LJ-jCU"/>
         <segue reference="3ke-Sz-fwh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

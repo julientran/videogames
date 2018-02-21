@@ -9,11 +9,15 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    @IBAction func refresh(_ sender: Any) {
+        let mvc : MembershipTableViewController  = self.childViewControllers[2] as! MembershipTableViewController
+        mvc.checkUpdateGamesList()
+    }
     @IBOutlet weak var AddWishButton: UIBarButtonItem!
-    
+    @IBOutlet weak var CheckUpdateButton: UIBarButtonItem!
     @IBOutlet weak var AddGameButton: UIBarButtonItem!
     @IBAction func shareTBAction(_ sender: Any) {
-        var gvc : GameTableViewController  = self.childViewControllers[0].childViewControllers[0] as! GameTableViewController
+        let gvc : GameTableViewController  = self.childViewControllers[0].childViewControllers[0] as! GameTableViewController
         gvc.shareGames(sender)
     }
     var selectedScopeButtonName = ""
@@ -21,6 +25,7 @@ class TabBarController: UITabBarController {
     //var rightNavItems: [UIBarButtonItem]
     var addButton : UIBarButtonItem? = nil
     var wishButton : UIBarButtonItem? = nil
+    var refreshButton : UIBarButtonItem? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +41,7 @@ class TabBarController: UITabBarController {
         
         addButton = AddGameButton
         wishButton = AddWishButton
+        refreshButton = CheckUpdateButton
         
         navigationItem.setRightBarButtonItems(nil, animated: true)
         navigationItem.setRightBarButtonItems([addButton!], animated: true)
@@ -56,6 +62,13 @@ class TabBarController: UITabBarController {
                 var rightNavItems: [UIBarButtonItem]! = []
                 rightNavItems.append(AddWishButton)
                 navigationItem.setRightBarButtonItems([wishButton!], animated: true)
+            } else {
+                if(item.title == "Membership") {
+                    var rightNavItems: [UIBarButtonItem]! = []
+                    rightNavItems.append(CheckUpdateButton)
+                    navigationItem.setRightBarButtonItems([refreshButton!], animated: true)
+                }
+                
             }
         }
     }
