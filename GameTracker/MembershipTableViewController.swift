@@ -538,7 +538,7 @@ class MembershipTableViewController: UITableViewController, UISearchBarDelegate 
                         dateFormatter.dateStyle = .medium
                         dateFormatter.timeStyle = .none
                         
-                        let gameMember1 = GameMember(idgamemember: "idnil", name: String(titles[i]).replacingHTMLEntities!, photo: photo, platform: String(platforms[i]), publisher: "", releasedate: dateFormatter.string(from: Date()))
+                        let gameMember1 = GameMember(idgamemember: UUID().uuidString, name: String(titles[i]).replacingHTMLEntities!, photo: photo, platform: String(platforms[i]), publisher: "", releasedate: dateFormatter.string(from: Date()))
                         gamesMember += [gameMember1]
                         
                         currentGamesMemberArray = gamesMember.sorted()

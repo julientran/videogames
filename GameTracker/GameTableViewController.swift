@@ -130,8 +130,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         
         var arrayOfWhises = [[String]]()
         let tbc = self.parent?.parent as! TabBarController
-        print(tbc.statut)
-        
+
         //HACK load WishTableViewController with simulate click on tab
         tbc.selectedIndex = 1
         tbc.selectedIndex = 0
@@ -144,9 +143,26 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
             arrayOfWhises.append([wish.idwish, wish.name, strBase64, wish.publisher, wish.platform, wish.releasedate, String(wish.buy)])
         }
         
+        //Retrieve PSPlus Membership
+        
+        var arrayOfFreeGames = [[String]]()
+
+        //HACK load GameMemberTableViewController with simulate click on tab
+        tbc.selectedIndex = 2
+        tbc.selectedIndex = 0
+        
+        let gmvc : MembershipTableViewController  = tbc.childViewControllers[2] as! MembershipTableViewController
+        
+        for gameMember in gmvc.gamesMember {
+            let imageData:NSData = UIImagePNGRepresentation(gameMember.photo!)! as NSData
+            let strBase64 = imageData.base64EncodedString()
+            arrayOfFreeGames.append([gameMember.idgamemember, gameMember.name, strBase64, gameMember.publisher, gameMember.platform, gameMember.releasedate])
+        }
+        
         var backupArray = [[[String]]]()
         backupArray.append(arrayOfGames)
         backupArray.append(arrayOfWhises)
+        backupArray.append(arrayOfFreeGames)
         
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date
@@ -156,7 +172,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
         // convert your string to date
         let yourDate = formatter.date(from: myString)
         //then again set the date format whhich type of output you need
-        formatter.dateFormat = "dd-MMM-yyyy"
+        formatter.dateFormat = "dd-MMM-yyyy--hh:mm"
         // again convert your date to string
         let myStringafd = formatter.string(from: yourDate!)
         

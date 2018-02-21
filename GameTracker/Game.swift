@@ -135,6 +135,7 @@ class Game: Codable, Comparable, CustomStringConvertible {
         }
         let games = gamesAndwishes[0]
         let wishes = gamesAndwishes[1]
+        let freeGames = gamesAndwishes[2]
         
         var tempGames = [Game]()
         
@@ -173,6 +174,27 @@ class Game: Codable, Comparable, CustomStringConvertible {
         } catch {
             print("Save Failed")
         }
+        
+        
+        var tempFreeGames = [GameMember]()
+        
+        for freeGameElements in freeGames {
+            //base64 string to NSData
+            let decodedData = NSData(base64Encoded: freeGameElements[2])
+            //NSData to UIImage
+            let decodedIamge = UIImage(data: decodedData! as Data)
+            let tempFreeGame = GameMember(idgamemember: freeGameElements[0], name: freeGameElements[1], photo: decodedIamge, platform: freeGameElements[4], publisher: freeGameElements[3], releasedate: freeGameElements[5])
+            tempFreeGames += [tempFreeGame]
+        }
+        do {
+            let data = try PropertyListEncoder().encode(tempFreeGames)
+            let success = NSKeyedArchiver.archiveRootObject(data, toFile: GameMember.ArchiveURL.path)
+            print(success ? "Successful save" : "Save Failed")
+        } catch {
+            print("Save Failed")
+        }
+        
+        
     }
     
     static func ==(lhs: Game, rhs: Game) -> Bool {
