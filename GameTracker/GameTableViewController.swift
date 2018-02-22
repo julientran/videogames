@@ -631,6 +631,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
                     self.tableView.scrollToRow(at: gamesPath,at: .middle, animated: true) //here .middle is the scroll position can change it as per your need
                 }
             }
+            tbc.selectedScopeButtonName = ""
         }
     }
     

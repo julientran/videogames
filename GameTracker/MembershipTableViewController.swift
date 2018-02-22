@@ -481,7 +481,6 @@ class MembershipTableViewController: UITableViewController, UISearchBarDelegate 
             
             tableMembership.reloadData()
         }
-        
     }
     
     func saveGamesMember() {

@@ -473,7 +473,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
             if (tbc.selectedScopeButtonName == ""){
                 tbc.selectedScopeButtonName = listFilters[((selectedScopeVar / 5) * 3 ) + searchBarWish.selectedScopeButtonIndex]
             }
-                
+            
             var j = 0
             if let sourceViewController = sender.source as? WishViewController, let wish = sourceViewController.wish {
                 if tableView.indexPathForSelectedRow != nil {
@@ -521,6 +521,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
                         self.tableView.scrollToRow(at: wishesPath,at: .middle, animated: true) //here .middle is the scroll position can change it as per your need
                     }
                 }
+                tbc.selectedScopeButtonName = ""
             }
         }
     }
@@ -564,37 +565,36 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
     func loadContextAfterAdd() {
         
         let tbc = self.parent?.parent as! TabBarController
-                if(tbc.selectedScopeButtonName != "All" && tbc.selectedScopeButtonName != ""){
-        let index : Int = listFiltersFullElementsWithNavigation.index(of: tbc.selectedScopeButtonName)!
-        
-        selectedScopeVar = (index/5)*5
-        searchBarWish.selectedScopeButtonIndex = index - (index/5)*5
-        
-        listFiltersSliceElementsWithNavigation = []
-        var i = selectedScopeVar
-        var j = i + 5
-        if (j > listFiltersFullElementsWithNavigation.count) {
-            j = listFiltersFullElementsWithNavigation.count
+        if(tbc.selectedScopeButtonName != "All" && tbc.selectedScopeButtonName != ""){
+            let index : Int = listFiltersFullElementsWithNavigation.index(of: tbc.selectedScopeButtonName)!
+            
+            selectedScopeVar = (index/5)*5
+            searchBarWish.selectedScopeButtonIndex = index - (index/5)*5
+            
+            listFiltersSliceElementsWithNavigation = []
+            var i = selectedScopeVar
+            var j = i + 5
+            if (j > listFiltersFullElementsWithNavigation.count) {
+                j = listFiltersFullElementsWithNavigation.count
+            }
+            while i < j {
+                listFiltersSliceElementsWithNavigation.append(listFiltersFullElementsWithNavigation[i])
+                i = i + 1
+            }
+            
+            
+            self.searchBarWish.scopeButtonTitles = listFiltersSliceElementsWithNavigation
+            
+            if !currentSearchText.isEmpty {
+                currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
+            } else {
+                currentWishesArray = wishes.sorted()
+            }
+            currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == tbc.selectedScopeButtonName
+            })
+            
+            tableWish.reloadData()
         }
-        while i < j {
-            listFiltersSliceElementsWithNavigation.append(listFiltersFullElementsWithNavigation[i])
-            i = i + 1
-        }
-        
-        
-        self.searchBarWish.scopeButtonTitles = listFiltersSliceElementsWithNavigation
-        
-        if !currentSearchText.isEmpty {
-            currentWishesArray = filterWishes(wishesForFilter: wishes, searchTextForFilter: currentSearchText)
-        } else {
-            currentWishesArray = wishes.sorted()
-        }
-        currentWishesArray = currentWishesArray.filter({ wish -> Bool in wish.platform == tbc.selectedScopeButtonName
-        })
-        
-        tableWish.reloadData()
-        }
-        
     }
     
     func saveWishes() {
