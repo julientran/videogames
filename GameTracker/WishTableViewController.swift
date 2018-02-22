@@ -468,6 +468,12 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
             
             
         } else {
+            
+            let tbc = self.parent?.parent as! TabBarController
+            if (tbc.selectedScopeButtonName == ""){
+                tbc.selectedScopeButtonName = listFilters[((selectedScopeVar / 5) * 3 ) + searchBarWish.selectedScopeButtonIndex]
+            }
+                
             var j = 0
             if let sourceViewController = sender.source as? WishViewController, let wish = sourceViewController.wish {
                 if tableView.indexPathForSelectedRow != nil {
@@ -558,7 +564,7 @@ class WishTableViewController: UITableViewController, UISearchBarDelegate{
     func loadContextAfterAdd() {
         
         let tbc = self.parent?.parent as! TabBarController
-                if(tbc.selectedScopeButtonName != "All"){
+                if(tbc.selectedScopeButtonName != "All" && tbc.selectedScopeButtonName != ""){
         let index : Int = listFiltersFullElementsWithNavigation.index(of: tbc.selectedScopeButtonName)!
         
         selectedScopeVar = (index/5)*5

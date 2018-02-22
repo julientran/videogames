@@ -577,6 +577,10 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     // MARK: Actions
     
     @IBAction func unwindToGameList(_ sender: UIStoryboardSegue) {
+        let tbc = self.parent?.parent as! TabBarController
+        if (tbc.selectedScopeButtonName == ""){
+            tbc.selectedScopeButtonName = listFilters[((selectedScopeVar / 5) * 3 ) + searchBar.selectedScopeButtonIndex]
+        }
         
         var j = 0
         if let sourceViewController = sender.source as? GameViewController, let game = sourceViewController.game {
@@ -669,7 +673,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     func loadContextAfterAdd() {
 
         let tbc = self.parent?.parent as! TabBarController
-        if(tbc.selectedScopeButtonName != "All"){
+        if(tbc.selectedScopeButtonName != "All" && tbc.selectedScopeButtonName != ""){
             
             let index : Int = listFiltersFullElementsWithNavigation.index(of: tbc.selectedScopeButtonName)!
             

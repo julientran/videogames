@@ -451,7 +451,7 @@ class MembershipTableViewController: UITableViewController, UISearchBarDelegate 
     func loadContextAfterAdd() {
         
         let tbc = self.parent?.parent as! TabBarController
-        if(tbc.selectedScopeButtonName != "All"){
+        if(tbc.selectedScopeButtonName != "All" && tbc.selectedScopeButtonName != ""){
             let index : Int = listFiltersFullElementsWithNavigation.index(of: tbc.selectedScopeButtonName)!
             
             selectedScopeVar = (index/5)*5
