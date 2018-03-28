@@ -73,7 +73,7 @@ class GameTableViewController: UITableViewController, UISearchBarDelegate{
     
     func changeToBuy(wish : Wish){
         
-        let game1 = Game(idgame: UUID().uuidString, name: wish.name, photo: wish.photo, dord: 1, platform: wish.platform, done: false, publisher: wish.publisher)
+        let game1 = Game(idgame: UUID().uuidString, name: wish.name, photo: wish.photo, dord: 0, platform: wish.platform, done: false, publisher: wish.publisher)
         games += [game1]
         currentGamesArray = games.sorted()
         saveGames()
