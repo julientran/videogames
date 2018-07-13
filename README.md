@@ -1,6 +1,7 @@
 # GameTracker
 
 ![alt text](https://raw.githubusercontent.com/julientran/videogames/master/screenshot/screenshot0.png =100x)
+<img src="https://raw.githubusercontent.com/julientran/videogames/master/screenshot/screenshot0.png" width="200" />
 ![alt text](https://raw.githubusercontent.com/julientran/videogames/master/screenshot/screenshot1.png =100x)
 ![alt text](https://raw.githubusercontent.com/julientran/videogames/master/screenshot/screenshot2.png =100x)
 ![alt text](https://raw.githubusercontent.com/julientran/videogames/master/screenshot/screenshot3.png =100x)
