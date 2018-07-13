@@ -7,6 +7,8 @@
 <img src="https://raw.githubusercontent.com/julientran/videogames/master/screenshot/screenshot3.png" width="200" />
 <img src="https://raw.githubusercontent.com/julientran/videogames/master/screenshot/screenshot4.png" width="200" />
 <img src="https://raw.githubusercontent.com/julientran/videogames/master/screenshot/screenshot5.png" width="200" />
+<img src="https://raw.githubusercontent.com/julientran/videogames/master/screenshot/screenshot6.png" width="200" />
+<img src="https://raw.githubusercontent.com/julientran/videogames/master/screenshot/screenshot7.png" width="200" />
 </div>
 iOS Developer Library: [Start Developing iOS Apps (Swift)](https://developer.apple.com/library/ios/referencelibrary/GettingStarted/DevelopiOSAppsSwift/)
 
