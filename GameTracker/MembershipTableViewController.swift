@@ -509,43 +509,47 @@ class MembershipTableViewController: UITableViewController, UISearchBarDelegate 
             let itemListURL = URL(string: "https://store.playstation.com/fr-fr/grid/STORE-" + urlGames + "-PLUSINSTANTGAME/1")!
             let itemListHTML = try! String(contentsOf: itemListURL, encoding: .utf8)
             print(itemListURL)
-            let titles = itemListHTML.slices(from: "<div class=\"grid-cell__title \">", to: "</div>")
+            print(itemListHTML.slices(from: "<div class=\"grid-cell__title\">", to: "</div>"))
+            let titles = itemListHTML.slices(from: "<span title=\"", to: "</span>")
+    
             let photos = itemListHTML.slices(from: "<img src=\"", to: "\" srcset=\"")
-            let platforms = itemListHTML.slices(from: "<span class=\"grid-cell__platforms\">", to: "</span>")
+            let platforms = itemListHTML.slices(from: "<div class=\"grid-cell__left-detail grid-cell__left-detail--detail-1\">", to: "</div>")
             
             var i = 0
             var newOne = true
             for result in photos {
-                if(!(titles[i].lowercased().contains("playstation"))){
-                    newOne = true
-                    let url = URL(string: String(result))
-                    let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-                    var photo: UIImage? = UIImage(named: "Cover")!
-                    if (data != nil) {
-                        photo = UIImage(data: data!)
-                    }
-                    
-                    
-                    for currentGame in currentGamesMemberArray {
-                        if(currentGame.name == String(titles[i]).replacingHTMLEntities!  && currentGame.platform == String(platforms[i])) {
-                            newOne = false
+                if(titles.count>0){
+                    if(!(titles[i].lowercased().contains("playstation"))){
+                        newOne = true
+                        let url = URL(string: String(result))
+                        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                        var photo: UIImage? = UIImage(named: "Cover")!
+                        if (data != nil) {
+                            photo = UIImage(data: data!)
                         }
-                    }
-                    
-                    if(newOne) {
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateStyle = .medium
-                        dateFormatter.timeStyle = .none
                         
-                        let gameMember1 = GameMember(idgamemember: UUID().uuidString, name: String(titles[i]).replacingHTMLEntities!, photo: photo, platform: String(platforms[i]), publisher: "", releasedate: dateFormatter.string(from: Date()))
-                        gamesMember += [gameMember1]
                         
-                        currentGamesMemberArray = gamesMember.sorted()
-                        saveGamesMember()
-                        tableMembership.reloadData()
-                        printGamesMember()
+                        for currentGame in currentGamesMemberArray {
+                            if(currentGame.name == String(titles[i].split(separator: ">")[1]).replacingHTMLEntities! && currentGame.platform == String(platforms[i])) {
+                                newOne = false
+                            }
+                        }
+                        
+                        if(newOne) {
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateStyle = .medium
+                            dateFormatter.timeStyle = .none
+                            
+                            let gameMember1 = GameMember(idgamemember: UUID().uuidString, name: String(titles[i].split(separator: ">")[1]).replacingHTMLEntities!, photo: photo, platform: String(platforms[i]), publisher: "", releasedate: dateFormatter.string(from: Date()))
+                            gamesMember += [gameMember1]
+                            
+                            currentGamesMemberArray = gamesMember.sorted()
+                            saveGamesMember()
+                            tableMembership.reloadData()
+                            printGamesMember()
+                        }
+                        
                     }
-                    
                 }
                 i += 1
             }
