@@ -100,6 +100,8 @@ class Wish: Codable, Comparable, CustomStringConvertible {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "fr_FR")
+        dateFormatter.dateFormat = "dd MM yyyy"
         
         var component      = DateComponents()
         component.calendar = Calendar.current
@@ -111,10 +113,10 @@ class Wish: Codable, Comparable, CustomStringConvertible {
         var daterhs : Date = component.date!
         
         if lhs.releasedate != "" {
-            datelhs = dateFormatter.date(from: lhs.releasedate) ?? datelhs
+            datelhs = dateFormatter.date(from: lhs.releasedate)!
         }
         if rhs.releasedate != ""{
-            daterhs = dateFormatter.date(from: rhs.releasedate) ?? daterhs
+            daterhs = dateFormatter.date(from: rhs.releasedate)!
         }
         
         return datelhs < daterhs
