@@ -111,10 +111,10 @@ class Wish: Codable, Comparable, CustomStringConvertible {
         var daterhs : Date = component.date!
         
         if lhs.releasedate != "" {
-            datelhs = dateFormatter.date(from: lhs.releasedate)!
+            datelhs = dateFormatter.date(from: lhs.releasedate) ?? datelhs
         }
         if rhs.releasedate != ""{
-            daterhs = dateFormatter.date(from: rhs.releasedate)!
+            daterhs = dateFormatter.date(from: rhs.releasedate) ?? daterhs
         }
         
         return datelhs < daterhs

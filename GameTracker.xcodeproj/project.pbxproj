@@ -229,7 +229,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "Mario Ban";
+				ORGANIZATIONNAME = "Julien TRAN";
 				TargetAttributes = {
 					AC746C521CC3E5AD00555E6D = {
 						CreatedOnToolsVersion = 7.3;
@@ -565,7 +565,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.julientran.VideoGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.0;
+				SDKROOT = iphoneos;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
@@ -583,7 +583,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.julientran.VideoGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos11.0;
+				SDKROOT = iphoneos;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
