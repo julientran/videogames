@@ -566,7 +566,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/GameTracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.julientran.VideoGames;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hbh.VideoGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -584,7 +584,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/GameTracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.julientran.VideoGames;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hbh.VideoGames;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -598,7 +598,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 7569B86UL2;
+				DEVELOPMENT_TEAM = 9FDKR46K8X;
 				INFOPLIST_FILE = GameTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.GameTrackerTests;
@@ -616,7 +616,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 7569B86UL2;
+				DEVELOPMENT_TEAM = 9FDKR46K8X;
 				INFOPLIST_FILE = GameTrackerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.GameTrackerTests;

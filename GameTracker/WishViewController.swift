@@ -108,6 +108,7 @@ class WishViewController: UIViewController, /* protocols */ UITextFieldDelegate,
     
     func createDatePicker() {
         datePicker.datePickerMode = .date
+        datePicker.locale = Locale.init(identifier: "fr_FR")
         datePicker.addTarget(self, action: #selector(self.datePickerValueChanged(datePicker:)), for: .valueChanged)
     }
     
@@ -131,6 +132,7 @@ class WishViewController: UIViewController, /* protocols */ UITextFieldDelegate,
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
+        dateFormatter.locale =  Locale(identifier: "fr_FR")
         
         releaseDateTextField.text = dateFormatter.string(from: Date())
         
@@ -145,6 +147,7 @@ class WishViewController: UIViewController, /* protocols */ UITextFieldDelegate,
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
+        dateFormatter.locale =  Locale(identifier: "fr_FR")
         
         releaseDateTextField.text = dateFormatter.string(from: datePicker.date)
         
