@@ -7,6 +7,7 @@ target 'GameTracker' do
 
   # Pods for VideoGames
   pod 'BarcodeScanner'
+  pod 'IGDBWrapper', git: "https://github.com/igdb/igdb-api-swift.git"
 
   target 'GameTrackerTests' do
     inherit! :search_paths

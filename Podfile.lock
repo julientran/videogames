@@ -1,12 +1,28 @@
 PODS:
   - BarcodeScanner (4.1.2)
+  - IGDBWrapper (0.3.1):
+    - IGDBWrapper/Structs (= 0.3.1)
+    - IGDBWrapper/Wrapper (= 0.3.1)
+  - IGDBWrapper/Structs (0.3.1)
+  - IGDBWrapper/Wrapper (0.3.1)
 
 DEPENDENCIES:
   - BarcodeScanner
+  - IGDBWrapper (from `https://github.com/igdb/igdb-api-swift.git`)
+
+EXTERNAL SOURCES:
+  IGDBWrapper:
+    :git: https://github.com/igdb/igdb-api-swift.git
+
+CHECKOUT OPTIONS:
+  IGDBWrapper:
+    :commit: bdc28fbf995a42b64f28f05d433e14689f910e1c
+    :git: https://github.com/igdb/igdb-api-swift.git
 
 SPEC CHECKSUMS:
   BarcodeScanner: 2dd7e54fd0c40d006f6a89b8bddd56e73e85c58d
+  IGDBWrapper: 8cc58d1597b20b470bc4d5731be5a14c4813de82
 
-PODFILE CHECKSUM: 3699316b66481fa8567ba6e3b8a20bbc94b774f8
+PODFILE CHECKSUM: cdbc3b24cf8012f39066d91de94fbdc258bb628b
 
 COCOAPODS: 1.4.0

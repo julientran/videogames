@@ -3,50 +3,86 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		126EEF8957E8D6D7DCC79D1ABB116B5E /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629873702BDFB9E21718A27C47B064C5 /* MessageViewController.swift */; };
-		24188445B2B585D3CDDD2F573D270DD5 /* BarcodeScanner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD1FE23D7628BB9282FC4D6A7C588BF /* BarcodeScanner-dummy.m */; };
-		33445FAFE5125FB63E5966AC8E91E329 /* TorchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B5237A9F53B1ADABB5D8A06BA3962F /* TorchMode.swift */; };
+		005E605662E4EA77A89BC8E152754227 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FE787C1A7FA965190D0991947657A6 /* APIError.swift */; };
+		008D60B15EC167921D8F3A1DF4A4630F /* Caracter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C0A9B71DEC64D0F03AD4629F28603F /* Caracter.swift */; };
+		0F2AB7A02DB3FA61CF36785C93260CC6 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B883FE2E3C00F2DA910BF2D4A3094 /* Genre.swift */; };
+		102B328F63BDE43BBF15D475E943A163 /* Pods-GameTracker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 24D6C942701D94178F7AF7F7BD1B4F18 /* Pods-GameTracker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		126EEF8957E8D6D7DCC79D1ABB116B5E /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D29A4C16BC1FB22863F29F938D8834 /* MessageViewController.swift */; };
+		1703383DEF64199BF5F0856285B4504A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB87367D9B5B48A3CBB2B5DFD7573959 /* Foundation.framework */; };
+		24188445B2B585D3CDDD2F573D270DD5 /* BarcodeScanner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CA570043ED710A2A10F4BA55B7CBEAF1 /* BarcodeScanner-dummy.m */; };
+		26B0B29CDA6A39AD9E9F689AD419B733 /* IGDBWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47FBA3CCA89F1286DB6608386B90A7F /* IGDBWrapper.swift */; };
+		277B6A7E7BF9FAB51F0B4A684EE42461 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10B261BDC42F0F45441CE49BE8C33CC /* Page.swift */; };
+		2F7C920DD96411E41AB2EBD7AAC93B06 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2AF3184BA9560160BFC5811F8B5A60 /* Person.swift */; };
+		32A9547BC81F5F0ECAF8552A08F6D6E2 /* Keyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1846B6C5EA0A72D6624C418D5C8AC79 /* Keyword.swift */; };
+		331059B61CA46755D1CC44877D7B7F0E /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA72A46764601F08204F517A1889B0D3 /* Platform.swift */; };
+		33445FAFE5125FB63E5966AC8E91E329 /* TorchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B207E655E9672B401619776323BBE /* TorchMode.swift */; };
+		3C84161466969716A685632905F2B2F4 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34BB48E4F4B03441E5E80D2BB20161 /* Parameters.swift */; };
 		46068AF2276C753C02488CC26F415369 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB87367D9B5B48A3CBB2B5DFD7573959 /* Foundation.framework */; };
-		5FD091164B8CDE3DA8093E3E9FDA95E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F1CAF28A3E811EEE9B985DA0CC15F7C /* Localizable.strings */; };
-		601A15B2AA9B39EB14DD7AC0ED6EB354 /* FocusViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDF35D8B92754AF0B405B815DC19329 /* FocusViewType.swift */; };
-		6264CE70056D8D9B08DCDAF03C3607A2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D60225F36C925B2FFA9405AFE40ED23 /* UIViewController+Extensions.swift */; };
-		64F0E6FFAF2B0DA39A84F3D5833BA336 /* BarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ACF5A9CB1FA63801BDA0434D3A9B459D /* BarcodeScanner.bundle */; };
+		50CA0944056C221372667B7304850502 /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B0D47FB8365AC3DC1C2E53EC294233 /* GameEngine.swift */; };
+		58C5DD11072419F4871920CA0FFEA40B /* ObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0A00471EEE79B6BC74F74E0CD2DA8 /* ObjectType.swift */; };
+		5FD091164B8CDE3DA8093E3E9FDA95E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB3255A955AF084D1CDE1AD456A58A23 /* Localizable.strings */; };
+		601A15B2AA9B39EB14DD7AC0ED6EB354 /* FocusViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A119586A79304ED77EA9DE0F214E375 /* FocusViewType.swift */; };
+		6264CE70056D8D9B08DCDAF03C3607A2 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5976C6E91EDA06DAA3CB2BBD2203577 /* UIViewController+Extensions.swift */; };
+		64F0E6FFAF2B0DA39A84F3D5833BA336 /* BarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A04390432DAFEFAFFF2D87BC5A479851 /* BarcodeScanner.bundle */; };
+		6637C013576B0BEA33E79EA60DF7A7F5 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED4F575EEC62AE6415E21CE7284F53 /* Game.swift */; };
+		698251AE1ED2EC93482178832A79CCAB /* PulseSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AC4D03FF543D6E8B0DFAA8627AF192 /* PulseSource.swift */; };
 		69EB412CE1201005EEDAD28867F3F147 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3A287BB87F4D3C474EC576926A0F89 /* AVFoundation.framework */; };
-		7DEBF203AF6520D5C001AB5E40BC58FF /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E84E218EC9FF58A197531944DE732AF /* NSLayoutConstraint+Extensions.swift */; };
+		6AC8D8843C86B8E50288FFC12BAD0998 /* IGDBWrapper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FB11C62FF091D2A7A44E1C2980E0FD4F /* IGDBWrapper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		711A540EA75C8092F43A38679F43DF04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB87367D9B5B48A3CBB2B5DFD7573959 /* Foundation.framework */; };
+		74F455D2D6F4420B215CB16CA5315BC8 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C773484D239E00EC5B9FF6D6E6F83F /* Enums.swift */; };
+		7DEBF203AF6520D5C001AB5E40BC58FF /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66CD8600E754B03D0A157F9D8FCAC39 /* NSLayoutConstraint+Extensions.swift */; };
+		80CEDEB3FBF5B069C8C9C824E62F51DF /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB9F15D7E226E2B3D56E13FB6454E2B /* Company.swift */; };
+		81B5E8EF98BD0E505EE39C7DC2F1E7E9 /* Pods-GameTracker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC315C13AA8086FFA4F978CBBFCEE9A /* Pods-GameTracker-dummy.m */; };
 		84C735080B910C2A8956F2D84F65EF46 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C4BD65EEF247D4C8A723C0F18B326C /* UIKit.framework */; };
-		8EF10657044DC151C6831F977B210925 /* BarcodeScanner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F35EA386BC989C9D64EF3C270664023 /* BarcodeScanner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		909A6AD6F6B5CA03F9967B2A15FDE8EB /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BFAE5FE3B73BB4C3C51A42EB566C3E /* State.swift */; };
-		933788228895A3C40B1A52C76C4317E4 /* Pods-GameTracker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC315C13AA8086FFA4F978CBBFCEE9A /* Pods-GameTracker-dummy.m */; };
-		94B7257D9E9495297065C139BD9DFF50 /* flashOn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C5141F27B478BA9EAFE1F5E8441137B /* flashOn@3x.png */; };
-		985EB884F14B7B2EFC40B8F78F3F1135 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F359A2CBDA196D52E4301D42F8854C9D /* UIView+Extensions.swift */; };
-		9F8C8EAD57BA98D9D0B89FB8E373CFA5 /* AVMetadataObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D54D3A2C1D3B8F95753712924FA98061 /* AVMetadataObject+Extensions.swift */; };
-		A280F8B2F6017283CA95885D9A055951 /* cameraRotate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7AE634635A29CC025A53EB77782888F /* cameraRotate@3x.png */; };
+		8AF9E28412AB5520E0B860C53BDC6DDC /* Credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCFF4E4C2D95266D117A218B2D6EAA /* Credit.swift */; };
+		8C3657B4F6715DBC9C8030483B854879 /* PulseGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E351A879B3F8DB0AA33BAFAE017F510F /* PulseGroup.swift */; };
+		8EF10657044DC151C6831F977B210925 /* BarcodeScanner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0109DCB806E5A9AF060D881BBB1232CC /* BarcodeScanner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		909A6AD6F6B5CA03F9967B2A15FDE8EB /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9BCB7EBBCA976D19D5111A2BA1B48AE /* State.swift */; };
+		94B7257D9E9495297065C139BD9DFF50 /* flashOn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6193B9A2969B6C2D12C7E9E30F6A485F /* flashOn@3x.png */; };
+		95029BF786DE7F99882A5955A1E9943F /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EB3CCCDDA37EA04184C9F73261AA0E /* Feed.swift */; };
+		985EB884F14B7B2EFC40B8F78F3F1135 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4B1D0D2B9C78E859552FFF89D0436E /* UIView+Extensions.swift */; };
+		98F79EBB5C38BF35026225CFED5D7422 /* Pulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB52A1C3E9CE212C313ACCFC79BF399D /* Pulse.swift */; };
+		9F8C8EAD57BA98D9D0B89FB8E373CFA5 /* AVMetadataObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F988DC54EC68D057A03D2BFC02F1929B /* AVMetadataObject+Extensions.swift */; };
+		9FEA864924A8A66B4FE32BFB5EE2CEC7 /* Franchise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176E6AB693F56FA6953F0FCE40950BA9 /* Franchise.swift */; };
+		A1CBA90F355A422C3D015EA558832AE2 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CC0080F8BCDFBD16C01FC3762608CA /* Review.swift */; };
+		A280F8B2F6017283CA95885D9A055951 /* cameraRotate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7622F6F86DF69E78F4E09A4159DD3F28 /* cameraRotate@3x.png */; };
 		A71E6388B1902696697CC20127D6B5E6 /* Pods-GameTrackerTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F6A806FD8907DBD6CF7D34F34C7BC59E /* Pods-GameTrackerTests-dummy.m */; };
 		A7FA60072F1C7AC0932EC3D69EB64EC3 /* Pods-GameTrackerTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 80BE3D49A5C672B9118432C1E6690F89 /* Pods-GameTrackerTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A89C9D745474BB1B92D173CE73B3FFEF /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17ACC577000FF0FC38FCF3EDC0E6A34 /* BarcodeScannerViewController.swift */; };
-		AF2B8864E7F088952AB0A1001A5C147F /* flashOff@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D61AE2DC425580BCB2734E348FA4206F /* flashOff@3x.png */; };
-		AF90B1DCC711C5720B5F3186E3F4C9CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB87367D9B5B48A3CBB2B5DFD7573959 /* Foundation.framework */; };
+		A89C9D745474BB1B92D173CE73B3FFEF /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D66BAE547F9A49B3CF231D80A24F85D /* BarcodeScannerViewController.swift */; };
+		A9AEFC53472C73CDC7E580C0BEC2F7BA /* IGDBWrapper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A16FB840324C4DC9E4E7E87CB0238BB2 /* IGDBWrapper-dummy.m */; };
+		AF2B8864E7F088952AB0A1001A5C147F /* flashOff@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0434F3E01298AE23277019DA082FFE82 /* flashOff@3x.png */; };
 		C1A025D03E65DB0666EECC4A253E12E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB87367D9B5B48A3CBB2B5DFD7573959 /* Foundation.framework */; };
-		D4F32D9E96FD7AED2E4BD88656AA9A02 /* VideoPermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3C0D9C35BE6335EF94E8E8B00D1B78 /* VideoPermissionService.swift */; };
-		D90972F1F436C0AC6BAA47B99D8F135C /* Pods-GameTracker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 24D6C942701D94178F7AF7F7BD1B4F18 /* Pods-GameTracker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DEC26C4ABDFE5D2D3CFC2B91054546C9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47F7E6ABE4F33C20BD5D6EFD23144BD /* Functions.swift */; };
-		EB3CA7BDB731E8B094D67535A4C1806A /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72601A6AEE9FFA1C7E3E87DCE69BD5D3 /* HeaderViewController.swift */; };
-		ECD9A5434C6A165E6A44EF5ACDC2BE1B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CA92F8D1C141B78D4A68543B8EACE8 /* CameraViewController.swift */; };
-		F14615DEB8A6E8C5EA0C969B6B6B59D7 /* info@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B25BE1A8D4830C64A53440CDF083DC /* info@3x.png */; };
-		F416D1124475754024091EC394221457 /* Localization.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1B6C8B3BCE4D7C7ACACB319B725059CF /* Localization.bundle */; };
+		D22A55B1F55A222E2770F08FEEF08DBD /* PlayerPerspective.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCEBDE755AF92B9D9A078752F6D3A1F /* PlayerPerspective.swift */; };
+		D4F32D9E96FD7AED2E4BD88656AA9A02 /* VideoPermissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7882F8595D34F551396A1F0B149BD960 /* VideoPermissionService.swift */; };
+		DEC26C4ABDFE5D2D3CFC2B91054546C9 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDFDA2E69892284BB45406D52C0F94F /* Functions.swift */; };
+		E9AEFFE5D8D5CAFAE346AD761C47EEEA /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E375C63D0D8C6C3D1592FB47F90FA /* GameMode.swift */; };
+		EB3CA7BDB731E8B094D67535A4C1806A /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2FB4398E16A1B025C6DB54C08FA661 /* HeaderViewController.swift */; };
+		ECD9A5434C6A165E6A44EF5ACDC2BE1B /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A8FFA3D66220C148C2DF9029CDD8CD /* CameraViewController.swift */; };
+		F04B5954ED4AE119BCD713F7327A7D33 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7560DCE5B83200569E279071135F84A2 /* Theme.swift */; };
+		F14615DEB8A6E8C5EA0C969B6B6B59D7 /* info@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03B30AA1AFC0100BFE57E8C493793EFC /* info@3x.png */; };
+		F416D1124475754024091EC394221457 /* Localization.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2BB7C4DCAF86D6B4DC0EFFAF354F90A7 /* Localization.bundle */; };
+		FBD73C3E029626BDAA96C891A2FD5A0A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982A70B45169993EF1D30B05258EB508 /* Collection.swift */; };
+		FDBBF2037EC0BAD12629D6A6382AB18F /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66647FAAD159712E641D7F625619D13 /* Title.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		69D9489BFFBB00320BED5C039A849EA6 /* PBXContainerItemProxy */ = {
+		3370A27801E036E851F34FBEED2F32E4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = FCFF857B29A61E3BCDA7C64D9C616D21;
 			remoteInfo = BarcodeScanner;
+		};
+		C0302AE5BF4C6243F1F19DF230E975D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EDDBD33E444956434EA2A0364EE368CC;
+			remoteInfo = IGDBWrapper;
 		};
 		E0A8C0E2319D0F2B446C4845C22B4BBA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,63 +101,96 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00349207E5BB96685A26645957C23B71 /* Pods_GameTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_GameTrackerTests.framework; path = "Pods-GameTrackerTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E7637BFB912DF8A53C8DF9D454E74F /* Pods-GameTrackerTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GameTrackerTests-frameworks.sh"; sourceTree = "<group>"; };
-		03B25BE1A8D4830C64A53440CDF083DC /* info@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "info@3x.png"; path = "Images/info@3x.png"; sourceTree = "<group>"; };
-		0C3C0D9C35BE6335EF94E8E8B00D1B78 /* VideoPermissionService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VideoPermissionService.swift; path = Sources/Helpers/VideoPermissionService.swift; sourceTree = "<group>"; };
-		0DB1C7FB1A4F958DB457A66FD212BB40 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		0E84E218EC9FF58A197531944DE732AF /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+Extensions.swift"; path = "Sources/Extensions/NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
-		1B6C8B3BCE4D7C7ACACB319B725059CF /* Localization.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Localization.bundle; path = "BarcodeScanner-Localization.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1CDF35D8B92754AF0B405B815DC19329 /* FocusViewType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusViewType.swift; path = Sources/DataStructures/FocusViewType.swift; sourceTree = "<group>"; };
+		0109DCB806E5A9AF060D881BBB1232CC /* BarcodeScanner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BarcodeScanner-umbrella.h"; sourceTree = "<group>"; };
+		029060AA0F2482077E8202AE8F6A3472 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03B30AA1AFC0100BFE57E8C493793EFC /* info@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "info@3x.png"; path = "Images/info@3x.png"; sourceTree = "<group>"; };
+		0434F3E01298AE23277019DA082FFE82 /* flashOff@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "flashOff@3x.png"; path = "Images/flashOff@3x.png"; sourceTree = "<group>"; };
+		0ABCFF4E4C2D95266D117A218B2D6EAA /* Credit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Credit.swift; path = IGDBWrapper/Classes/Structs/Credit.swift; sourceTree = "<group>"; };
+		0DBBE147D61A689329EC40BB7DD53125 /* IGDBWrapper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IGDBWrapper-prefix.pch"; sourceTree = "<group>"; };
+		121C2D449B1CE254B4DF80DE175A6CCF /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		176E6AB693F56FA6953F0FCE40950BA9 /* Franchise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Franchise.swift; path = IGDBWrapper/Classes/Structs/Franchise.swift; sourceTree = "<group>"; };
 		24D6C942701D94178F7AF7F7BD1B4F18 /* Pods-GameTracker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GameTracker-umbrella.h"; sourceTree = "<group>"; };
+		26F0575B21F65E25CF185055B0ACCAD3 /* ResourceBundle-BarcodeScanner-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-BarcodeScanner-Info.plist"; sourceTree = "<group>"; };
 		2B3533C7EE0E6B0B5514792D66DECD85 /* Pods-GameTracker-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GameTracker-acknowledgements.plist"; sourceTree = "<group>"; };
-		2D419F9B27F2EE72B228B3248018B75C /* ResourceBundle-Localization-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Localization-Info.plist"; sourceTree = "<group>"; };
-		2E30BEC52C4086197C1C18F2E0A75B68 /* ResourceBundle-BarcodeScanner-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-BarcodeScanner-Info.plist"; sourceTree = "<group>"; };
-		321A0061365802E2C9F18C354F4B1A69 /* Pods_GameTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_GameTracker.framework; path = "Pods-GameTracker.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BB7C4DCAF86D6B4DC0EFFAF354F90A7 /* Localization.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Localization.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D66BAE547F9A49B3CF231D80A24F85D /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarcodeScannerViewController.swift; path = Sources/Controllers/BarcodeScannerViewController.swift; sourceTree = "<group>"; };
+		2E34BB48E4F4B03441E5E80D2BB20161 /* Parameters.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Parameters.swift; path = IGDBWrapper/Classes/Wrapper/Parameters.swift; sourceTree = "<group>"; };
 		3695C30D5EEC91A138BFF5314D39541B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		37CA92F8D1C141B78D4A68543B8EACE8 /* CameraViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Sources/Controllers/CameraViewController.swift; sourceTree = "<group>"; };
+		3A119586A79304ED77EA9DE0F214E375 /* FocusViewType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FocusViewType.swift; path = Sources/DataStructures/FocusViewType.swift; sourceTree = "<group>"; };
+		40485D1BE920E426C40A99FBBC286271 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		40C2699E283F80CBDA29A8872C55ADB4 /* Pods_GameTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4466AFE523E604E4671BD77B604AA347 /* Pods-GameTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GameTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
-		5072CADF1AA217B67B79A53744E0DF99 /* BarcodeScanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BarcodeScanner.framework; path = BarcodeScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F9F8940F0213E4861333342B4CB1A28 /* Pods-GameTrackerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-GameTrackerTests.modulemap"; sourceTree = "<group>"; };
-		629873702BDFB9E21718A27C47B064C5 /* MessageViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageViewController.swift; path = Sources/Controllers/MessageViewController.swift; sourceTree = "<group>"; };
-		62BFAE5FE3B73BB4C3C51A42EB566C3E /* State.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = State.swift; path = Sources/DataStructures/State.swift; sourceTree = "<group>"; };
+		47EB3CCCDDA37EA04184C9F73261AA0E /* Feed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Feed.swift; path = IGDBWrapper/Classes/Structs/Feed.swift; sourceTree = "<group>"; };
+		4977419A3859BE6114DD256885E2CC2B /* IGDBWrapper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IGDBWrapper.xcconfig; sourceTree = "<group>"; };
+		4C1B883FE2E3C00F2DA910BF2D4A3094 /* Genre.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Genre.swift; path = IGDBWrapper/Classes/Structs/Genre.swift; sourceTree = "<group>"; };
+		50B0D47FB8365AC3DC1C2E53EC294233 /* GameEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GameEngine.swift; path = IGDBWrapper/Classes/Structs/GameEngine.swift; sourceTree = "<group>"; };
+		545408A92DE46CEAC84E9810FD81D4CE /* BarcodeScanner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BarcodeScanner.modulemap; sourceTree = "<group>"; };
+		556DD22D722D2F101C00B9F6ADDF7163 /* IGDBWrapper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = IGDBWrapper.modulemap; sourceTree = "<group>"; };
+		567E375C63D0D8C6C3D1592FB47F90FA /* GameMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GameMode.swift; path = IGDBWrapper/Classes/Structs/GameMode.swift; sourceTree = "<group>"; };
+		58C773484D239E00EC5B9FF6D6E6F83F /* Enums.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Enums.swift; path = IGDBWrapper/Classes/Wrapper/Enums.swift; sourceTree = "<group>"; };
+		58D29A4C16BC1FB22863F29F938D8834 /* MessageViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageViewController.swift; path = Sources/Controllers/MessageViewController.swift; sourceTree = "<group>"; };
+		5BCEBDE755AF92B9D9A078752F6D3A1F /* PlayerPerspective.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PlayerPerspective.swift; path = IGDBWrapper/Classes/Structs/PlayerPerspective.swift; sourceTree = "<group>"; };
+		5C7B207E655E9672B401619776323BBE /* TorchMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TorchMode.swift; path = Sources/DataStructures/TorchMode.swift; sourceTree = "<group>"; };
+		5F9F8940F0213E4861333342B4CB1A28 /* Pods-GameTrackerTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-GameTrackerTests.modulemap"; sourceTree = "<group>"; };
+		6193B9A2969B6C2D12C7E9E30F6A485F /* flashOn@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "flashOn@3x.png"; path = "Images/flashOn@3x.png"; sourceTree = "<group>"; };
+		61C0A9B71DEC64D0F03AD4629F28603F /* Caracter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Caracter.swift; path = IGDBWrapper/Classes/Structs/Caracter.swift; sourceTree = "<group>"; };
 		63C4BD65EEF247D4C8A723C0F18B326C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		6C5141F27B478BA9EAFE1F5E8441137B /* flashOn@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "flashOn@3x.png"; path = "Images/flashOn@3x.png"; sourceTree = "<group>"; };
 		6C6ADE54ED1E8C38C4DB92EC997C4164 /* Pods-GameTracker-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GameTracker-frameworks.sh"; sourceTree = "<group>"; };
-		7242CCE6C0BC8E8634E5F2FF2E9BDC42 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6CB9F15D7E226E2B3D56E13FB6454E2B /* Company.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Company.swift; path = IGDBWrapper/Classes/Structs/Company.swift; sourceTree = "<group>"; };
 		725DFDF87444A78495CE1A320106C956 /* Pods-GameTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GameTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		72601A6AEE9FFA1C7E3E87DCE69BD5D3 /* HeaderViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeaderViewController.swift; path = Sources/Controllers/HeaderViewController.swift; sourceTree = "<group>"; };
-		7773F4BDD7E8A1483A932814D2D9E274 /* BarcodeScanner-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BarcodeScanner-prefix.pch"; sourceTree = "<group>"; };
+		7560DCE5B83200569E279071135F84A2 /* Theme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Theme.swift; path = IGDBWrapper/Classes/Structs/Theme.swift; sourceTree = "<group>"; };
+		7622F6F86DF69E78F4E09A4159DD3F28 /* cameraRotate@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "cameraRotate@3x.png"; path = "Images/cameraRotate@3x.png"; sourceTree = "<group>"; };
+		7882F8595D34F551396A1F0B149BD960 /* VideoPermissionService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VideoPermissionService.swift; path = Sources/Helpers/VideoPermissionService.swift; sourceTree = "<group>"; };
 		7DC315C13AA8086FFA4F978CBBFCEE9A /* Pods-GameTracker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GameTracker-dummy.m"; sourceTree = "<group>"; };
-		7F35EA386BC989C9D64EF3C270664023 /* BarcodeScanner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BarcodeScanner-umbrella.h"; sourceTree = "<group>"; };
-		80426D8CED6A0B500CC29E130CAFA074 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pl-PL.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		7E611887395BE994D0D760480625DEE5 /* BarcodeScanner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BarcodeScanner.xcconfig; sourceTree = "<group>"; };
+		7F4B1D0D2B9C78E859552FFF89D0436E /* UIView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Extensions.swift"; path = "Sources/Extensions/UIView+Extensions.swift"; sourceTree = "<group>"; };
 		80BE3D49A5C672B9118432C1E6690F89 /* Pods-GameTrackerTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GameTrackerTests-umbrella.h"; sourceTree = "<group>"; };
+		8296677C84D8647278596152AB31B855 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "pl-PL.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		8A1A7BBCF81F28BEAA97931845B1C54D /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8BDFDA2E69892284BB45406D52C0F94F /* Functions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Functions.swift; path = Sources/Helpers/Functions.swift; sourceTree = "<group>"; };
 		8E9B47B634519F13B5EEBA0AF9798DF8 /* Pods-GameTracker-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GameTracker-acknowledgements.markdown"; sourceTree = "<group>"; };
-		91B5237A9F53B1ADABB5D8A06BA3962F /* TorchMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TorchMode.swift; path = Sources/DataStructures/TorchMode.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9D60225F36C925B2FFA9405AFE40ED23 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extensions.swift"; path = "Sources/Extensions/UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		90B7938129B08E79B3FD8F7DB4D309F1 /* IGDBWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IGDBWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9789D74786E55834BA8C53EAF652C93F /* BarcodeScanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BarcodeScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		982A70B45169993EF1D30B05258EB508 /* Collection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Collection.swift; path = IGDBWrapper/Classes/Structs/Collection.swift; sourceTree = "<group>"; };
+		9CA0A00471EEE79B6BC74F74E0CD2DA8 /* ObjectType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObjectType.swift; path = IGDBWrapper/Classes/Structs/ObjectType.swift; sourceTree = "<group>"; };
 		9D94F478BEACB1D2D5F1060780902E8E /* Pods-GameTrackerTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GameTrackerTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		A940AFFFB87097C6094A1D4F2655296F /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
-		ACF5A9CB1FA63801BDA0434D3A9B459D /* BarcodeScanner.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = BarcodeScanner.bundle; path = "BarcodeScanner-BarcodeScanner.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADB0761F0638BA97513052C2ED252A32 /* BarcodeScanner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BarcodeScanner.xcconfig; sourceTree = "<group>"; };
-		B47F7E6ABE4F33C20BD5D6EFD23144BD /* Functions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Functions.swift; path = Sources/Helpers/Functions.swift; sourceTree = "<group>"; };
+		A04390432DAFEFAFFF2D87BC5A479851 /* BarcodeScanner.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarcodeScanner.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		A16FB840324C4DC9E4E7E87CB0238BB2 /* IGDBWrapper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IGDBWrapper-dummy.m"; sourceTree = "<group>"; };
+		AA72A46764601F08204F517A1889B0D3 /* Platform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.swift; path = IGDBWrapper/Classes/Structs/Platform.swift; sourceTree = "<group>"; };
+		ADED4F575EEC62AE6415E21CE7284F53 /* Game.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Game.swift; path = IGDBWrapper/Classes/Structs/Game.swift; sourceTree = "<group>"; };
+		B0CC0080F8BCDFBD16C01FC3762608CA /* Review.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Review.swift; path = IGDBWrapper/Classes/Structs/Review.swift; sourceTree = "<group>"; };
+		B3FE787C1A7FA965190D0991947657A6 /* APIError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = APIError.swift; path = IGDBWrapper/Classes/Structs/APIError.swift; sourceTree = "<group>"; };
 		B54BC4F182EA31CD0AF7A491994C69C1 /* Pods-GameTrackerTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GameTrackerTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		C673C66D8076CFA54B8E1F0EDBF740ED /* BarcodeScanner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BarcodeScanner.modulemap; sourceTree = "<group>"; };
+		B66647FAAD159712E641D7F625619D13 /* Title.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Title.swift; path = IGDBWrapper/Classes/Structs/Title.swift; sourceTree = "<group>"; };
+		B9BCB7EBBCA976D19D5111A2BA1B48AE /* State.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = State.swift; path = Sources/DataStructures/State.swift; sourceTree = "<group>"; };
+		C09988C4EA8A94E914E20B6A6BFB68D8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C187161BD16D4DFEEF0D9E04EBF58BC1 /* Pods_GameTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA2FB4398E16A1B025C6DB54C08FA661 /* HeaderViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeaderViewController.swift; path = Sources/Controllers/HeaderViewController.swift; sourceTree = "<group>"; };
+		CA570043ED710A2A10F4BA55B7CBEAF1 /* BarcodeScanner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BarcodeScanner-dummy.m"; sourceTree = "<group>"; };
 		CB87367D9B5B48A3CBB2B5DFD7573959 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CBD1FE23D7628BB9282FC4D6A7C588BF /* BarcodeScanner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BarcodeScanner-dummy.m"; sourceTree = "<group>"; };
-		CF698C0AE1B99615BC32881C2C90A36C /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CC6B85520DBE2B7ACE61F39BBB0B6362 /* BarcodeScanner-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BarcodeScanner-prefix.pch"; sourceTree = "<group>"; };
+		D1846B6C5EA0A72D6624C418D5C8AC79 /* Keyword.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Keyword.swift; path = IGDBWrapper/Classes/Structs/Keyword.swift; sourceTree = "<group>"; };
 		D3CF8D7D5048C34AACFB23518711792E /* Pods-GameTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GameTracker.debug.xcconfig"; sourceTree = "<group>"; };
-		D54D3A2C1D3B8F95753712924FA98061 /* AVMetadataObject+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "AVMetadataObject+Extensions.swift"; path = "Sources/Extensions/AVMetadataObject+Extensions.swift"; sourceTree = "<group>"; };
-		D61AE2DC425580BCB2734E348FA4206F /* flashOff@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "flashOff@3x.png"; path = "Images/flashOff@3x.png"; sourceTree = "<group>"; };
-		D7AE634635A29CC025A53EB77782888F /* cameraRotate@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "cameraRotate@3x.png"; path = "Images/cameraRotate@3x.png"; sourceTree = "<group>"; };
-		D980B47038506010121D2CC2EA5CDCF9 /* Pods-GameTracker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-GameTracker.modulemap"; sourceTree = "<group>"; };
+		D5976C6E91EDA06DAA3CB2BBD2203577 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extensions.swift"; path = "Sources/Extensions/UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		D980B47038506010121D2CC2EA5CDCF9 /* Pods-GameTracker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-GameTracker.modulemap"; sourceTree = "<group>"; };
+		DB52A1C3E9CE212C313ACCFC79BF399D /* Pulse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Pulse.swift; path = IGDBWrapper/Classes/Structs/Pulse.swift; sourceTree = "<group>"; };
 		DD1196895DA3410B22BDCE010CB9E619 /* Pods-GameTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GameTracker.release.xcconfig"; sourceTree = "<group>"; };
-		F17ACC577000FF0FC38FCF3EDC0E6A34 /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarcodeScannerViewController.swift; path = Sources/Controllers/BarcodeScannerViewController.swift; sourceTree = "<group>"; };
+		E351A879B3F8DB0AA33BAFAE017F510F /* PulseGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PulseGroup.swift; path = IGDBWrapper/Classes/Structs/PulseGroup.swift; sourceTree = "<group>"; };
+		E58AFBF453DC4AD3586735C7C2527581 /* ResourceBundle-Localization-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Localization-Info.plist"; sourceTree = "<group>"; };
+		F10B261BDC42F0F45441CE49BE8C33CC /* Page.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Page.swift; path = IGDBWrapper/Classes/Structs/Page.swift; sourceTree = "<group>"; };
 		F30F19E529F24D7B4812E65CFAE3EF8F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F359A2CBDA196D52E4301D42F8854C9D /* UIView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Extensions.swift"; path = "Sources/Extensions/UIView+Extensions.swift"; sourceTree = "<group>"; };
+		F47FBA3CCA89F1286DB6608386B90A7F /* IGDBWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IGDBWrapper.swift; path = IGDBWrapper/Classes/Wrapper/IGDBWrapper.swift; sourceTree = "<group>"; };
+		F66CD8600E754B03D0A157F9D8FCAC39 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+Extensions.swift"; path = "Sources/Extensions/NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
 		F6A806FD8907DBD6CF7D34F34C7BC59E /* Pods-GameTrackerTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GameTrackerTests-dummy.m"; sourceTree = "<group>"; };
+		F7A8FFA3D66220C148C2DF9029CDD8CD /* CameraViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Sources/Controllers/CameraViewController.swift; sourceTree = "<group>"; };
+		F7AC4D03FF543D6E8B0DFAA8627AF192 /* PulseSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PulseSource.swift; path = IGDBWrapper/Classes/Structs/PulseSource.swift; sourceTree = "<group>"; };
 		F86CEBA4B161ADD8C30E7CFE50DA64F4 /* Pods-GameTracker-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GameTracker-resources.sh"; sourceTree = "<group>"; };
 		F871F44FBBCF3B17838E69D8CDF85D7C /* Pods-GameTrackerTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GameTrackerTests-resources.sh"; sourceTree = "<group>"; };
+		F988DC54EC68D057A03D2BFC02F1929B /* AVMetadataObject+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "AVMetadataObject+Extensions.swift"; path = "Sources/Extensions/AVMetadataObject+Extensions.swift"; sourceTree = "<group>"; };
+		FB11C62FF091D2A7A44E1C2980E0FD4F /* IGDBWrapper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IGDBWrapper-umbrella.h"; sourceTree = "<group>"; };
+		FD2AF3184BA9560160BFC5811F8B5A60 /* Person.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Person.swift; path = IGDBWrapper/Classes/Structs/Person.swift; sourceTree = "<group>"; };
 		FD3A287BB87F4D3C474EC576926A0F89 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
@@ -133,6 +202,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		62E1AF2ED6E3463A169AF680ED61877B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				711A540EA75C8092F43A38679F43DF04 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6430EDA15640CF52F709827AC891D66D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1703383DEF64199BF5F0856285B4504A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6BE7129FEE3F4DB32619E7DB071B7B8B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -140,14 +225,6 @@
 				69EB412CE1201005EEDAD28867F3F147 /* AVFoundation.framework in Frameworks */,
 				C1A025D03E65DB0666EECC4A253E12E2 /* Foundation.framework in Frameworks */,
 				84C735080B910C2A8956F2D84F65EF46 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		88030E904974C9EB52060D6142E6EB10 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AF90B1DCC711C5720B5F3186E3F4C9CB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,12 +246,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		01213573C24E94EAB2F565BB58AE4C3F /* Pods */ = {
+		0A48B89378EEEE32017B2D3041AC0D73 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1A58C04CB1E1F049D80B7C0EAC058A59 /* BarcodeScanner */,
+				7622F6F86DF69E78F4E09A4159DD3F28 /* cameraRotate@3x.png */,
+				0434F3E01298AE23277019DA082FFE82 /* flashOff@3x.png */,
+				6193B9A2969B6C2D12C7E9E30F6A485F /* flashOn@3x.png */,
+				03B30AA1AFC0100BFE57E8C493793EFC /* info@3x.png */,
+				EB3255A955AF084D1CDE1AD456A58A23 /* Localizable.strings */,
 			);
-			name = Pods;
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		10D538A3D80FBE09DAA527AF6E12A82B /* BarcodeScanner */ = {
+			isa = PBXGroup;
+			children = (
+				F988DC54EC68D057A03D2BFC02F1929B /* AVMetadataObject+Extensions.swift */,
+				2D66BAE547F9A49B3CF231D80A24F85D /* BarcodeScannerViewController.swift */,
+				F7A8FFA3D66220C148C2DF9029CDD8CD /* CameraViewController.swift */,
+				3A119586A79304ED77EA9DE0F214E375 /* FocusViewType.swift */,
+				8BDFDA2E69892284BB45406D52C0F94F /* Functions.swift */,
+				CA2FB4398E16A1B025C6DB54C08FA661 /* HeaderViewController.swift */,
+				58D29A4C16BC1FB22863F29F938D8834 /* MessageViewController.swift */,
+				F66CD8600E754B03D0A157F9D8FCAC39 /* NSLayoutConstraint+Extensions.swift */,
+				B9BCB7EBBCA976D19D5111A2BA1B48AE /* State.swift */,
+				5C7B207E655E9672B401619776323BBE /* TorchMode.swift */,
+				7F4B1D0D2B9C78E859552FFF89D0436E /* UIView+Extensions.swift */,
+				D5976C6E91EDA06DAA3CB2BBD2203577 /* UIViewController+Extensions.swift */,
+				7882F8595D34F551396A1F0B149BD960 /* VideoPermissionService.swift */,
+				0A48B89378EEEE32017B2D3041AC0D73 /* Resources */,
+				FA87D7C1EA659899C0F50BECD55811F0 /* Support Files */,
+			);
+			path = BarcodeScanner;
 			sourceTree = "<group>";
 		};
 		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
@@ -185,39 +288,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1A2D4AA82BEE7B4A605CC6B2032A96F6 /* Products */ = {
+		2394F9F1751839C2A126532DCEA9A7F0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ACF5A9CB1FA63801BDA0434D3A9B459D /* BarcodeScanner.bundle */,
-				5072CADF1AA217B67B79A53744E0DF99 /* BarcodeScanner.framework */,
-				1B6C8B3BCE4D7C7ACACB319B725059CF /* Localization.bundle */,
-				321A0061365802E2C9F18C354F4B1A69 /* Pods_GameTracker.framework */,
-				00349207E5BB96685A26645957C23B71 /* Pods_GameTrackerTests.framework */,
+				10D538A3D80FBE09DAA527AF6E12A82B /* BarcodeScanner */,
+				E347A717BED5929AC9C7C75A06761D6A /* IGDBWrapper */,
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1A58C04CB1E1F049D80B7C0EAC058A59 /* BarcodeScanner */ = {
-			isa = PBXGroup;
-			children = (
-				D54D3A2C1D3B8F95753712924FA98061 /* AVMetadataObject+Extensions.swift */,
-				F17ACC577000FF0FC38FCF3EDC0E6A34 /* BarcodeScannerViewController.swift */,
-				37CA92F8D1C141B78D4A68543B8EACE8 /* CameraViewController.swift */,
-				1CDF35D8B92754AF0B405B815DC19329 /* FocusViewType.swift */,
-				B47F7E6ABE4F33C20BD5D6EFD23144BD /* Functions.swift */,
-				72601A6AEE9FFA1C7E3E87DCE69BD5D3 /* HeaderViewController.swift */,
-				629873702BDFB9E21718A27C47B064C5 /* MessageViewController.swift */,
-				0E84E218EC9FF58A197531944DE732AF /* NSLayoutConstraint+Extensions.swift */,
-				62BFAE5FE3B73BB4C3C51A42EB566C3E /* State.swift */,
-				91B5237A9F53B1ADABB5D8A06BA3962F /* TorchMode.swift */,
-				F359A2CBDA196D52E4301D42F8854C9D /* UIView+Extensions.swift */,
-				9D60225F36C925B2FFA9405AFE40ED23 /* UIViewController+Extensions.swift */,
-				0C3C0D9C35BE6335EF94E8E8B00D1B78 /* VideoPermissionService.swift */,
-				EA7BB90437F0863545FE141A055BB891 /* Resources */,
-				AFF6F0F81478A058DD42A4021201D7E9 /* Support Files */,
-			);
-			name = BarcodeScanner;
-			path = BarcodeScanner;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		365C31844381800D15ABAF8FD60DC7FD /* Pods-GameTracker */ = {
@@ -238,6 +315,30 @@
 			path = "Target Support Files/Pods-GameTracker";
 			sourceTree = "<group>";
 		};
+		3BF4FDA65B8D9FA5FC6C1537BA822FEC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				556DD22D722D2F101C00B9F6ADDF7163 /* IGDBWrapper.modulemap */,
+				4977419A3859BE6114DD256885E2CC2B /* IGDBWrapper.xcconfig */,
+				A16FB840324C4DC9E4E7E87CB0238BB2 /* IGDBWrapper-dummy.m */,
+				0DBBE147D61A689329EC40BB7DD53125 /* IGDBWrapper-prefix.pch */,
+				FB11C62FF091D2A7A44E1C2980E0FD4F /* IGDBWrapper-umbrella.h */,
+				C09988C4EA8A94E914E20B6A6BFB68D8 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/IGDBWrapper";
+			sourceTree = "<group>";
+		};
+		5F8F98C9A68F17377385BC42A7625A9C /* Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				58C773484D239E00EC5B9FF6D6E6F83F /* Enums.swift */,
+				F47FBA3CCA89F1286DB6608386B90A7F /* IGDBWrapper.swift */,
+				2E34BB48E4F4B03441E5E80D2BB20161 /* Parameters.swift */,
+			);
+			name = Wrapper;
+			sourceTree = "<group>";
+		};
 		715827B6A84C2549CD0FBA09A28FA485 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,26 +354,53 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
-				01213573C24E94EAB2F565BB58AE4C3F /* Pods */,
-				1A2D4AA82BEE7B4A605CC6B2032A96F6 /* Products */,
+				2394F9F1751839C2A126532DCEA9A7F0 /* Pods */,
+				B0A391EE62B57A06781772B6A3BABE13 /* Products */,
 				F7894D8D2482ED3EC01F797DAB01B002 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		AFF6F0F81478A058DD42A4021201D7E9 /* Support Files */ = {
+		B0A391EE62B57A06781772B6A3BABE13 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C673C66D8076CFA54B8E1F0EDBF740ED /* BarcodeScanner.modulemap */,
-				ADB0761F0638BA97513052C2ED252A32 /* BarcodeScanner.xcconfig */,
-				CBD1FE23D7628BB9282FC4D6A7C588BF /* BarcodeScanner-dummy.m */,
-				7773F4BDD7E8A1483A932814D2D9E274 /* BarcodeScanner-prefix.pch */,
-				7F35EA386BC989C9D64EF3C270664023 /* BarcodeScanner-umbrella.h */,
-				7242CCE6C0BC8E8634E5F2FF2E9BDC42 /* Info.plist */,
-				2E30BEC52C4086197C1C18F2E0A75B68 /* ResourceBundle-BarcodeScanner-Info.plist */,
-				2D419F9B27F2EE72B228B3248018B75C /* ResourceBundle-Localization-Info.plist */,
+				A04390432DAFEFAFFF2D87BC5A479851 /* BarcodeScanner.bundle */,
+				9789D74786E55834BA8C53EAF652C93F /* BarcodeScanner.framework */,
+				90B7938129B08E79B3FD8F7DB4D309F1 /* IGDBWrapper.framework */,
+				2BB7C4DCAF86D6B4DC0EFFAF354F90A7 /* Localization.bundle */,
+				C187161BD16D4DFEEF0D9E04EBF58BC1 /* Pods_GameTracker.framework */,
+				40C2699E283F80CBDA29A8872C55ADB4 /* Pods_GameTrackerTests.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/BarcodeScanner";
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D801C432A58AE9C1CB5A78F992F3085A /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				B3FE787C1A7FA965190D0991947657A6 /* APIError.swift */,
+				61C0A9B71DEC64D0F03AD4629F28603F /* Caracter.swift */,
+				982A70B45169993EF1D30B05258EB508 /* Collection.swift */,
+				6CB9F15D7E226E2B3D56E13FB6454E2B /* Company.swift */,
+				0ABCFF4E4C2D95266D117A218B2D6EAA /* Credit.swift */,
+				47EB3CCCDDA37EA04184C9F73261AA0E /* Feed.swift */,
+				176E6AB693F56FA6953F0FCE40950BA9 /* Franchise.swift */,
+				ADED4F575EEC62AE6415E21CE7284F53 /* Game.swift */,
+				50B0D47FB8365AC3DC1C2E53EC294233 /* GameEngine.swift */,
+				567E375C63D0D8C6C3D1592FB47F90FA /* GameMode.swift */,
+				4C1B883FE2E3C00F2DA910BF2D4A3094 /* Genre.swift */,
+				D1846B6C5EA0A72D6624C418D5C8AC79 /* Keyword.swift */,
+				9CA0A00471EEE79B6BC74F74E0CD2DA8 /* ObjectType.swift */,
+				F10B261BDC42F0F45441CE49BE8C33CC /* Page.swift */,
+				FD2AF3184BA9560160BFC5811F8B5A60 /* Person.swift */,
+				AA72A46764601F08204F517A1889B0D3 /* Platform.swift */,
+				5BCEBDE755AF92B9D9A078752F6D3A1F /* PlayerPerspective.swift */,
+				DB52A1C3E9CE212C313ACCFC79BF399D /* Pulse.swift */,
+				E351A879B3F8DB0AA33BAFAE017F510F /* PulseGroup.swift */,
+				F7AC4D03FF543D6E8B0DFAA8627AF192 /* PulseSource.swift */,
+				B0CC0080F8BCDFBD16C01FC3762608CA /* Review.swift */,
+				7560DCE5B83200569E279071135F84A2 /* Theme.swift */,
+				B66647FAAD159712E641D7F625619D13 /* Title.swift */,
+			);
+			name = Structs;
 			sourceTree = "<group>";
 		};
 		D823ED5B01A34652551FC882F3E3110E /* Pods-GameTrackerTests */ = {
@@ -293,16 +421,14 @@
 			path = "Target Support Files/Pods-GameTrackerTests";
 			sourceTree = "<group>";
 		};
-		EA7BB90437F0863545FE141A055BB891 /* Resources */ = {
+		E347A717BED5929AC9C7C75A06761D6A /* IGDBWrapper */ = {
 			isa = PBXGroup;
 			children = (
-				D7AE634635A29CC025A53EB77782888F /* cameraRotate@3x.png */,
-				D61AE2DC425580BCB2734E348FA4206F /* flashOff@3x.png */,
-				6C5141F27B478BA9EAFE1F5E8441137B /* flashOn@3x.png */,
-				03B25BE1A8D4830C64A53440CDF083DC /* info@3x.png */,
-				3F1CAF28A3E811EEE9B985DA0CC15F7C /* Localizable.strings */,
+				D801C432A58AE9C1CB5A78F992F3085A /* Structs */,
+				3BF4FDA65B8D9FA5FC6C1537BA822FEC /* Support Files */,
+				5F8F98C9A68F17377385BC42A7625A9C /* Wrapper */,
 			);
-			name = Resources;
+			path = IGDBWrapper;
 			sourceTree = "<group>";
 		};
 		F7894D8D2482ED3EC01F797DAB01B002 /* Targets Support Files */ = {
@@ -314,14 +440,46 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		FA87D7C1EA659899C0F50BECD55811F0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				545408A92DE46CEAC84E9810FD81D4CE /* BarcodeScanner.modulemap */,
+				7E611887395BE994D0D760480625DEE5 /* BarcodeScanner.xcconfig */,
+				CA570043ED710A2A10F4BA55B7CBEAF1 /* BarcodeScanner-dummy.m */,
+				CC6B85520DBE2B7ACE61F39BBB0B6362 /* BarcodeScanner-prefix.pch */,
+				0109DCB806E5A9AF060D881BBB1232CC /* BarcodeScanner-umbrella.h */,
+				029060AA0F2482077E8202AE8F6A3472 /* Info.plist */,
+				26F0575B21F65E25CF185055B0ACCAD3 /* ResourceBundle-BarcodeScanner-Info.plist */,
+				E58AFBF453DC4AD3586735C7C2527581 /* ResourceBundle-Localization-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BarcodeScanner";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		150EF3D2BAA6AB14514A7EC77C7AE2AA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				102B328F63BDE43BBF15D475E943A163 /* Pods-GameTracker-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		22F567061294AE5A228910BAFF66A13B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A7FA60072F1C7AC0932EC3D69EB64EC3 /* Pods-GameTrackerTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5BFA36F0B0A752AEE556F0C71944B959 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6AC8D8843C86B8E50288FFC12BAD0998 /* IGDBWrapper-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,33 +491,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DCE102F840870257B4A195A92D3D5C8C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D90972F1F436C0AC6BAA47B99D8F135C /* Pods-GameTracker-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		81543010342996FFFF536393C44E0651 /* Pods-GameTracker */ = {
+		4BB3094E05153BCDA971ACA2D7CE2D54 /* Pods-GameTracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 31CDDC85EEEC23FAE5398DA8AAF71D11 /* Build configuration list for PBXNativeTarget "Pods-GameTracker" */;
+			buildConfigurationList = 4AF1F4E8A6A48EB535E0A83C4D7D7BE0 /* Build configuration list for PBXNativeTarget "Pods-GameTracker" */;
 			buildPhases = (
-				081605BA4058B59E0886D4EF77248FBC /* Sources */,
-				88030E904974C9EB52060D6142E6EB10 /* Frameworks */,
-				DCE102F840870257B4A195A92D3D5C8C /* Headers */,
+				FA3CACACD25471839A183BF645A1EDB1 /* Sources */,
+				6430EDA15640CF52F709827AC891D66D /* Frameworks */,
+				150EF3D2BAA6AB14514A7EC77C7AE2AA /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DCC97548AAA210CF5D1707F9B20CA82C /* PBXTargetDependency */,
+				C49C1D4D09014291F7656A494FC49003 /* PBXTargetDependency */,
+				A78FA342C4406575146921A5DC82C3B4 /* PBXTargetDependency */,
 			);
 			name = "Pods-GameTracker";
 			productName = "Pods-GameTracker";
-			productReference = 321A0061365802E2C9F18C354F4B1A69 /* Pods_GameTracker.framework */;
+			productReference = C187161BD16D4DFEEF0D9E04EBF58BC1 /* Pods_GameTracker.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8BA09793296C66FCE318826E8C2E9FA2 /* BarcodeScanner-Localization */ = {
@@ -376,7 +527,7 @@
 			);
 			name = "BarcodeScanner-Localization";
 			productName = "BarcodeScanner-Localization";
-			productReference = 1B6C8B3BCE4D7C7ACACB319B725059CF /* Localization.bundle */;
+			productReference = 2BB7C4DCAF86D6B4DC0EFFAF354F90A7 /* Localization.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		8C194D5E546C32BB634B5BBEF26DEFC3 /* BarcodeScanner-BarcodeScanner */ = {
@@ -393,7 +544,7 @@
 			);
 			name = "BarcodeScanner-BarcodeScanner";
 			productName = "BarcodeScanner-BarcodeScanner";
-			productReference = ACF5A9CB1FA63801BDA0434D3A9B459D /* BarcodeScanner.bundle */;
+			productReference = A04390432DAFEFAFFF2D87BC5A479851 /* BarcodeScanner.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		C0C3AE5DFB6B9F29FBDFC64AE4B2D574 /* Pods-GameTrackerTests */ = {
@@ -410,7 +561,24 @@
 			);
 			name = "Pods-GameTrackerTests";
 			productName = "Pods-GameTrackerTests";
-			productReference = 00349207E5BB96685A26645957C23B71 /* Pods_GameTrackerTests.framework */;
+			productReference = 40C2699E283F80CBDA29A8872C55ADB4 /* Pods_GameTrackerTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EDDBD33E444956434EA2A0364EE368CC /* IGDBWrapper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 565181395026A35A347442AC52F41096 /* Build configuration list for PBXNativeTarget "IGDBWrapper" */;
+			buildPhases = (
+				3A0BA8171B0A2ABF71058988B1E3DB95 /* Sources */,
+				62E1AF2ED6E3463A169AF680ED61877B /* Frameworks */,
+				5BFA36F0B0A752AEE556F0C71944B959 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IGDBWrapper;
+			productName = IGDBWrapper;
+			productReference = 90B7938129B08E79B3FD8F7DB4D309F1 /* IGDBWrapper.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		FCFF857B29A61E3BCDA7C64D9C616D21 /* BarcodeScanner */ = {
@@ -430,7 +598,7 @@
 			);
 			name = BarcodeScanner;
 			productName = BarcodeScanner;
-			productReference = 5072CADF1AA217B67B79A53744E0DF99 /* BarcodeScanner.framework */;
+			productReference = 9789D74786E55834BA8C53EAF652C93F /* BarcodeScanner.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -447,17 +615,22 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
+				de,
+				fr,
+				"pl-PL",
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 1A2D4AA82BEE7B4A605CC6B2032A96F6 /* Products */;
+			productRefGroup = B0A391EE62B57A06781772B6A3BABE13 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				FCFF857B29A61E3BCDA7C64D9C616D21 /* BarcodeScanner */,
 				8C194D5E546C32BB634B5BBEF26DEFC3 /* BarcodeScanner-BarcodeScanner */,
 				8BA09793296C66FCE318826E8C2E9FA2 /* BarcodeScanner-Localization */,
-				81543010342996FFFF536393C44E0651 /* Pods-GameTracker */,
+				EDDBD33E444956434EA2A0364EE368CC /* IGDBWrapper */,
+				4BB3094E05153BCDA971ACA2D7CE2D54 /* Pods-GameTracker */,
 				C0C3AE5DFB6B9F29FBDFC64AE4B2D574 /* Pods-GameTrackerTests */,
 			);
 		};
@@ -495,11 +668,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		081605BA4058B59E0886D4EF77248FBC /* Sources */ = {
+		3A0BA8171B0A2ABF71058988B1E3DB95 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				933788228895A3C40B1A52C76C4317E4 /* Pods-GameTracker-dummy.m in Sources */,
+				005E605662E4EA77A89BC8E152754227 /* APIError.swift in Sources */,
+				008D60B15EC167921D8F3A1DF4A4630F /* Caracter.swift in Sources */,
+				FBD73C3E029626BDAA96C891A2FD5A0A /* Collection.swift in Sources */,
+				80CEDEB3FBF5B069C8C9C824E62F51DF /* Company.swift in Sources */,
+				8AF9E28412AB5520E0B860C53BDC6DDC /* Credit.swift in Sources */,
+				74F455D2D6F4420B215CB16CA5315BC8 /* Enums.swift in Sources */,
+				95029BF786DE7F99882A5955A1E9943F /* Feed.swift in Sources */,
+				9FEA864924A8A66B4FE32BFB5EE2CEC7 /* Franchise.swift in Sources */,
+				6637C013576B0BEA33E79EA60DF7A7F5 /* Game.swift in Sources */,
+				50CA0944056C221372667B7304850502 /* GameEngine.swift in Sources */,
+				E9AEFFE5D8D5CAFAE346AD761C47EEEA /* GameMode.swift in Sources */,
+				0F2AB7A02DB3FA61CF36785C93260CC6 /* Genre.swift in Sources */,
+				A9AEFC53472C73CDC7E580C0BEC2F7BA /* IGDBWrapper-dummy.m in Sources */,
+				26B0B29CDA6A39AD9E9F689AD419B733 /* IGDBWrapper.swift in Sources */,
+				32A9547BC81F5F0ECAF8552A08F6D6E2 /* Keyword.swift in Sources */,
+				58C5DD11072419F4871920CA0FFEA40B /* ObjectType.swift in Sources */,
+				277B6A7E7BF9FAB51F0B4A684EE42461 /* Page.swift in Sources */,
+				3C84161466969716A685632905F2B2F4 /* Parameters.swift in Sources */,
+				2F7C920DD96411E41AB2EBD7AAC93B06 /* Person.swift in Sources */,
+				331059B61CA46755D1CC44877D7B7F0E /* Platform.swift in Sources */,
+				D22A55B1F55A222E2770F08FEEF08DBD /* PlayerPerspective.swift in Sources */,
+				98F79EBB5C38BF35026225CFED5D7422 /* Pulse.swift in Sources */,
+				8C3657B4F6715DBC9C8030483B854879 /* PulseGroup.swift in Sources */,
+				698251AE1ED2EC93482178832A79CCAB /* PulseSource.swift in Sources */,
+				A1CBA90F355A422C3D015EA558832AE2 /* Review.swift in Sources */,
+				F04B5954ED4AE119BCD713F7327A7D33 /* Theme.swift in Sources */,
+				FDBBF2037EC0BAD12629D6A6382AB18F /* Title.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +745,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA3CACACD25471839A183BF645A1EDB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81B5E8EF98BD0E505EE39C7DC2F1E7E9 /* Pods-GameTracker-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -561,22 +768,28 @@
 			target = 8C194D5E546C32BB634B5BBEF26DEFC3 /* BarcodeScanner-BarcodeScanner */;
 			targetProxy = E0A8C0E2319D0F2B446C4845C22B4BBA /* PBXContainerItemProxy */;
 		};
-		DCC97548AAA210CF5D1707F9B20CA82C /* PBXTargetDependency */ = {
+		A78FA342C4406575146921A5DC82C3B4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IGDBWrapper;
+			target = EDDBD33E444956434EA2A0364EE368CC /* IGDBWrapper */;
+			targetProxy = C0302AE5BF4C6243F1F19DF230E975D6 /* PBXContainerItemProxy */;
+		};
+		C49C1D4D09014291F7656A494FC49003 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BarcodeScanner;
 			target = FCFF857B29A61E3BCDA7C64D9C616D21 /* BarcodeScanner */;
-			targetProxy = 69D9489BFFBB00320BED5C039A849EA6 /* PBXContainerItemProxy */;
+			targetProxy = 3370A27801E036E851F34FBEED2F32E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3F1CAF28A3E811EEE9B985DA0CC15F7C /* Localizable.strings */ = {
+		EB3255A955AF084D1CDE1AD456A58A23 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A940AFFFB87097C6094A1D4F2655296F /* Localizable.strings */,
-				CF698C0AE1B99615BC32881C2C90A36C /* Localizable.strings */,
-				0DB1C7FB1A4F958DB457A66FD212BB40 /* Localizable.strings */,
-				80426D8CED6A0B500CC29E130CAFA074 /* Localizable.strings */,
+				40485D1BE920E426C40A99FBBC286271 /* Localizable.strings */,
+				8A1A7BBCF81F28BEAA97931845B1C54D /* Localizable.strings */,
+				121C2D449B1CE254B4DF80DE175A6CCF /* Localizable.strings */,
+				8296677C84D8647278596152AB31B855 /* Localizable.strings */,
 			);
 			name = Localizable.strings;
 			path = Localization;
@@ -587,7 +800,7 @@
 /* Begin XCBuildConfiguration section */
 		07C11BFA814239BFAE0245D8181C1440 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADB0761F0638BA97513052C2ED252A32 /* BarcodeScanner.xcconfig */;
+			baseConfigurationReference = 7E611887395BE994D0D760480625DEE5 /* BarcodeScanner.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BarcodeScanner";
@@ -636,7 +849,7 @@
 		};
 		26EADC180B4958837FEA68324AA4A8A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADB0761F0638BA97513052C2ED252A32 /* BarcodeScanner.xcconfig */;
+			baseConfigurationReference = 7E611887395BE994D0D760480625DEE5 /* BarcodeScanner.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BarcodeScanner";
@@ -652,7 +865,7 @@
 		};
 		5DF317FBA11B62721E54915944A18ABB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADB0761F0638BA97513052C2ED252A32 /* BarcodeScanner.xcconfig */;
+			baseConfigurationReference = 7E611887395BE994D0D760480625DEE5 /* BarcodeScanner.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -736,9 +949,41 @@
 			};
 			name = Release;
 		};
+		6A19C2726A739FB9DE8E3A0CE1001D9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4977419A3859BE6114DD256885E2CC2B /* IGDBWrapper.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/IGDBWrapper/IGDBWrapper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IGDBWrapper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IGDBWrapper/IGDBWrapper.modulemap";
+				PRODUCT_NAME = IGDBWrapper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		6C02D1725139F2B621729D009F611D6C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADB0761F0638BA97513052C2ED252A32 /* BarcodeScanner.xcconfig */;
+			baseConfigurationReference = 7E611887395BE994D0D760480625DEE5 /* BarcodeScanner.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BarcodeScanner";
@@ -752,9 +997,40 @@
 			};
 			name = Release;
 		};
+		8A8ACFBE762E4078409D1DE9982CD1AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4977419A3859BE6114DD256885E2CC2B /* IGDBWrapper.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/IGDBWrapper/IGDBWrapper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IGDBWrapper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IGDBWrapper/IGDBWrapper.modulemap";
+				PRODUCT_NAME = IGDBWrapper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		9BEFC01058F7E893FFDB3E104E847D79 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADB0761F0638BA97513052C2ED252A32 /* BarcodeScanner.xcconfig */;
+			baseConfigurationReference = 7E611887395BE994D0D760480625DEE5 /* BarcodeScanner.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -783,74 +1059,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		9BF8CCC9D9C013E4EF0342F82884AD5A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD1196895DA3410B22BDCE010CB9E619 /* Pods-GameTracker.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-GameTracker/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GameTracker/Pods-GameTracker.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_GameTracker;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		9D3E52F928BE52AA857BC552F7B14427 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3CF8D7D5048C34AACFB23518711792E /* Pods-GameTracker.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-GameTracker/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GameTracker/Pods-GameTracker.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_GameTracker;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		B57C09D404C607DDE283C5C44183B2A1 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -912,6 +1120,74 @@
 			};
 			name = Debug;
 		};
+		C14C0CC8A03496DA506ACBC58CB4312A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD1196895DA3410B22BDCE010CB9E619 /* Pods-GameTracker.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GameTracker/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GameTracker/Pods-GameTracker.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_GameTracker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E6331D936EA29E54C04732BE74491007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3CF8D7D5048C34AACFB23518711792E /* Pods-GameTracker.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GameTracker/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GameTracker/Pods-GameTracker.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_GameTracker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		ECCD69CC217D51675EF16F8DFF6B85E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 725DFDF87444A78495CE1A320106C956 /* Pods-GameTrackerTests.debug.xcconfig */;
@@ -946,7 +1222,7 @@
 		};
 		F7891FAB3DCCC7720C8B004853422D14 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ADB0761F0638BA97513052C2ED252A32 /* BarcodeScanner.xcconfig */;
+			baseConfigurationReference = 7E611887395BE994D0D760480625DEE5 /* BarcodeScanner.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BarcodeScanner";
@@ -981,20 +1257,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		31CDDC85EEEC23FAE5398DA8AAF71D11 /* Build configuration list for PBXNativeTarget "Pods-GameTracker" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9D3E52F928BE52AA857BC552F7B14427 /* Debug */,
-				9BF8CCC9D9C013E4EF0342F82884AD5A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		43523ADF3C49D8804435876EBE4921C1 /* Build configuration list for PBXNativeTarget "BarcodeScanner-BarcodeScanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				26EADC180B4958837FEA68324AA4A8A4 /* Debug */,
 				6C02D1725139F2B621729D009F611D6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4AF1F4E8A6A48EB535E0A83C4D7D7BE0 /* Build configuration list for PBXNativeTarget "Pods-GameTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6331D936EA29E54C04732BE74491007 /* Debug */,
+				C14C0CC8A03496DA506ACBC58CB4312A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		565181395026A35A347442AC52F41096 /* Build configuration list for PBXNativeTarget "IGDBWrapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A8ACFBE762E4078409D1DE9982CD1AA /* Debug */,
+				6A19C2726A739FB9DE8E3A0CE1001D9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

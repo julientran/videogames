@@ -508,13 +508,9 @@ class MembershipTableViewController: UITableViewController, UISearchBarDelegate 
         if (urlGames != "") {
             let itemListURL = URL(string: "https://store.playstation.com/fr-fr/grid/STORE-" + urlGames + "-PLUSINSTANTGAME/1")!
             let itemListHTML = try! String(contentsOf: itemListURL, encoding: .utf8)
-            print(itemListURL)
-            print(itemListHTML.slices(from: "<div class=\"grid-cell__title\">", to: "</div>"))
-            let titles = itemListHTML.slices(from: "<span title=\"", to: "</span>")
-    
+            let titles = itemListHTML.slices(from: "class=\"grid-cell__title \">", to: "</div>")
             let photos = itemListHTML.slices(from: "<img src=\"", to: "\" srcset=\"")
-            let platforms = itemListHTML.slices(from: "<div class=\"grid-cell__left-detail grid-cell__left-detail--detail-1\">", to: "</div>")
-            
+            let platforms = itemListHTML.slices(from: "class=\"grid-cell__details\"", to: "</div>")
             var i = 0
             var newOne = true
             for result in photos {

@@ -145,7 +145,7 @@ class Game: Codable, Comparable, CustomStringConvertible {
             //NSData to UIImage
             let decodedIamge = UIImage(data: decodedData! as Data)
             let done : Bool = gameElements[6] ==  "true" ? true : false
-            let tempGame = Game(idgame: gameElements[0], name: gameElements[1], photo: decodedIamge, dord: (gameElements[6] as NSString).integerValue , platform: gameElements[4], done: done, publisher: gameElements[3])
+            let tempGame = Game(idgame: gameElements[0], name: gameElements[1], photo: decodedIamge, dord: (gameElements[5] as NSString).integerValue , platform: gameElements[4], done: done, publisher: gameElements[3])
             tempGames += [tempGame]
         }
         do {
