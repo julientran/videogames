@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		661C770CD6045D0ADEF79BAE /* Pods_GameTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249941ED3C48E462C389A0B0 /* Pods_GameTrackerTests.framework */; };
 		7B2477A7B436C6751B8C83C7 /* Pods_GameTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CA62FED8A8E6DB717514EA6 /* Pods_GameTracker.framework */; };
-		832E58DD202EFB2500AED554 /* pad_320.png in Resources */ = {isa = PBXBuildFile; fileRef = 832E58DC202EFB2500AED554 /* pad_320.png */; };
-		832E58DF202EFB2B00AED554 /* pad_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 832E58DE202EFB2B00AED554 /* pad_64.png */; };
-		832E58E3202EFB4C00AED554 /* pad_44.png in Resources */ = {isa = PBXBuildFile; fileRef = 832E58E2202EFB4C00AED554 /* pad_44.png */; };
-		832E58E5202EFB6700AED554 /* pad_22.png in Resources */ = {isa = PBXBuildFile; fileRef = 832E58E4202EFB6700AED554 /* pad_22.png */; };
-		83391430202F484F00A96ACC /* saveGames.json in Resources */ = {isa = PBXBuildFile; fileRef = 8339142F202F484F00A96ACC /* saveGames.json */; };
 		833914362030A05E00A96ACC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833914352030A05E00A96ACC /* TabBarController.swift */; };
 		8360BD622031F434007423F3 /* Wish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360BD612031F434007423F3 /* Wish.swift */; };
 		8360BD64203214E3007423F3 /* WishTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8360BD63203214E3007423F3 /* WishTableViewController.swift */; };
@@ -51,11 +46,6 @@
 		249941ED3C48E462C389A0B0 /* Pods_GameTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		343CE31AFCB92883FC690DE0 /* Pods-GameTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-GameTracker/Pods-GameTracker.release.xcconfig"; sourceTree = "<group>"; };
 		3DCA5194E84D1092A3B798F9 /* Pods-GameTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GameTrackerTests/Pods-GameTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
-		832E58DC202EFB2500AED554 /* pad_320.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_320.png; sourceTree = "<group>"; };
-		832E58DE202EFB2B00AED554 /* pad_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_64.png; sourceTree = "<group>"; };
-		832E58E2202EFB4C00AED554 /* pad_44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_44.png; sourceTree = "<group>"; };
-		832E58E4202EFB6700AED554 /* pad_22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pad_22.png; sourceTree = "<group>"; };
-		8339142F202F484F00A96ACC /* saveGames.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = saveGames.json; sourceTree = "<group>"; };
 		833914352030A05E00A96ACC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8360BD612031F434007423F3 /* Wish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wish.swift; sourceTree = "<group>"; };
 		8360BD63203214E3007423F3 /* WishTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishTableViewController.swift; sourceTree = "<group>"; };
@@ -122,11 +112,6 @@
 		AC746C4A1CC3E5AD00555E6D = {
 			isa = PBXGroup;
 			children = (
-				8339142F202F484F00A96ACC /* saveGames.json */,
-				832E58E4202EFB6700AED554 /* pad_22.png */,
-				832E58E2202EFB4C00AED554 /* pad_44.png */,
-				832E58DE202EFB2B00AED554 /* pad_64.png */,
-				832E58DC202EFB2500AED554 /* pad_320.png */,
 				AC746C551CC3E5AE00555E6D /* GameTracker */,
 				AC746C6A1CC3E5B000555E6D /* GameTrackerTests */,
 				AC746C541CC3E5AD00555E6D /* Products */,
@@ -268,14 +253,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				832E58E5202EFB6700AED554 /* pad_22.png in Resources */,
-				832E58DD202EFB2500AED554 /* pad_320.png in Resources */,
-				83391430202F484F00A96ACC /* saveGames.json in Resources */,
-				832E58E3202EFB4C00AED554 /* pad_44.png in Resources */,
 				AC746C611CC3E5B000555E6D /* LaunchScreen.storyboard in Resources */,
 				AC746C5E1CC3E5B000555E6D /* Assets.xcassets in Resources */,
 				AC746C5C1CC3E5B000555E6D /* Main.storyboard in Resources */,
-				832E58DF202EFB2B00AED554 /* pad_64.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
